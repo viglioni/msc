@@ -1,7 +1,7 @@
 % Escolha: Portugues ou Ingles ou Espanhol.
 % Para a versão final do texto, após a defesa, acrescente Final:
 
-\documentclass[Portugues]{ic-tese-v3}
+\documentclass[Ingles]{ic-tese-v3}
 %\documentclass[Portugues,Final]{ic-tese-v3}
 
 \usepackage[latin1,utf8]{inputenc}
@@ -16,7 +16,9 @@
 {hyperref}
 
 
+
 \begin{document}
+
 
 % Escolha entre autor ou autora:
 \autora{Laura Viglioni}
@@ -25,11 +27,11 @@
 \titulo{Título da Dissertação ou Tese em Português}
 
 % Se a língua for o inglês ou o espanhol defina:
-%\title{The Dissertation or Thesis Title in English or Spanish}
+\title{The Dissertation or Thesis Title in English }
 
-% Escolha entre orientador ou orientadora. Inclua os títulos acadêmicos:
-\orientador{Prof. Dr. Nome do Orientador}
-%\orientadora{Profa. Dra. Nome da Orientadora}
+
+\orientador{Prof. Dr. Ricardo Dahab}
+
 
 % Escolha entre coorientador ou coorientadora, se houver.  Inclua os títulos acadêmicos:
 %\coorientador{Prof. Dr. Eng. Lic. Nome do Co-Orientador}
@@ -44,7 +46,7 @@
 % Se houve cotutela, defina:
 %\cotutela{Universidade Nova de Plutão}
 
-\datadadefesa{22}{04}{1500}
+\datadadefesa{30}{02}{2020}
 
 % Para a versão final defina:
 %\avaliadorA{Prof. Dr. Primeiro Avaliador}{Instituição do primeiro avaliador}
@@ -62,7 +64,7 @@
 
 
 % Este comando deve ficar aqui:
-\paginasiniciais
+\paginasiniciais 
 
 
 % Se houver dedicatória, descomente:
@@ -84,8 +86,8 @@
 
 
 % Agradecimentos ou Acknowledgements ou Agradecimientos
-\prefacesection{Agradecimentos}
-Os agradecimentos devem ocupar uma única página.
+% \prefacesection{Agradecimentos}
+% Os agradecimentos devem ocupar uma única página.
 
 
 % Sempre deve haver um resumo em português:
@@ -107,10 +109,10 @@ The abstract must have at most 500 words and must fit in a single page.
 
 
 % A lista de figuras é opcional:
-\listoffigures
+%\listoffigures
 
 % A lista de tabelas é opcional:
-\listoftables
+%\listoftables
 
 % A lista de abreviações e siglas é opcional:
 % \prefacesection{Lista de Abreviações e Siglas}
@@ -132,90 +134,123 @@ The abstract must have at most 500 words and must fit in a single page.
 
 
 % O corpo da dissertação ou tese começa aqui:
-\chapter{Introdução}
+\chapter{Introduction}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-est laborum.
+\chapter{Mathematical Background}
 
-\begin{table}
-\caption[Shorter table caption]{Table caption caption caption caption
-  caption caption caption caption caption caption caption caption caption
-  caption caption caption caption caption caption caption caption caption
-  caption caption.}
-\label{t:label0}
-\begin{center}
-\begin{tabular}{|c|c|}
-\hline
-a & b \\\hline
-c & d \\\hline
-\end{tabular}
-\end{center}
-\end{table}
+\section{Groups}
+\begin{definition}
+  A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
+  that:
+  \begin{itemize}
+  \item \textbf{Associativity: } $\forall a,b,c \in G, \; a\cdot(b\cdot c) = (a\cdot b)\cdot c$
+  \item \textbf{Identity element: } $\exists e \in G \; ; \; \forall a \in G, \; a\cdot e = e\cdot a = a$
+  \item \textbf{Inverse element: } $\forall a \in G, \; \exists b \in G \; ; \; a\cdot b = b \cdot a = e$
+  \end{itemize}
+And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is implied.
+\end{definition}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-est laborum.
+\begin{definition}
+  A group is sait to be \textbf{commutative} or \textbf{abelian}
+  if $\forall a, b \in G, \; a\cdot b = b\cdot a$
+\end{definition}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-est laborum.
+\noindent
+A group is called \textbf{additive} or \textbf{multiplicative} if its
+operation is addition or multiplication, respectively.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-est laborum.
+\begin{definition}
+  A subset $H$ of $G$ is a \textbf{subgroup} of $\langle G,\cdot \rangle$ if it is
+  closed under $\cdot$ induced by $\langle G,\cdot \rangle$.
+\end{definition}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-est laborum~\cite{2014-bic,2015-ela}.
+\begin{definition}
+  The \textbf{order} of a group $\langle G,\cdot\rangle$ is the cardinality of the set $G$.
+\end{definition}
 
-\begin{figure}
-\centerline{\includegraphics[scale=0.2]{logo-ic-unicamp.eps}}
-\caption[Shorter figure caption]{Figure Caption caption caption caption
-  caption caption caption caption caption caption caption caption caption
-  caption caption caption caption caption caption caption caption caption
-  caption caption.}
-\label{f:label1}
-\end{figure}
+\begin{definition}
+  A subgroup $H$ of $G$ can be used to decompose $G$ in uniform sized and
+  disjoints subsets called \textbf{cosets}. Given an element $g \in G$:
+  \begin{itemize}
+  \item A \textbf{left coset} is defined by $gH := \{g\cdot h \; ; \; h \in H\}$
+  \item A \textbf{right coset} is defined by $Hg := \{h\cdot g \; ; \; h \in H\}$
+  \end{itemize}
+\end{definition}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-commodo consequat\footnote{Footnote footnote footnote footnote footnote
-  footnote footnote footnote footnote footnote footnote footnote footnote
-  footnote footnote footnote.}.  Duis aute irure dolor in reprehenderit in
-voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-anim id est laborum.
+\section{Rings and Fields}
+\begin{definition}
+  A \textbf{ring} is a set together with two binary operations, we will note by
+  $+$ and $*$ and call it addition and multiplication, respectively, such that:
+  \begin{itemize}
+  \item $\langle R,+\rangle$ is an abelian group.
+  \item $*$ is associative
+  \item $*$ is distributive over $+$
+  \end{itemize}
+
+  And it is denoted by $\langle R,+,*\rangle$, or simply $G$ if the operations are implied.
+\end{definition}
+
+\begin{definition}
+  A ring is said to be \textbf{commutative} if its $*$ operation is commutative.
+\end{definition}
+
+\begin{definition}
+  A ring is said to be \textbf{with unity} if $*$ has a identity element. We
+  shall note it by $1$ and it is called \textbf{unity}.
+  
+\end{definition}
+
+\begin{definition}
+  A \textbf{division ring} is a ring R where $\forall r \in R, \; \exists s \in R \; ; \; r*s = 1$.
+\end{definition}
+
+\begin{definition}
+  A \textbf{field} is a commutative division ring.
+\end{definition}
+
+\section{Lattices}
+\label{sec:lattices}
+
+\begin{definition}
+  A Lattice $\Lambda \subset \mathbb{R}^n$ is a subgroup of the additive group $\mathbb{R}^n$
+\end{definition}
+
+In other words, given $m$ linear independent vectors in $\mathbb{R}^n$, the set
+$\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the Lattice may defined
+by:
+
+\begin{definition}
+  \begin{equation}
+    \Lambda := \left\{x = \sum_{i=1}^m{\lambda_iv_i} \in \mathbb{R}^n \; | \; \lambda_i \in \mathbb{Z}\right\}
+  \end{equation}
+\end{definition}
+
+\section{Number Fields}
+\label{sec:number-fields}
+
+\begin{definition}
+  Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
+  $K$ if $L \subseteq K$ and we denote by $L/K$
+\end{definition}
+
+Note that in a field extension $L/K$, $L$ has a structure of a vector space over
+$K$, where vector addition is in $L$ and scalar multiplication $a \in K, \; v \in L
+\; \implies av \in L$. The dimention of $L$ as a vector space is called
+\textbf{degree} and it is denoted by $[L:K]$.
+
+\begin{definition}
+  A field extension is called \textbf{number field} when it is over $\mathbb{Q}$.
+\end{definition}
 
 
-\chapter{Hipóteses}
+
+\chapter{Hypothesis}
 
 
-\chapter{Resultados}
+\chapter{Results}
 
 
-\chapter{Conclusões}
+\chapter{Conclusions}
 
 
 
@@ -225,8 +260,6 @@ anim id est laborum.
 
 
 % Os anexos, se houver, vêm depois das referências:
-\appendix
-\chapter{Anexo 1}
-\chapter{Anexo 2}
+%\appendix
 
 \end{document}
