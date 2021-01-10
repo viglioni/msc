@@ -32,10 +32,13 @@
 
 \RequirePackage[english,spanish,brazil]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,latexsym,amsfonts}
+\usepackage{amsmath,amssymb,latexsym,amsfonts,amsthm}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
+
+\theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
 \RequirePackage{graphicx}
 \PassOptionsToPackage{table}{xcolor}
 \RequirePackage{pdfpages}
