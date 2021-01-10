@@ -16,7 +16,6 @@
 {hyperref}
 
 
-
 \begin{document}
 
 
@@ -151,7 +150,7 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
 \end{definition}
 
 \begin{definition}
-  A group is sait to be \textbf{commutative} or \textbf{abelian}
+  A group is said to be \textbf{commutative} or \textbf{abelian}
   if $\forall a, b \in G, \; a\cdot b = b\cdot a$
 \end{definition}
 
@@ -178,6 +177,7 @@ operation is addition or multiplication, respectively.
 \end{definition}
 
 \section{Rings and Fields}
+
 \begin{definition}
   A \textbf{ring} is a set together with two binary operations, we will note by
   $+$ and $*$ and call it addition and multiplication, respectively, such that:
@@ -230,19 +230,40 @@ by:
 
 \begin{definition}
   Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
-  $K$ if $L \subseteq K$ and we denote by $L/K$
+  $K$ if $L \subseteq K$ and we denote it by $L/K$
 \end{definition}
 
 Note that in a field extension $L/K$, $L$ has a structure of a vector space over
 $K$, where vector addition is in $L$ and scalar multiplication $a \in K, \; v \in L
-\; \implies av \in L$. The dimention of $L$ as a vector space is called
+\; \implies av \in L$. The dimension of $L$ as a vector space is called
 \textbf{degree} and it is denoted by $[L:K]$.
 
 \begin{definition}
   A field extension is called \textbf{number field} when it is over $\mathbb{Q}$.
 \end{definition}
 
+\begin{definition}
+  Let $\alpha \in L$ where $L/K$ is a field extension. We say that $\alpha$ is
+  \textbf{algebraic over $K$} if $\exists p \in K[X] \;;\; p(\alpha) = 0$. $p$ is said to be
+  \textbf{the minimal polynomial of $\alpha$ over $K$} denoted by $p_\alpha$.
+\end{definition}
 
+\begin{example}
+  It is known that $\mathbb{Q}$ is a field. If we add $\sqrt{2}$ to the set, we
+  can build a new field adding also all the powers and multiples of
+  $\mathbb{Q}$. This new field is denoted by $\mathbb{Q}[\sqrt{2}]$, note that
+  $\sqrt{2}$ is algebraic and its minimal polynomial $p_{\sqrt{2}} = x^2-2$. All
+  elements of $\mathbb{Q}[\sqrt{2}]$ are in the form $\{a+b\sqrt{2} \;|\; a,b \in
+  \mathbb{Q}\}$ and one of its basis is $\{1, \sqrt{2}\}$, so it has degree is
+  $2$.
+\end{example}
+
+\begin{example}
+  If we add $\sqrt[3]{2}$ to $\mathbb{Q}$ instead, its elements would have the
+  form $\{a + b\sqrt[3]{2} + c\sqrt[3]{4} \;|\; a,b,c \in \mathbb{Q}\}$, so one of
+  its basis is $\{1 ,\sqrt[3]{2} ,\sqrt[3]{4}\}$, $p_\alpha = x^3 - 2$ and its degree
+  is $3$.
+\end{example}
 
 \chapter{Hypothesis}
 
