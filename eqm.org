@@ -1,0 +1,169 @@
+#+language: en
+#+latex_class: ic-tese-v3
+#+latex_class_options: [Ingles]
+#+latex_compiler: pdflatex
+#+OPTIONS: tex:t author:nil date:nil toc:nil
+#+STARTUP: latexpreview
+
+\autora{Nome do Autora}
+
+\title{The Dissertation or Thesis Title in English or Spanish}
+
+\orientador{Prof. Dr. Ricardo Dahab}
+
+\mestrado
+
+\datadadefesa{22}{04}{1500}
+
+\paginasiniciais
+
+* Introduction
+
+* Mathematical Background
+
+** Groups
+  
+   \begin{definition}
+  A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
+  that:
+  \begin{itemize}
+  \item \textbf{Associativity: } $\forall a,b,c \in G, \; a\cdot(b\cdot c) = (a\cdot b)\cdot c$
+  \item \textbf{Identity element: } $\exists e \in G \; ; \; \forall a \in G, \; a\cdot e = e\cdot a = a$
+  \item \textbf{Inverse element: } $\forall a \in G, \; \exists b \in G \; ; \; a\cdot b = b \cdot a = e$
+  \end{itemize}
+And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is implied.
+\end{definition}
+
+   \begin{definition}
+     A group is said to be \textbf{commutative} or \textbf{abelian}
+     if $\forall a, b \in G, \; a\cdot b = b\cdot a$
+   \end{definition}
+
+   \noindent
+   A group is called *additive* or *multiplicative* if its
+   operation is addition or multiplication, respectively.
+
+   \begin{definition}
+     A subset $H$ of $G$ is a \textbf{subgroup} of $\langle G,\cdot \rangle$ if it is
+     closed under $\cdot$ induced by $\langle G,\cdot \rangle$.
+   \end{definition}
+
+   \begin{definition}
+     The \textbf{order} of a group $\langle G,\cdot\rangle$ is the cardinality of the set $G$.
+   \end{definition}
+
+   \begin{definition}
+     A subgroup $H$ of $G$ can be used to decompose $G$ in uniform sized and
+     disjoints subsets called \textbf{cosets}. Given an element $g \in G$:
+     \begin{itemize}
+     \item A \textbf{left coset} is defined by $gH := \{g\cdot h \; ; \; h \in H\}$
+     \item A \textbf{right coset} is defined by $Hg := \{h\cdot g \; ; \; h \in H\}$
+     \end{itemize}
+   \end{definition}
+
+** Rings and Fields
+   
+   \begin{definition}
+  A \textbf{ring} is a set together with two binary operations, we will note by
+  $+$ and $*$ and call it addition and multiplication, respectively, such that:
+  \begin{itemize}
+  \item $\langle R,+\rangle$ is an abelian group.
+  \item $*$ is associative
+  \item $*$ is distributive over $+$
+  \end{itemize}
+
+  And it is denoted by $\langle R,+,*\rangle$, or simply $G$ if the operations are implied.
+\end{definition}
+
+   \begin{definition}
+     A ring is said to be \textbf{commutative} if its $*$ operation is commutative.
+   \end{definition}
+
+   \begin{definition}
+     A ring is said to be \textbf{with unity} if $*$ has a identity element. We
+     shall note it by $1$ and it is called \textbf{unity}.
+
+   \end{definition}
+
+   \begin{definition}
+     A \textbf{division ring} is a ring R where $\forall r \in R, \; \exists s \in R \; ; \; r*s = 1$.
+   \end{definition}
+
+   \begin{definition}
+     A \textbf{field} is a commutative division ring.
+   \end{definition}
+
+** Lattices
+
+   \begin{definition}
+  A Lattice $\Lambda \subset \mathbb{R}^n$ is a subgroup of the additive group $\mathbb{R}^n$
+\end{definition}
+
+In other words, given $m$ linear independent vectors in $\mathbb{R}^n$, the set
+$\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the Lattice may defined
+by:
+
+\begin{definition}
+  \begin{equation}
+    \Lambda := \left\{x = \sum_{i=1}^m{\lambda_iv_i} \in \mathbb{R}^n \; | \; \lambda_i \in \mathbb{Z}\right\}
+  \end{equation}
+\end{definition}
+
+** Number Fields
+
+   \begin{definition}
+  Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
+  $K$ if $L \subseteq K$ and we denote it by $L/K$
+\end{definition}
+
+Note that in a field extension $L/K$, $L$ has a structure of a vector space over
+$K$, where vector addition is in $L$ and scalar multiplication $a \in K, \; v \in L
+\; \implies av \in L$. The dimension of $L$ as a vector space is called
+\textbf{degree} and it is denoted by $[L:K]$.
+
+\begin{definition}
+  A field extension is called \textbf{number field} when it is over $\mathbb{Q}$.
+\end{definition}
+
+\begin{definition}
+  Let $\alpha \in L$ where $L/K$ is a field extension. We say that $\alpha$ is
+  \textbf{algebraic over $K$} if $\exists p \in K[X] \;;\; p(\alpha) = 0$. $p$ is said to be
+  \textbf{the minimal polynomial of $\alpha$ over $K$} denoted by $p_\alpha$. If $\alpha \in L =
+  \mathbb{Q}[\theta]$, we simply call $\alpha$ an \textbf{algebraic number}.
+\end{definition}
+
+\begin{example}
+  It is known that $\mathbb{Q}$ is a field. If we add $\sqrt{2}$ to the set, we
+  can build a new field adding also all the powers and multiples of
+  $\mathbb{Q}$. This new field is denoted by $\mathbb{Q}[\sqrt{2}]$, note that
+  $\sqrt{2}$ is algebraic and its minimal polynomial $p_{\sqrt{2}} = x^2-2$. All
+  elements of $\mathbb{Q}[\sqrt{2}]$ are in the form $\{a+b\sqrt{2} \;|\; a,b \in
+  \mathbb{Q}\}$ and one of its basis is $\{1, \sqrt{2}\}$, so it has degree is
+  $2$.
+\end{example}
+
+\begin{example}
+  If we add $\sqrt[3]{2}$ to $\mathbb{Q}$ instead, its elements would have the
+  form $\{a + b\sqrt[3]{2} + c\sqrt[3]{4} \;|\; a,b,c \in \mathbb{Q}\}$, so one of
+  its basis is $\{1 ,\sqrt[3]{2} ,\sqrt[3]{4}\}$, $p_\alpha = x^3 - 2$ and its degree
+  is $3$.
+\end{example}
+
+\begin{theorem}
+  [add font 45 p.40] If $K$ is a number field, then $K = \mathbb{Q}[\theta]$ for some
+  algebraic number $\theta \in K$, called primitive element.
+\end{theorem}
+
+Then we conclude that $\{1, \theta, \theta^2, ... , \theta^{n-1}\}$ is a basis for the vector
+space $K = \mathbb{Q}[\theta]$ over $\mathbb{Q}$.
+
+** Twisted Embedding
+
+* Literature Review
+
+* Objectives Detailing
+
+* Methodology
+
+\bibliographystyle{plain}
+\bibliography{ic-tese-v3}
