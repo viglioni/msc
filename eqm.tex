@@ -1,10 +1,28 @@
-#+language: en
-#+latex_class: ic-tese-v3
-#+latex_class_options: [Ingles]
-#+latex_compiler: latexmk
-#+OPTIONS: tex:t author:nil date:nil toc:nil
-#+STARTUP: latexpreview
-
+% Created 2021-01-18 Mon 17:40
+\documentclass[Ingles]{ic-tese-v3}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{}
+\title{}
+\hypersetup{
+ pdfauthor={Laura Viglioni},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.4.3)}, 
+ pdflang={English}}
+\begin{document}
 
 \autora{Laura Viglioni}
 
@@ -18,12 +36,15 @@
 
 \paginasiniciais
 
-* Introduction
+\chapter{Introduction}
+\label{sec:org1d79cb0}
 
-* Mathematical Background
+\chapter{Mathematical Background}
+\label{sec:org3d5629b}
 
-** Groups
-  
+\section{Groups}
+\label{sec:org7f3a9d3}
+
    \begin{definition}
   A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
   that:
@@ -35,35 +56,36 @@
 And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is implied.
 \end{definition}
 
-   \begin{definition}
-     A group is said to be \textbf{commutative} or \textbf{abelian}
-     if $\forall a, b \in G, \; a\cdot b = b\cdot a$
-   \end{definition}
+\begin{definition}
+  A group is said to be \textbf{commutative} or \textbf{abelian}
+  if $\forall a, b \in G, \; a\cdot b = b\cdot a$
+\end{definition}
 
-   \noindent
-   A group is called *additive* or *multiplicative* if its
-   operation is addition or multiplication, respectively.
+\noindent
+A group is called \textbf{additive} or \textbf{multiplicative} if its
+operation is addition or multiplication, respectively.
 
-   \begin{definition}
-     A subset $H$ of $G$ is a \textbf{subgroup} of $\langle G,\cdot \rangle$ if it is
-     closed under $\cdot$ induced by $\langle G,\cdot \rangle$.
-   \end{definition}
+\begin{definition}
+  A subset $H$ of $G$ is a \textbf{subgroup} of $\langle G,\cdot \rangle$ if it is
+  closed under $\cdot$ induced by $\langle G,\cdot \rangle$.
+\end{definition}
 
-   \begin{definition}
-     The \textbf{order} of a group $\langle G,\cdot\rangle$ is the cardinality of the set $G$.
-   \end{definition}
+\begin{definition}
+  The \textbf{order} of a group $\langle G,\cdot\rangle$ is the cardinality of the set $G$.
+\end{definition}
 
-   \begin{definition}
-     A subgroup $H$ of $G$ can be used to decompose $G$ in uniform sized and
-     disjoints subsets called \textbf{cosets}. Given an element $g \in G$:
-     \begin{itemize}
-     \item A \textbf{left coset} is defined by $gH := \{g\cdot h \; ; \; h \in H\}$
-     \item A \textbf{right coset} is defined by $Hg := \{h\cdot g \; ; \; h \in H\}$
-     \end{itemize}
-   \end{definition}
+\begin{definition}
+  A subgroup $H$ of $G$ can be used to decompose $G$ in uniform sized and
+  disjoints subsets called \textbf{cosets}. Given an element $g \in G$:
+  \begin{itemize}
+  \item A \textbf{left coset} is defined by $gH := \{g\cdot h \; ; \; h \in H\}$
+  \item A \textbf{right coset} is defined by $Hg := \{h\cdot g \; ; \; h \in H\}$
+  \end{itemize}
+\end{definition}
 
-** Rings and Fields
-   
+\section{Rings and Fields}
+\label{sec:org53d70b3}
+
    \begin{definition}
   A \textbf{ring} is a set together with two binary operations, we will note by
   $+$ and $*$ and call it addition and multiplication, respectively, such that:
@@ -76,32 +98,33 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
   And it is denoted by $\langle R,+,*\rangle$, or simply $G$ if the operations are implied.
 \end{definition}
 
-   \begin{definition}
-     A ring is said to be \textbf{commutative} if its $*$ operation is commutative.
-   \end{definition}
+\begin{definition}
+  A ring is said to be \textbf{commutative} if its $*$ operation is commutative.
+\end{definition}
 
-   \begin{definition}
-     A ring is said to be \textbf{with unity} if $*$ has a identity element. We
-     shall note it by $1$ and it is called \textbf{unity}.
+\begin{definition}
+  A ring is said to be \textbf{with unity} if $*$ has a identity element. We
+  shall note it by $1$ and it is called \textbf{unity}.
 
-   \end{definition}
+\end{definition}
 
-   \begin{definition}
-     A \textbf{division ring} is a ring R where $\forall r \in R, \; \exists s \in R \; ; \; r*s = 1$.
-   \end{definition}
+\begin{definition}
+  A \textbf{division ring} is a ring R where $\forall r \in R, \; \exists s \in R \; ; \; r*s = 1$.
+\end{definition}
 
-   \begin{definition}
-     A \textbf{field} is a commutative division ring.
-   \end{definition}
+\begin{definition}
+  A \textbf{field} is a commutative division ring.
+\end{definition}
 
-** Lattices
+\section{Lattices}
+\label{sec:orgd1564bb}
 
    \begin{definition}
   A Lattice $\Lambda \subset \mathbb{R}^n$ is a subgroup of the additive group $\mathbb{R}^n$
 \end{definition}
 
-In other words, given $m$ linear independent vectors in $\mathbb{R}^n$, the set
-$\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the Lattice may defined
+In other words, given \(m\) linear independent vectors in \(\mathbb{R}^n\), the set
+\(\{v_1, v_2, ..., v_m\}\) is called a \textbf{basis} for \(\Lambda\) and the Lattice may defined
 by:
 
 \begin{definition}
@@ -110,17 +133,18 @@ by:
   \end{equation}
 \end{definition}
 
-** Number Fields
+\section{Number Fields}
+\label{sec:org4ba9301}
 
    \begin{definition}
   Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
   $K$ if $L \subseteq K$ and we denote it by $L/K$
 \end{definition}
 
-Note that in a field extension $L/K$, $L$ has a structure of a vector space over
-$K$, where vector addition is in $L$ and scalar multiplication $a \in K, \; v \in L
-\; \implies av \in L$. The dimension of $L$ as a vector space is called
-\textbf{degree} and it is denoted by $[L:K]$.
+Note that in a field extension \(L/K\), \(L\) has a structure of a vector space over
+\(K\), where vector addition is in \(L\) and scalar multiplication \(a \in K, \; v \in L
+\; \implies av \in L\). The dimension of \(L\) as a vector space is called
+\textbf{degree} and it is denoted by \([L:K]\).
 
 \begin{definition}
   A field extension is called \textbf{number field} when it is over $\mathbb{Q}$.
@@ -155,16 +179,21 @@ $K$, where vector addition is in $L$ and scalar multiplication $a \in K, \; v \i
   algebraic number $\theta \in K$, called primitive element.
 \end{theorem}
 
-Then we conclude that $\{1, \theta, \theta^2, ... , \theta^{n-1}\}$ is a basis for the vector
-space $K = \mathbb{Q}[\theta]$ over $\mathbb{Q}$.
+Then we conclude that \(\{1, \theta, \theta^2, ... , \theta^{n-1}\}\) is a basis for the vector
+space \(K = \mathbb{Q}[\theta]\) over \(\mathbb{Q}\).
 
-** Twisted Embedding
+\section{Twisted Embedding}
+\label{sec:org052db5b}
 
-* Literature Review
+\chapter{Literature Review}
+\label{sec:orgd36839f}
 
-* Objectives Detailing
+\chapter{Objectives Detailing}
+\label{sec:org5eb7f60}
 
-* Methodology
+\chapter{Methodology}
+\label{sec:orgf5dabcd}
 
 \bibliographystyle{plain}
 \bibliography{ic-tese-v3}
+\end{document}

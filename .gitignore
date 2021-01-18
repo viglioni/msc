@@ -1,0 +1,17 @@
+*
+
+!ic-tese-v3.bib
+!ic-tese-v3.tex
+!README.org
+!eqm.org
+!eqm.pdf
+!eqm.tex
+!config/
+!config/*.cls
+!config/*.toc
+!config/*.eps
+!config/*.sty
+!config/logo*.pdf
+!config/*.tex
+!.gitignore
+!.latexmkrc

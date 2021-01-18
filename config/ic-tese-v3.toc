@@ -1,0 +1,20 @@
+\babel@toc {brazil}{}
+\babel@toc {english}{}
+\babel@toc {brazil}{}
+\babel@toc {english}{}
+\babel@toc {brazil}{}
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Introduction}{8}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Mathematical Background}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Groups}{9}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Rings and Fields}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Lattices}{10}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Number Fields}{10}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Twisted Embedding}{11}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Hypothesis}{12}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Results}{13}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Conclusions}{14}{chapter.5}%
