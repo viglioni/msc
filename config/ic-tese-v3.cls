@@ -32,13 +32,6 @@
 
 \RequirePackage[english,spanish,brazil]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,latexsym,amsfonts,amsthm}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}{Lemma}[section]
-
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{example}{Example}[section]
 \RequirePackage{graphicx}
 \PassOptionsToPackage{table}{xcolor}
 \RequirePackage{pdfpages}
@@ -50,6 +43,10 @@
 \geometry{a4paper,top=30mm,bottom=20mm,left=30mm,right=20mm}
 
 \RequirePackage{fancyhdr}
+
+% remove links'styles
+\usepackage{hyperref}
+\hypersetup{pdfborder = 0 0 0}
 
 \newcommand{\@IC}{Instituto de Computa\c{c}\~ao}
 \newcommand{\@UNICAMP}{Universidade Estadual de Campinas}
