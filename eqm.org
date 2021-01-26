@@ -22,8 +22,8 @@
 
 * Introduction
 
-* Mathematical Background 
-  
+* Mathematical Background
+  In this text we will consider the Natural Numbers $\N$ the set of all positive integers: $\N = \{1,2,3,\dots\}$.
 ** Groups
   
    \begin{definition}
@@ -96,6 +96,8 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
      A \textbf{field} is a commutative division ring.
    \end{definition}
 
+   DEFINIR IDEAL
+   
 ** Lattices
 
    \begin{definition}
@@ -116,6 +118,26 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
    $v \in \Z^n$.
    \end{definition}
 
+** Learning Problemas
+   I this section we will describe some problems that are believed to be hard and used in cryptography. 
+*** Learning from Parity
+
+     The goal is to find $s \in \Z^n_2$ such that
+     $$ <s, a_i> \; \approx_\epsilon \; b_i \;\; (mod\; 2) $$
+     For $i \in \{1,\dots,n\}$
+     Where $a_i \gets \Z^n_2$ uniformly and the equality holds with probability $1 - \epsilon$
+
+*** Learning with Errors
+     LWE is a generalization of LFP with two new parameters $p \in \N$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
+
+     $$ <s, a_i> \; \approx_\chi \; b_i \;\; (mod\; p) $$
+     or
+     $$ <s, a_i> + e_i \; = \;  b_i \;\; (mod\; p) $$
+
+     Where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$
+*** Ring-LWE
+     Let $R = \Z[x]/f(x)$ be a polynomial ring and $R_q = R/qR$. The definitions follow regular LWE but instead of $\Z^n_p$ we have $R_q^n$
+
 ** Number Fields
 
    \begin{definition}
@@ -127,7 +149,7 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
    $K$, where vector addition is in $L$ and scalar multiplication $a \in K, \; v \in L
    \; \implies av \in L$. The dimension of $L$ as a vector space is called
    \textbf{degree} and it is denoted by $[L:K]$.
-
+   
    \begin{definition}
      A field extension is called \textbf{number field} when it is over $\Q$.
    \end{definition}
@@ -172,6 +194,25 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
    An \textbf{integral basis} is a basis for a ring of integers. 
    \end{definition}
 
+** The inner product space H
+   \begin{definition}
+     \label{def:h-space}
+     Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
+     as:
+     \begin{equation*}
+       H = \{(a_1,\dots, a_r, b_1,\dots, b_s, \overline{b_1}, \dots, \overline{b_s}) \in \C^n\}
+     \end{equation*}
+     where $a_i \in \R, \; \forall i \in \{1,\dots,r\}$ and $b_j \in \C \setminus \R, \; j \in \{1,\dots,
+     s\}$. For all $x = \left(x_1, \dots, x_n\right), y = \left(y_1, \dots, y_n\right) \in H$ the space
+     $H$ is endowed with inner product $\langle {x,y} \rangle_H$ defined as:
+     \begin{equation*}
+       \langle {x,y} \rangle_H = \sum_{i=1}^n{x_i \overline{y_i}} = \sum_{i=1}^r{x_i \overline{y_i}} + \sum_{i=1}^s{x_{i+r} \overline{y_{i+r}}} + \sum_{i=1}^s{\overline{x_{i+r}} y_{i+r}}
+     \end{equation*}
+
+     The $\ell_2$-norm and infinity norm of any $x \in H$ are defined as $\|x\| =
+     \sqrt{\langle{x,x}\rangle_H}$ and $\|x\|_\infty = \max{\{ |x_i| \}}_{i=1}^n $.
+   \end{definition}
+   
 ** Twisted Embeddings
 *** Embeddings
    
@@ -190,6 +231,23 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
    mininum polynomial.
    \end{theorem}
 
+         \begin{definition}[Trace and Norm]
+     \label{def:trace-and-norm}
+     Let $x \in K$ be an element of a number field and $\{\sigma_i\}_{i=1}^n$ the possible
+     embeddings. The elements $\{\sigma_i(x)\}_{i=1}^n$ are called \textbf{conjugates} of
+     x and we define the \textbf{norm} of $x$ $N(x)$ and \textbf{Trace} of $x$ $Tr(x)$
+     respectively:
+     $$
+     N(x) = \prod_{i=1}^n{\sigma_i(x)} \;,\;   Tr(x) = \sum_{i=1}^n{\sigma_i(x)}
+     $$
+
+   \end{definition}
+\begin{theorem}[inserir referencia 45, p54]
+  For any $x \in K$, we have $N(x), Tr(x) \in \Q$. If $x \in \Ok$, we have $N(x),
+  Tr(x) \in \Z$.
+\end{theorem}
+
+   
    \begin{definition}
 Let $\{\sigma_i\}_n$ the possible embeddings of a number field $K$. Let $r$ the number of embeddings with real images and $2s$ the complex ones, then
 $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.

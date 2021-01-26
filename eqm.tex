@@ -1,4 +1,4 @@
-% Created 2021-01-25 Mon 19:02
+% Created 2021-01-26 Tue 17:15
 \documentclass[Ingles]{ic-tese-v3}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -40,13 +40,13 @@
 
 
 \chapter{Introduction}
-\label{sec:orgdf7d7a1}
+\label{sec:org75159e2}
 
 \chapter{Mathematical Background}
-\label{sec:orgd96b545}
-
+\label{sec:org4940c6e}
+In this text we will consider the Natural Numbers \(\N\) the set of all positive integers: \(\N = \{1,2,3,\dots\}\).
 \section{Groups}
-\label{sec:org4cc200e}
+\label{sec:orgdaa5734}
 
    \begin{definition}
   A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
@@ -87,7 +87,7 @@ operation is addition or multiplication, respectively.
 \end{definition}
 
 \section{Rings and Fields}
-\label{sec:orga2deb6b}
+\label{sec:org5ff335c}
 
    \begin{definition}
   A \textbf{ring} is a set together with two binary operations, we will note by
@@ -119,8 +119,10 @@ operation is addition or multiplication, respectively.
   A \textbf{field} is a commutative division ring.
 \end{definition}
 
+DEFINIR IDEAL
+
 \section{Lattices}
-\label{sec:org398e4c5}
+\label{sec:org2efa6bd}
 
    \begin{definition}
   A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$
@@ -140,8 +142,32 @@ by:
 $v \in \Z^n$.
 \end{definition}
 
+\section{Learning Problemas}
+\label{sec:orgbde7bc7}
+I this section we will describe some problems that are believed to be hard and used in cryptography. 
+\subsection{Learning from Parity}
+\label{sec:org87d8b45}
+
+The goal is to find \(s \in \Z^n_2\) such that
+$$ <s, a_i> \; \approx_\epsilon \; b_i \;\; (mod\; 2) $$
+For \(i \in \{1,\dots,n\}\)
+Where \(a_i \gets \Z^n_2\) uniformly and the equality holds with probability \(1 - \epsilon\)
+
+\subsection{Learning with Errors}
+\label{sec:org40fd3ae}
+LWE is a generalization of LFP with two new parameters \(p \in \N\) and \(\chi\) a probability distribution on \(\Z_p\) so that we have:
+
+$$ <s, a_i> \; \approx_\chi \; b_i \;\; (mod\; p) $$
+or
+$$ <s, a_i> + e_i \; = \;  b_i \;\; (mod\; p) $$
+
+Where \(a_i \gets \Z^n_p\) uniformly and \(e_i \gets \Z\) according to \(\chi\)
+\subsection{Ring-LWE}
+\label{sec:org693567c}
+Let \(R = \Z[x]/f(x)\) be a polynomial ring and \(R_q = R/qR\). The definitions follow regular LWE but instead of \(\Z^n_p\) we have \(R_q^n\)
+
 \section{Number Fields}
-\label{sec:orga83df42}
+\label{sec:org55e7f00}
 
    \begin{definition}
   Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
@@ -197,10 +223,30 @@ A number $\alpha$ is said to be an \textbf{algebraic integer} if $ p \in \Z[X] \
 An \textbf{integral basis} is a basis for a ring of integers. 
 \end{definition}
 
+\section{The inner product space H}
+\label{sec:orgb07754a}
+\begin{definition}
+  \label{def:h-space}
+  Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
+  as:
+  \begin{equation*}
+    H = \{(a_1,\dots, a_r, b_1,\dots, b_s, \overline{b_1}, \dots, \overline{b_s}) \in \C^n\}
+  \end{equation*}
+  where $a_i \in \R, \; \forall i \in \{1,\dots,r\}$ and $b_j \in \C \setminus \R, \; j \in \{1,\dots,
+  s\}$. For all $x = \left(x_1, \dots, x_n\right), y = \left(y_1, \dots, y_n\right) \in H$ the space
+  $H$ is endowed with inner product $\langle {x,y} \rangle_H$ defined as:
+  \begin{equation*}
+    \langle {x,y} \rangle_H = \sum_{i=1}^n{x_i \overline{y_i}} = \sum_{i=1}^r{x_i \overline{y_i}} + \sum_{i=1}^s{x_{i+r} \overline{y_{i+r}}} + \sum_{i=1}^s{\overline{x_{i+r}} y_{i+r}}
+  \end{equation*}
+
+  The $\ell_2$-norm and infinity norm of any $x \in H$ are defined as $\|x\| =
+  \sqrt{\langle{x,x}\rangle_H}$ and $\|x\|_\infty = \max{\{ |x_i| \}}_{i=1}^n $.
+\end{definition}
+
 \section{Twisted Embeddings}
-\label{sec:org5049c90}
+\label{sec:org4be4c71}
 \subsection{Embeddings}
-\label{sec:orgba0577b}
+\label{sec:org15eda12}
 
 \begin{definition}
 Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$ 
@@ -216,6 +262,23 @@ exactly $n$ embeddings $\sigma_i : K \rightarrow \C$ where by $\sigma_i(\theta) 
 \theta_i$ where $\theta_i \in \C$ is a distinct zero of the $K$'s
 mininum polynomial.
 \end{theorem}
+
+      \begin{definition}[Trace and Norm]
+  \label{def:trace-and-norm}
+  Let $x \in K$ be an element of a number field and $\{\sigma_i\}_{i=1}^n$ the possible
+  embeddings. The elements $\{\sigma_i(x)\}_{i=1}^n$ are called \textbf{conjugates} of
+  x and we define the \textbf{norm} of $x$ $N(x)$ and \textbf{Trace} of $x$ $Tr(x)$
+  respectively:
+  $$
+  N(x) = \prod_{i=1}^n{\sigma_i(x)} \;,\;   Tr(x) = \sum_{i=1}^n{\sigma_i(x)}
+  $$
+
+\end{definition}
+\begin{theorem}[inserir referencia 45, p54]
+  For any $x \in K$, we have $N(x), Tr(x) \in \Q$. If $x \in \Ok$, we have $N(x),
+  Tr(x) \in \Z$.
+\end{theorem}
+
 
    \begin{definition}
 Let $\{\sigma_i\}_n$ the possible embeddings of a number field $K$. Let $r$ the number of embeddings with real images and $2s$ the complex ones, then
@@ -244,7 +307,7 @@ $$
 \end{definition}
 
 \subsection{Algebraic Lattices}
-\label{sec:org2853cc6}
+\label{sec:org57530b5}
 
 \begin{theorem}[adicionar citaçao 45, p155]\label{theo:algebraic-lattice}
 Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$, The $n$ vectors $v_i = \sigma(\omega_i)
@@ -283,7 +346,7 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by:
 \end{remark}
 
 \subsection{Twisted Embeddings}
-\label{sec:org58db254}
+\label{sec:org37e4392}
 
 \begin{definition}
 Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a number $\tau \in K$ is
@@ -303,10 +366,10 @@ Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that
 \end{definition}
 
 \chapter{Objectives}
-\label{sec:org084f84e}
+\label{sec:orgbfc06a8}
 
 \chapter{Methodology}
-\label{sec:orgc08c54a}
+\label{sec:org30abdbb}
 
 \bibliographystyle{plain}
 \bibliography{ic-tese-v3}
