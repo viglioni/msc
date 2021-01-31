@@ -32,6 +32,7 @@
 
 \RequirePackage[english,spanish,brazil]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{todonotes}
 \RequirePackage{graphicx}
 \PassOptionsToPackage{table}{xcolor}
 \RequirePackage{pdfpages}
