@@ -2,40 +2,35 @@
 #+latex_class: ic-tese-v3
 #+latex_class_options: [Ingles]
 #+latex_compiler: latexmk
-#+OPTIONS: tex:t author:nil date:nil toc:nil 
+#+OPTIONS: tex:t author:nil date:nil toc:nil todo:nil
 #+STARTUP: latexpreview fold
 #+LATEX_HEADER: \input{./config/math-config}
 
+
 \autora{Laura Viglioni}
-
 \title{The Dissertation or Thesis Title in English}
-
 \orientador{Prof. Dr. Ricardo Dahab}
-
 \mestrado
-
 \datadadefesa{22}{04}{1500}
-
 \paginasiniciais
 
 
-
 * Introduction
-
-* Mathematical Background
-  In this text we will consider the Natural Numbers $\N$ the set of all positive integers: $\N = \{1,2,3,\dots\}$.
+  escrever sobre como é usado em cripto, qual é nossa motivaçao, lattices sao quentes, problemas de eficiencia, segurança, alternativa nova
+* Mathematical background
+  In this text we will consider the Natural Numbers $\N$ the set of all positive integers: $\N = \{1,2,3,\dots\}$ and $\P$ the set of all prime numbers. 
 ** Groups
   
-   \begin{definition}
-  A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
-  that:
-  \begin{itemize}
-  \item \textbf{Associativity: } $\forall a,b,c \in G, \; a\cdot(b\cdot c) = (a\cdot b)\cdot c$
-  \item \textbf{Identity element: } $\exists e \in G \; ; \; \forall a \in G, \; a\cdot e = e\cdot a = a$
-  \item \textbf{Inverse element: } $\forall a \in G, \; \exists b \in G \; ; \; a\cdot b = b \cdot a = e$
-  \end{itemize}
-And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is implied.
-\end{definition}
+      \begin{definition}
+        A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
+        that:
+        \begin{itemize}
+        \item \textbf{Associativity: } $\forall a,b,c \in G, \; a\cdot(b\cdot c) = (a\cdot b)\cdot c$
+        \item \textbf{Identity element: } $\exists e \in G \; ; \; \forall a \in G, \; a\cdot e = e\cdot a = a$
+        \item \textbf{Inverse element: } $\forall a \in G, \; \exists b \in G \; ; \; a\cdot b = b \cdot a = e$
+        \end{itemize}
+      And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is implied.
+      \end{definition}
 
    \begin{definition}
      A group is said to be \textbf{commutative} or \textbf{abelian}
@@ -48,7 +43,8 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
 
    \begin{definition}
      A subset $H$ of $G$ is a \textbf{subgroup} of $\langle G,\cdot \rangle$ if it is
-     closed under $\cdot$ induced by $\langle G,\cdot \rangle$.
+     closed under $\cdot$ induced by $\langle G,\cdot \rangle$. The \textbf{trivial subgroup} of any
+     group is the set consisting of just the identity element.
    \end{definition}
 
    \begin{definition}
@@ -64,7 +60,7 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
      \end{itemize}
    \end{definition}
 
-** Rings and Fields
+** Rings and fields
    
    \begin{definition}
   A \textbf{ring} is a set together with two binary operations, we will note by
@@ -96,49 +92,7 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
      A \textbf{field} is a commutative division ring.
    \end{definition}
 
-   DEFINIR IDEAL
-   
-** Lattices
-
-   \begin{definition}
-  A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$
-\end{definition}
-
-   In other words, given $m$ linear independent vectors in $\R^n$, the set
-   $\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the Lattice may defined
-   by:
-
-   \begin{definition}
-     \begin{equation*}
-       \Lambda := \left\{x = \sum_{i=1}^m{\lambda_iv_i} \in \R^n \; | \; \lambda_i \in \Z\right\}
-     \end{equation*}
-
-   \emph{I.e.}, any $\lambda \in \Lambda$ can be written as $\lambda = Mv$ where $M$ is the
-   \textbf{generator matrix} of $\Lambda$ where each row is a vector from the basis and
-   $v \in \Z^n$.
-   \end{definition}
-
-** Learning Problemas
-   I this section we will describe some problems that are believed to be hard and used in cryptography. 
-*** Learning from Parity
-
-     The goal is to find $s \in \Z^n_2$ such that
-     $$ <s, a_i> \; \approx_\epsilon \; b_i \;\; (mod\; 2) $$
-     For $i \in \{1,\dots,n\}$
-     Where $a_i \gets \Z^n_2$ uniformly and the equality holds with probability $1 - \epsilon$
-
-*** Learning with Errors
-     LWE is a generalization of LFP with two new parameters $p \in \N$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
-
-     $$ <s, a_i> \; \approx_\chi \; b_i \;\; (mod\; p) $$
-     or
-     $$ <s, a_i> + e_i \; = \;  b_i \;\; (mod\; p) $$
-
-     Where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$
-*** Ring-LWE
-     Let $R = \Z[x]/f(x)$ be a polynomial ring and $R_q = R/qR$. The definitions follow regular LWE but instead of $\Z^n_p$ we have $R_q^n$
-
-** Number Fields
+** Number  fields
 
    \begin{definition}
   Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
@@ -187,14 +141,34 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
    space $K = \Q[\theta]$ over $\Q$. Note that we can represent an number $a \in K$ as a linear combination of $\theta$, /i.e/ $a = \sum^n_{i=0}{a_i\theta^i}$ or as a polynomial $a(x) = \sum^n_{i=0}{a_ix^i}$.
 
    \begin{definition}
-   A number $\alpha$ is said to be an \textbf{algebraic integer} if $ p \in \Z[X] \;;\; p(\alpha) = 0$. The set of all algebraic integers of $K$ forms a ring called \textbf{ring of ingegers} of $K$ and is denoted by $\Ok$.
+   A number $\alpha$ is said to be an \textbf{algebraic integer} if $ p \in \Z[X] \;;\; p(\alpha) = 0$. The set of all algebraic integers of $K$ forms a ring called \textbf{ring of integers} of $K$ and is denoted by $\Ok$.
    \end{definition}
    
    \begin{definition}
    An \textbf{integral basis} is a basis for a ring of integers. 
    \end{definition}
 
-** The inner product space H
+\begin{definition}[\cite{Peikert2017}, Section 2.3.2]
+  An \textbf{integral Ideal} $\Id \subset \Ok$ is a  nontrivial additive subgroup that
+  is also closed under multiplication by $\Ok$, \textit{i.e.}, $r \cdot a \in \Id$ for
+  any $r \in \Ok$ and $a \in \Id$. Any ideal $\Id$ is a free $\Z$-module of rank
+  $n$, \ie, it is the set off all $\Z$-linear combinations of some basis
+  $\{b_1,\dots,b_n\} \subset \Id$  of linearly independents (over $\Z$) elements $b_i$.
+\end{definition}
+
+\begin{definition}[\cite{Peikert2017}, Section 2.3.2]
+  A \textbf{fractional ideal} $\Id \subset K$ is a set sutch that $d\Id \subset \Ok$ is an
+  integral ideal for some $d \in \Ok$
+\end{definition}
+
+\begin{definition}[\cite{Peikert2017}, Section 2.3.3]
+  For any fractional ideal $\Id \subset K$, its \textbf{dual ideal} is defined as
+  $\Id^v \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Z \}$. An important canonical
+  fractional ideal in a number field K is the \textbf{codifferent ideal}
+  $\Ok^v$, \ie, the dual ideal of the ring of integers: $\Ok^v \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Ok \}$.
+\end{definition}
+
+** The inner product space /H/ 
    \begin{definition}
      \label{def:h-space}
      Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
@@ -212,7 +186,138 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
      The $\ell_2$-norm and infinity norm of any $x \in H$ are defined as $\|x\| =
      \sqrt{\langle{x,x}\rangle_H}$ and $\|x\|_\infty = \max{\{ |x_i| \}}_{i=1}^n $.
    \end{definition}
+
+   It can be proven that $H$ and $\R^n$ are isomorphic.
+** Lattices
+*** Basic definitions
+
+   \begin{definition}
+  A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$
+\end{definition}
+
+   In other words, given $m$ linear independent vectors in $\R^n$, the set
+   $\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the Lattice may defined
+   by:
+
+   \begin{definition}
+     \begin{equation*}
+       \Lambda := \left\{x = \sum_{i=1}^m{\lambda_iv_i} \in \R^n \; | \; \lambda_i \in \Z\right\}
+     \end{equation*}
+
+   \emph{I.e.}, any $\lambda \in \Lambda$ can be written as $\lambda = Mv$ where $M$ is the
+   \textbf{generator matrix} of $\Lambda$ where each row is a vector from the basis and
+   $v \in \Z^n$.
+   \end{definition}
+
+   Since the space $H$ (\ref{def:h-space}) is isomorphic to $\R^n$, all definitions above can be switched from $\R^n$ to $H$ without any loss of generality.
    
+\begin{definition}
+  The \textbf{minimum distance} of an Lattice $\Lambda$ is the shortest nonzero vector
+  from $\Lambda$, given some norm, \textit{i.e.}:
+  $$
+  \lambda_1(\Lambda) \defsym \min_{0 \ne v \in \Lambda}{\|v\|}
+  $$
+
+  We define $\lambda_m$ as the set of $m \in \N$  linear independent vectors of $\Lambda$
+  such that the biggest vector from $\lambda_m$ is equal or smaller than the biggest
+  vector of any linear independent set of length $m$ in $\Lambda$. We usually use
+  $\lambda_n$, where $n$ is the size of the basis of $\Lambda$ and we call them
+  \textbf{shortest independent vectors} of $\Lambda$.
+\end{definition}
+
+*** Lattice problems
+    \begin{definition}[\cite{Peikert2017}, Definition 2.8, Gap Shortest Vector
+      Problem]
+      \label{def:gapsvp}
+    For an approximation factor $\gamma  = \gamma(n) \geq 1$, the $GapSVP_\gamma $ is: given a lattice
+    $\Lambda$ and length $d > 0$, output \textbf{YES} if $\lambda_1(\Lambda) \leq d$ and \textbf{NO} if
+    $\lambda_1(L) > \gamma d$.  
+    \end{definition}
+    
+    \begin{definition}[\cite{Peikert2017}, Definition 2.8, Shortest Independent
+      Vectors Problem]
+      \label{def:sivp}
+      For an approximation factor $\gamma = \gamma(n) \geq 1$, the $SIVP_\gamma$ is: given a lattice $\Lambda$, output $n$ linearly independent lattice vectors of length at most $\gamma(n) \cdot \lambda_n(\Lambda)$.
+    \end{definition}
+    
+** Learning problems
+   I this section we will describe some problems that are believed to be hard and used in cryptography. 
+*** Learning from Parity
+      \begin{definition}
+       \label{def:LWP}
+       Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
+       define the problem \textbf{Learn With Parity (LWP)} as:
+
+       find $s \in \Z^n_2$ such that for $i \in \{1,\dots,m\}$
+          $$ \langle{s, a_i}\rangle \; \approx_\epsilon \; b_i \;\; (mod\; 2) $$
+
+          In other words, the equality holds with probability $1 - \epsilon$
+
+     \end{definition}
+
+*** Learning with Errors
+\begin{definition}
+  \label{def:LWE}
+  Learning With Erros (LWE) is a generalization of LFP (\ref{def:LWP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
+
+     $$ <s, a_i> \; \approx_\chi \; b_i \;\; (mod\; p) $$
+     or
+     $$ <s, a_i> + e_i \; = \;  b_i \;\; (mod\; p) $$
+
+     Where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$
+
+\end{definition}
+
+\begin{theorem}[\cite{regev2009}, Theorem 1.1]
+  Let $n$, $p$ be integers and $\alpha \in (0, 1)$ be such that $\alpha p > 2\sqrt{n}$. If
+  there exists an efficient algorithm that solves $LWE_{p \Psi_\alpha}$ then there
+  exists an efficient quantum algorithm that approximates the decision version
+  of the shortest vector problem ($GAP_{SVP}$ \ref{def:gapsvp}) and the
+  shortest independent vectors problem (SIVP \ref{def:sivp}) to within
+  $\tilde{O}(n/\alpha)$ in the worst case.
+
+  Where $\Psi_\beta$ is defined as:
+  $$
+  \forall r \in [0,1), \; \Psi_\beta(r) \defsym \sum_{k=-\infty}^\infty{\frac{1}{\beta} . \exp{\left( -\pi \left( \frac{r-k}{\beta} \right)^2 \right)}}
+  $$
+\end{theorem}
+
+*** Ring-LWE
+    Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
+    codifferent ideal of $K$. Let $2 \leq q \in \N$ and for any fractional ideal $\Id \subset
+    K$, let $\Id_q = \Id/q\Id$ and $\mathbb{T} = K_\R/R^\vee$.  
+
+    \begin{definition}[\cite{Peikert2017}, Definition 2.15, Ring-LWE Average-Case Decision]
+      \label{def:rlwe-decision}
+      Let $\Upsilon$ be a distribution over a family of error distributions over $K_\R$.
+      The average-case Ring-LWE decision problem, denoted $R-LWE{q,\Upsilon}$, is to
+      distinguish (with non-negligible advantage) between independent samples from
+      $A_{s, \psi}$ for a \textit{random} choice of $(s,\psi) \longleftarrow U(R_q^\vee) \times \Upsilon$, and the
+      same number of uniformly random and independent samples from $R_q \times \mathbb{T}$.
+    \end{definition}
+
+    \begin{theorem}[\cite{Peikert2017}, Corollary 5.2]
+      Let $\alpha = \alpha(n) \in (0, 1)$, and let $q = q(n)$ be an integer such that $\alpha q \geq 
+      2\sqrt{n}$. Then, there is \emph{a polynomial-time quantum reduction from} $SIVP_{\gamma'}$
+      and $GapSVP_{\gamma'}$ \emph{to (average-case, decision)} $LWE_{q,\alpha}$.
+    \end{theorem}
+
+\begin{definition}[\cite{Lyubashevsky2010}, Definition 3.2, Ring-LWE Search]
+  \label{def:rlwe-search}
+Let $\Psi$ be a family of distributions over $K_\R$. The search version of the $ring-LWE$ problem, denoted $R-LWE_{q,\Psi}$, is defined as follows: given access to arbitrarily many independent samples from $A_{s,\psi}$ for some arbitrary $s \in R_q^\vee$ and $\psi \in \Psi$, find $s$.
+\end{definition}
+
+\begin{theorem}[\cite{Lyubashevsky2010}, Theorem 3.6]
+  Let K be the mth cyclotomic number field having dimension $n = \phi(m)$ and $R =
+  \Ok$ be its ring of integers. Let $\alpha < \sqrt{(\log{n})/n}$, and let $q = q(n)
+  \geq 2, \; q = 1 \; (mod \; m)$ be a $poly(n)$-bounded prime such that $\alpha q \geq
+  \omega(\sqrt{\log{n}})$. Then there is a polynomial-time quantum reduction from
+  $\tilde{O}(n/\alpha)$-approximate $SIVP$ (or $SVP$) on ideal lattices in $K$ to
+  $R-DLWE_{q,\Upsilon_\alpha}$. Alternatively, for any $l \geq 1$, we can replace the target
+  problem by the problem of solving $R-DLWE_{q,D_\xi}$ given only $l$ samples,
+  where $\xi = \alpha \cdot ( nl/ \log{(nl)} )^{1/4}$
+\end{theorem}
+
 ** Twisted Embeddings
 *** Embeddings
    
@@ -242,7 +347,7 @@ And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is
      $$
 
    \end{definition}
-\begin{theorem}[inserir referencia 45, p54]
+\begin{theorem}[] \todo{inserir referencia 45, p54}
   For any $x \in K$, we have $N(x), Tr(x) \in \Q$. If $x \in \Ok$, we have $N(x),
   Tr(x) \in \Z$.
 \end{theorem}
@@ -274,9 +379,9 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
 
                   \end{definition}
             
-*** Algebraic Lattices
+*** Algebraic lattices
     
-            \begin{theorem}[adicionar citaçao 45, p155]\label{theo:algebraic-lattice}
+            \begin{theorem}[]\label{theo:algebraic-lattice}\todo{adicionar citaçao 45, p155}
             Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$, The $n$ vectors $v_i = \sigma(\omega_i)
             \in \R^n$ are linearly independent, so thety define a full rank algebraic lattice
             $\Lambda = \Lambda(\Ok) = \sigma(\Ok)$.
@@ -312,7 +417,7 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
 
             \end{remark}
 
-*** Twisted Embeddings
+*** Twisted embeddings
     
     \begin{definition}
     Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a number $\tau \in K$ is
@@ -331,12 +436,33 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
       where $\tau_i = \sigma_i(\tau)$.
     \end{definition}
     
-* Objectives 
-
+*** Twisted Ring-LWE
+    \begin{definition}[\cite{Jheyne2021}, Twisted Ring-LWE distribution]
+      \label{def:twisted-ring-lwe}
+      For a totally positive element $\tau \in F$, let $\psi_\tau$ denote an error distribution
+      over the inner product $\langle{\cdot,\cdot}\rangle_\tau$ and $s \in R^\vee_q$ (the “secret”) be an
+      uniformly randomized element. The \emph{Twisted Ring-LWE distribution}
+      $\mathcal{A}_{s,\psi_\tau}$ produces samples of the form
+      $$
+      (a, b = a \cdot s + e \;\;\; \mod{qR^\vee}) \in R_q \times K_\R/qR^\vee.
+      $$
+    \end{definition}
+    \begin{theorem}[\cite{Jheyne2021}, Theorem 1]
+      Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
+      Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
+      Then thereis a polynomial-time reduction from $Ring-LWE_{q,\psi}$ to $Ring-LWE^\tau_{q,\psi_\tau}$ .
+    \end{theorem}
+* Twisted embeddings and cryptography
+  ver artigo da jheyne
+* Objectives
+  validar a ideia de twisted embedings em varios aspectos, investigaçao em parte teorica e pratica das hipoteses levantadas no artigo sobre as vantagens de usar o twisted, practical impacts do artigo
 * Methodology
+** atividades, cronograma  
+   \bibliographystyle{plain}
+   \bibliography{library,ic-tese-v3}
 
-  \bibliographystyle{plain}
-  \bibliography{ic-tese-v3}
 
 
- 
+
+
+
