@@ -1,4 +1,4 @@
-% Created 2021-01-31 Sun 18:31
+% Created 2021-02-01 Mon 18:18
 \documentclass[Ingles]{ic-tese-v3}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -34,13 +34,13 @@
 
 
 \chapter{Introduction}
-\label{sec:org8130758}
+\label{sec:orga62b0cc}
 escrever sobre como é usado em cripto, qual é nossa motivaçao, lattices sao quentes, problemas de eficiencia, segurança, alternativa nova
 \chapter{Mathematical background}
-\label{sec:orgffe1404}
+\label{sec:org024c52f}
 In this text we will consider the Natural Numbers \(\N\) the set of all positive integers: \(\N = \{1,2,3,\dots\}\) and \(\P\) the set of all prime numbers. 
 \section{Groups}
-\label{sec:orgc8e9fc0}
+\label{sec:org3a42cb3}
 
 \begin{definition}
   A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
@@ -82,7 +82,7 @@ operation is addition or multiplication, respectively.
 \end{definition}
 
 \section{Rings and fields}
-\label{sec:org4a9f867}
+\label{sec:org8b9dbce}
 
    \begin{definition}
   A \textbf{ring} is a set together with two binary operations, we will note by
@@ -115,7 +115,7 @@ operation is addition or multiplication, respectively.
 \end{definition}
 
 \section{Number  fields}
-\label{sec:org14d98e3}
+\label{sec:orgd6953d3}
 
    \begin{definition}
   Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
@@ -155,6 +155,19 @@ Note that in a field extension \(L/K\), \(L\) has a structure of a vector space 
   is $3$.
 \end{example}
 
+\begin{example}[\cite{Ortiz2021}, Cyclotomic number field]
+  A number field of particular interest is $\Q(\zeta_m)$, the m-th cyclotomic field,
+  where $\zeta_m = \exp{2\pi i /m}$ is a primitive $m$-th root of unity for any
+  integer number $m \geq 1$. The degree of $\Q(\zeta_m)$ is $\phi(m)$, where $\phi(\cdot)$
+  denotes the Euler’s totient function. The minimal polynomial of $\zeta_m$, called
+  the $m$-th cyclotomic polynomial, is $\Phi_m(x) = \prod_{k \in \Z_{m}^*}$, where $\Z^*_m$ denotes the group of invertible elements in $\Z/m\Z$.
+\end{example}
+
+\begin{example}[\cite{Ortiz2021}, Maximal real subfield]
+  \label{ex:maximum-real-subfield}
+  The number field $\Q(\zeta_m + \zeta_m^{-1}) \subset \R \cap \Q(\zeta_m)$ is the maximal real subfield of $\Q(\zeta_m)$ and has degree $\phi(m)/2$ if $m \geq 3$.
+\end{example}
+
 \begin{theorem}
   [add font 45 p.40] If $K$ is a number field, then $K = \Q[\theta]$ for some
   algebraic number $\theta \in K$, called primitive element.
@@ -191,8 +204,15 @@ An \textbf{integral basis} is a basis for a ring of integers.
   $\Ok^v$, \ie, the dual ideal of the ring of integers: $\Ok^v \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Ok \}$.
 \end{definition}
 
+    \begin{definition}[Foxed field by involution]
+\label{def:fixed-field-by-involution}
+      A map $f: K \rightarrow K$, where $K$ is a number field, is callend \textbf{involution}
+      of $K$ if $\forall a,b \in K \; f(a+b) = f(a) + f(b) \; f(a\cdot b) = f(a) \cdot f(b)$ and
+      $f(f(a)) = a$. The subfield $F = \{a \in K \; f(a) = a\}$ is called \textbf{fixed field by
+        involution} of $K$.
+    \end{definition}
 \section{The inner product space \emph{H}}
-\label{sec:org8802409}
+\label{sec:org2b27f5c}
 \begin{definition}
   \label{def:h-space}
   Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
@@ -213,9 +233,9 @@ An \textbf{integral basis} is a basis for a ring of integers.
 
 It can be proven that \(H\) and \(\R^n\) are isomorphic.
 \section{Lattices}
-\label{sec:org946f04d}
+\label{sec:org20ccf62}
 \subsection{Basic definitions}
-\label{sec:org6875914}
+\label{sec:orgca624f4}
 
    \begin{definition}
   A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$
@@ -252,7 +272,7 @@ Since the space \(H\) (\ref{def:h-space}) is isomorphic to \(\R^n\), all definit
 \end{definition}
 
 \subsection{Lattice problems}
-\label{sec:orgaa8d66e}
+\label{sec:orgc2caf22}
 \begin{definition}[\cite{Peikert2017}, Definition 2.8, Gap Shortest Vector
   Problem]
   \label{def:gapsvp}
@@ -268,10 +288,10 @@ $\lambda_1(L) > \gamma d$.
 \end{definition}
 
 \section{Learning problems}
-\label{sec:orgdb2d1f4}
+\label{sec:org99d4656}
 I this section we will describe some problems that are believed to be hard and used in cryptography. 
 \subsection{Learning from Parity}
-\label{sec:org7d22c9e}
+\label{sec:orgbb83f1f}
  \begin{definition}
   \label{def:LWP}
   Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
@@ -285,7 +305,7 @@ I this section we will describe some problems that are believed to be hard and u
 \end{definition}
 
 \subsection{Learning with Errors}
-\label{sec:org21b6ccb}
+\label{sec:org9941e25}
 \begin{definition}
   \label{def:LWE}
   Learning With Erros (LWE) is a generalization of LFP (\ref{def:LWP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
@@ -313,7 +333,7 @@ I this section we will describe some problems that are believed to be hard and u
 \end{theorem}
 
 \subsection{Ring-LWE}
-\label{sec:orgf8b0ff3}
+\label{sec:orgdc06995}
 Let \(K\) be a number field, \(R = \Ok\) its ring of integers and \(R^\vee\) the
 codifferent ideal of \(K\). Let \(2 \leq q \in \N\) and for any fractional ideal \(\Id \subset
     K\), let \(\Id_q = \Id/q\Id\) and \(\mathbb{T} = K_\R/R^\vee\).  
@@ -350,9 +370,9 @@ Let $\Psi$ be a family of distributions over $K_\R$. The search version of the $
 \end{theorem}
 
 \section{Twisted Embeddings}
-\label{sec:org502da68}
+\label{sec:orgb319ea8}
 \subsection{Embeddings}
-\label{sec:org15dfb25}
+\label{sec:orgbe8abdc}
 
 \begin{definition}
 Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$ 
@@ -413,7 +433,7 @@ $$
 \end{definition}
 
 \subsection{Algebraic lattices}
-\label{sec:org0823cae}
+\label{sec:orgee3e644}
 
 \begin{theorem}[]\label{theo:algebraic-lattice}\todo{adicionar citaçao 45, p155}
 Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$, The $n$ vectors $v_i = \sigma(\omega_i)
@@ -452,11 +472,12 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by:
 \end{remark}
 
 \subsection{Twisted embeddings}
-\label{sec:org2ad623f}
+\label{sec:org552b454}
 
 \begin{definition}
-Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a number $\tau \in K$ is
-\textbf{totally  positive} if $\forall i \in {1, \dots , n}, \; \sigma_i(\tau) \in \R^*_+$ 
+Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a
+number $\tau \in F$, where $F$ is the fixed field by involution of $K$ (Definition
+\ref{def:fixed-field-by-involution}) is \textbf{totally  positive} if $\forall i \in {1, \dots , n}, \; \sigma_i(\tau) \in \R^*_+$. 
 \end{definition}
 
 
@@ -471,9 +492,13 @@ Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that
   where $\tau_i = \sigma_i(\tau)$.
 \end{definition}
 
-\subsection{Twisted Ring-LWE}
-\label{sec:orgbf1ad13}
-\begin{definition}[\cite{Jheyne2021}, Twisted Ring-LWE distribution]
+\chapter{Twisted embeddings and cryptography}
+\label{sec:org9ad39e8}
+\section{Twisted Ring-LWE}
+\label{sec:orgee007e8}
+In this section we present variant of the Ring-LWE (Definition \ref{def:rlwe-search}) using twisted embeddings (Definition \ref{def:twisted-emb}).
+
+\begin{definition}[\cite{Ortiz2021}, Twisted Ring-LWE distribution]
   \label{def:twisted-ring-lwe}
   For a totally positive element $\tau \in F$, let $\psi_\tau$ denote an error distribution
   over the inner product $\langle{\cdot,\cdot}\rangle_\tau$ and $s \in R^\vee_q$ (the “secret”) be an
@@ -483,21 +508,63 @@ Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that
   (a, b = a \cdot s + e \;\;\; \mod{qR^\vee}) \in R_q \times K_\R/qR^\vee.
   $$
 \end{definition}
-\begin{theorem}[\cite{Jheyne2021}, Theorem 1]
+
+Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated in Theorem \ref{theo:twisted-rlwe-hardness}:
+
+\begin{theorem}[\cite{Ortiz2021}, Theorem 1]
+  \label{theo:twisted-rlwe-hardness}
   Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
   Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
   Then thereis a polynomial-time reduction from $Ring-LWE_{q,\psi}$ to $Ring-LWE^\tau_{q,\psi_\tau}$ .
 \end{theorem}
-\chapter{Twisted embeddings and cryptography}
-\label{sec:orge285cd7}
-ver artigo da jheyne
+\section{Error sampling in rotated \(\Z^n\)-lattices}
+\label{sec:org8c04363}
+
+\begin{text}
+  In this section we present the \textit{Ortiz et al.} (\cite{Ortiz2021}, Section 8)
+  variation of the cryptosystem of Lyubashevsky, Peikert, and Regev
+  (\cite{LPV2013}, Section 8.2) using twisted embeddings. Let $R$ be an $m$-th
+  cyclotomic ring and $p, q \in \Z$ coprimes. The message sapce is defined as
+  $R_p$ and it is required $q$ to be coprime with every odd prime dividing
+  $m$. Consider that $\phi_\tau$ is an error distribution over $(K_\R,\langle{\cdot,\cdot}\rangle_\tau)$
+  and $\lfloor{\cdot}\rceil$ denotes a valid discretization to (cosets) of $R^\vee$ or $pR^\vee$.
+  Also, $\hat{m} = m/2$ if $m$ is even, otherwise $\hat{m} = m$. Finally, for any
+  $\overline{a} \in \Z_q$, let $[[\overline{a}]]$ denote the unique representative
+  $a \in (\overline{a} + q\Z) \cap [-q/2, q/2)$, which is entry-wise extended to
+  polynomials.
+
+  \begin{itemize}
+  \item \textbf{Key generation}: choose a uniformly random $a \in R_q$. Choose $x
+    \longleftarrow \lfloor{\phi_\tau}\rceil$ and $e \longleftarrow \lfloor{p \cdot \phi_\tau}\rceil_{pR^\vee}$. Output $(a,b = \hat{m}\cdot(a \cdot x + e)
+    \mod{qR} ) \in R_q \times R_q$ as the public key and $x$ as the secret key.
+  \item \textbf{Encryption}: choose $z \longleftarrow \longleftarrow \lfloor{\phi_\tau}\rceil_R^\vee$, $e' \longleftarrow \lfloor{p \cdot
+      \phi_\tau}\rceil_{pR^\vee}$ and  $e'' \longleftarrow \lfloor{p \cdot \phi_\tau}\rceil_{t^{-1}\mu +pR^\vee}$, where $\mu \in R_p$ is
+    the word to be encrypted. Let $u = \hat{m} \cdot (a \cdot z + e') \mod{qR}$ and $v =
+    z \cdot b + e'' \in R_q^\vee$. Output $(u,v) \in R_q \times R^\vee_q$.
+  \item \textbf{Decryption}: Given the encrypted message $(u,v)$, compute $v - u
+    \cdot x \mod{qR^\vee}$, and decode it to $d = [[v - u \cdot x]] \in R^\vee$. Output $\mu = t \cdot
+    d \mod{pR}$. 
+  \end{itemize}
+
+  Im this cryptosystem, the most expensive operations to compute are the error
+  sampling, its discretization and the polynomial multiplications. When $R$ is
+  the ring of integers of the maximum real subfield
+  (\ref{ex:maximum-real-subfield}) $\Q(\zeta_p + \zeta_p^{-1})$, the sampling of error
+  terms can be performed directly over $(K_\R, \langle{\cdot,\cdot}\rangle_\tau)$ in the orthonormal
+  basis while preserving the spherical format and standard deviation in respect
+  to the corresponding distribution in $H$. The efficiency
+of discrete sampling when $K = \Q(\zeta_p + \zeta_p^{-1})$ is reinforced by the fact
+that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding to the nearest integer. (\cite{Ortiz2021}, Section 8).
+\end{text}
+
+
 \chapter{Objectives}
-\label{sec:orgd5ff7ef}
+\label{sec:org6b78ef3}
 validar a ideia de twisted embedings em varios aspectos, investigaçao em parte teorica e pratica das hipoteses levantadas no artigo sobre as vantagens de usar o twisted, practical impacts do artigo
 \chapter{Methodology}
-\label{sec:orgb5ddcb7}
+\label{sec:orge88ddc3}
 \section{atividades, cronograma}
-\label{sec:org1de21e8}
+\label{sec:org9125674}
 \bibliographystyle{plain}
 \bibliography{library,ic-tese-v3}
 \end{document}
