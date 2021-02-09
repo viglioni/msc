@@ -1,24 +1,52 @@
 #+language: en
-#+latex_class: ic-tese-v3
-#+latex_class_options: [Ingles]
 #+latex_compiler: latexmk
-#+OPTIONS: tex:t author:nil date:nil toc:nil todo:nil
+#+OPTIONS: tex:t  toc:nil todo:nil
 #+STARTUP: latexpreview fold
 #+LATEX_HEADER: \input{./config/math-config}
 
+# ################ template ic
+# #+latex_class: ic-tese-v3
+# #+latex_class_options: [Ingles]
+# \autora{Laura Viglioni}
+# \title{Master’s Qualification Exam}
+# \orientador{Prof. Dr. Ricardo Dahab}
+# \mestrado
+# \datadadefesa{22}{04}{1500}
+# \paginasiniciais
 
-\autora{Laura Viglioni}
-\title{The Dissertation or Thesis Title in English}
-\orientador{Prof. Dr. Ricardo Dahab}
-\mestrado
-\datadadefesa{22}{04}{1500}
-\paginasiniciais
+
+# ############### arcticle
+#+latex_class: article
+#+latex_class_options: [a4paper,12pt] 
+#+LATEX_HEADER: \input{./config/article}
+#+title: Master’s Qualification Exam
+#+author: Candidate: Laura Viglioni @@latex:\\@@ Supervisor: Prof. Dr. Ricardo Dahab
+#+date: March 12, 2021
+
+\begin{abstract}
+lorem ipsum
+\end{abstract}
+\pagebreak
+
 
 
 * Introduction
   escrever sobre como é usado em cripto, qual é nossa motivaçao, lattices sao quentes, problemas de eficiencia, segurança, alternativa nova
+*** Motivation
+    :PROPERTIES:  
+    :UNNUMBERED: t
+    :END: 
+*** Summary of objectives
+    :PROPERTIES:  
+    :UNNUMBERED: t
+    :END: 
+*** Organization of this document
+    :PROPERTIES:  
+    :UNNUMBERED: t
+    :END: 
 * Mathematical background
-  In this text we will consider the Natural Numbers $\N$ the set of all positive integers: $\N = \{1,2,3,\dots\}$ and $\P$ the set of all prime numbers. 
+** Preliminaries
+     In this text we will consider the Natural Numbers $\N$ the set of all positive integers: $\N = \{1,2,3,\dots\}$ and $\P$ the set of all prime numbers. 
 ** Groups
   
       \begin{definition}
@@ -62,27 +90,27 @@
 
 ** Rings and fields
    
-   \begin{definition}
-  A \textbf{ring} is a set together with two binary operations, we will note by
-  $+$ and $*$ and call it addition and multiplication, respectively, such that:
-  \begin{itemize}
-  \item $\langle R,+\rangle$ is an abelian group.
-  \item $*$ is associative
-  \item $*$ is distributive over $+$
-  \end{itemize}
+      \begin{definition}
+     A \textbf{ring} is a set together with two binary operations, we will note by
+     $+$ and $*$ and call it addition and multiplication, respectively, such that:
+     \begin{itemize}
+     \item $\langle R,+\rangle$ is an abelian group.
+     \item $*$ is associative
+     \item $*$ is distributive over $+$
+     \end{itemize}
 
-  And it is denoted by $\langle R,+,*\rangle$, or simply $G$ if the operations are implied.
-\end{definition}
+     And it is denoted by $\langle R,+,*\rangle$, or simply $G$ if the operations are implied.
+   \end{definition}
 
    \begin{definition}
      A ring is said to be \textbf{commutative} if its $*$ operation is commutative.
    \end{definition}
 
-   \begin{definition}
-     A ring is said to be \textbf{with unity} if $*$ has a identity element. We
-     shall note it by $1$ and it is called \textbf{unity}.
+      \begin{definition}
+        A ring is said to be \textbf{with unity} if $*$ has a identity element. We
+        shall note it by $1$ and it is called \textbf{unity}.
 
-   \end{definition}
+      \end{definition}
 
    \begin{definition}
      A \textbf{division ring} is a ring R where $\forall r \in R, \; \exists s \in R \; ; \; r*s = 1$.
@@ -146,7 +174,7 @@
 \end{example}
 
    \begin{theorem}
-     [add font 45 p.40] If $K$ is a number field, then $K = \Q[\theta]$ for some
+     [\cite{stewart2002}, p.40] If $K$ is a number field, then $K = \Q[\theta]$ for some
      algebraic number $\theta \in K$, called primitive element.
    \end{theorem}
 
@@ -170,7 +198,7 @@
 \end{definition}
 
 \begin{definition}[\cite{Peikert2017}, Section 2.3.2]
-  A \textbf{fractional ideal} $\Id \subset K$ is a set sutch that $d\Id \subset \Ok$ is an
+  A \textbf{fractional ideal} $\Id \subset K$ is a set such that $d\Id \subset \Ok$ is an
   integral ideal for some $d \in \Ok$
 \end{definition}
 
@@ -181,13 +209,13 @@
   $\Ok^v$, \ie, the dual ideal of the ring of integers: $\Ok^v \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Ok \}$.
 \end{definition}
 
-    \begin{definition}[Foxed field by involution]
-\label{def:fixed-field-by-involution}
-      A map $f: K \rightarrow K$, where $K$ is a number field, is callend \textbf{involution}
-      of $K$ if $\forall a,b \in K \; f(a+b) = f(a) + f(b) \; f(a\cdot b) = f(a) \cdot f(b)$ and
-      $f(f(a)) = a$. The subfield $F = \{a \in K \; f(a) = a\}$ is called \textbf{fixed field by
-        involution} of $K$.
-    \end{definition}
+        \begin{definition}[Fixed field by involution]
+    \label{def:fixed-field-by-involution}
+          A map $f: K \rightarrow K$, where $K$ is a number field, is called \textbf{involution}
+          of $K$ if $\forall a,b \in K \; f(a+b) = f(a) + f(b) \; f(a \cdot b) = f(a) \cdot f(b)$ and
+          $f(f(a)) = a$. The subfield $F = \{a \in K \; f(a) = a\}$ is called \textbf{fixed field by
+            involution} of $K$.
+        \end{definition}
 ** The inner product space /H/ 
    \begin{definition}
      \label{def:h-space}
@@ -278,7 +306,7 @@
 *** Learning with Errors
 \begin{definition}
   \label{def:LWE}
-  Learning With Erros (LWE) is a generalization of LFP (\ref{def:LWP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
+  Learning With Errors (LWE) is a generalization of LFP (\ref{def:LWP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
 
      $$ <s, a_i> \; \approx_\chi \; b_i \;\; (mod\; p) $$
      or
@@ -303,9 +331,26 @@
 \end{theorem}
 
 *** Ring-LWE
-    Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
-    codifferent ideal of $K$. Let $2 \leq q \in \N$ and for any fractional ideal $\Id \subset
-    K$, let $\Id_q = \Id/q\Id$ and $\mathbb{T} = K_\R/R^\vee$.  
+\begin{text}
+  Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
+  codifferent ideal of $K$. Let $2 \leq q \in \N$ and for any fractional ideal $\Id \subset
+  K$. Also let $K_\R$ be the tensor product $K \otimes_\Q \R$, $\Id_q = \Id/q\Id$
+  and $\mathbb{T} = K_\R/R^\vee$.
+
+  The twisted embeddings can be extended from $K$ to $K_\R$ as follows [\cite{Ortiz2021},
+  Section 3]: for any totally positive $\tau \in F$, the $\R$-vector space
+  $\sigma_\tau(K_\R)$ is isomorphic to $H \simeq \R^n$. Consider the extension of the trace
+  function $Tr_K : K \rightarrow \Q$ to $Tr_K : K_\R \rightarrow \R$, for any $\tau \in F$ totally
+  positive integer we can define the inner product as:
+
+  $$
+  \langle{a,b}\rangle_\tau \defsym \langle{\sigma_\tau(a), \sigma_\tau(b)}\rangle_H  = Tr_K (\tau a \overline{b}) , \;\; a,b \in K_\R
+  $$
+
+  By considering the inner product $\langle{a,b}\rangle_\tau$, the $\R$-vector space $K_\R$
+  is an Euclidian vector space of dimention $n$ isometric to both $\left(
+    H , \langle{a,b}\rangle_H  \right)$ and $\left( \R , \langle{a,b}\rangle  \right)$.
+\end{text}
 
     \begin{definition}[\cite{Peikert2017}, Definition 2.15, Ring-LWE Average-Case Decision]
       \label{def:rlwe-decision}
@@ -346,14 +391,14 @@ Let $\Psi$ be a family of distributions over $K_\R$. The search version of the $
    \end{definition}
 
    \begin{definition}
-   A $\Q-homomorphism ; \phi: K \rightarrow \C$ is callend an \textbf{embedding}.
+   A $\Q-homomorphism ; \phi: K \rightarrow \C$ is called an \textbf{embedding}.
    \end{definition}
 
    \begin{theorem}
-   [inserir fonte 45, p.41] If $K$ is a number field with degree $n$ then there are
+   [\cite{stewart2002}, p.41] If $K$ is a number field with degree $n$ then there are
    exactly $n$ embeddings $\sigma_i : K \rightarrow \C$ where by $\sigma_i(\theta) =
    \theta_i$ where $\theta_i \in \C$ is a distinct zero of the $K$'s
-   mininum polynomial.
+   minimum polynomial.
    \end{theorem}
 
          \begin{definition}[Trace and Norm]
@@ -367,7 +412,7 @@ Let $\Psi$ be a family of distributions over $K_\R$. The search version of the $
      $$
 
    \end{definition}
-\begin{theorem}[] \todo{inserir referencia 45, p54}
+\begin{theorem}[\cite{stewart2002}, p.54]
   For any $x \in K$, we have $N(x), Tr(x) \in \Q$. If $x \in \Ok$, we have $N(x),
   Tr(x) \in \Z$.
 \end{theorem}
@@ -401,9 +446,9 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
             
 *** Algebraic lattices
     
-            \begin{theorem}[]\label{theo:algebraic-lattice}\todo{adicionar citaçao 45, p155}
+            \begin{theorem}[\cite{stewart2002}, p.155]\label{theo:algebraic-lattice}
             Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$, The $n$ vectors $v_i = \sigma(\omega_i)
-            \in \R^n$ are linearly independent, so thety define a full rank algebraic lattice
+            \in \R^n$ are linearly independent, so they define a full rank algebraic lattice
             $\Lambda = \Lambda(\Ok) = \sigma(\Ok)$.
             \end{theorem} 
     The generator matrix of $\Lambda = \sigma(\Ok)$ is defined by:
@@ -456,10 +501,11 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
 
       where $\tau_i = \sigma_i(\tau)$.
     \end{definition}
-    
 * Twisted embeddings and cryptography
 ** Twisted Ring-LWE
    In this section we present variant of the Ring-LWE (Definition \ref{def:rlwe-search}) using twisted embeddings (Definition \ref{def:twisted-emb}).
+
+   
     
    \begin{definition}[\cite{Ortiz2021}, Twisted Ring-LWE distribution]
      \label{def:twisted-ring-lwe}
@@ -478,7 +524,7 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
      \label{theo:twisted-rlwe-hardness}
      Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
      Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
-     Then thereis a polynomial-time reduction from $Ring-LWE_{q,\psi}$ to $Ring-LWE^\tau_{q,\psi_\tau}$ .
+     Then there is a polynomial-time reduction from $Ring-LWE_{q,\psi}$ to $Ring-LWE^\tau_{q,\psi_\tau}$ .
    \end{theorem}
 ** Error sampling in rotated \(\Z^n\)-lattices
 
@@ -486,7 +532,7 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
   In this section we present the \textit{Ortiz et al.} (\cite{Ortiz2021}, Section 8)
   variation of the cryptosystem of Lyubashevsky, Peikert, and Regev
   (\cite{LPV2013}, Section 8.2) using twisted embeddings. Let $R$ be an $m$-th
-  cyclotomic ring and $p, q \in \Z$ coprimes. The message sapce is defined as
+  cyclotomic ring and $p, q \in \Z$ coprimes. The message space is defined as
   $R_p$ and it is required $q$ to be coprime with every odd prime dividing
   $m$. Consider that $\phi_\tau$ is an error distribution over $(K_\R,\langle{\cdot,\cdot}\rangle_\tau)$
   and $\lfloor{\cdot}\rceil$ denotes a valid discretization to (cosets) of $R^\vee$ or $pR^\vee$.
@@ -518,17 +564,25 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
 of discrete sampling when $K = \Q(\zeta_p + \zeta_p^{-1})$ is reinforced by the fact
 that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding to the nearest integer. (\cite{Ortiz2021}, Section 8).
 \end{text}
-
+** Impacts of the twisted embeddings
+*** generaliza o mergulho can construir mais reticulados
+    ciclotomico potencia 2: representaçao boa arit, amostragem de erro eficiente --> zn rotacionado, maximal real nao era usada ainda
+     - amostragem de erros -> segurança (reticulado), implementaçao rapida polinomial
+       - zn rotacionado amostragem de erros nao precisa converter pra pol
+       
 
 * Objectives
   validar a ideia de twisted embedings em varios aspectos, investigaçao em parte teorica e pratica das hipoteses levantadas no artigo sobre as vantagens de usar o twisted, practical impacts do artigo
 * Methodology
-** atividades, cronograma  
-   \bibliographystyle{plain}
-   \bibliography{library,ic-tese-v3}
+** Literature review
+** Activities
+   - Second semester of 2021
+   - ...
+* Conclusion
+
+  \bibliographystyle{plain}
+  \bibliography{library,ic-tese-v3}
 
 
 
-
-
-
+  
