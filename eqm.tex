@@ -1,5 +1,5 @@
-% Created 2021-02-01 Mon 18:18
-\documentclass[Ingles]{ic-tese-v3}
+% Created 2021-02-09 Tue 18:03
+\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -14,33 +14,43 @@
 \usepackage{capt-of}
 \usepackage{hyperref}
 \input{./config/math-config}
-\date{}
-\title{}
+\input{./config/article}
+\author{Candidate: Laura Viglioni \\ Supervisor: Prof. Dr. Ricardo Dahab}
+\date{March 12, 2021}
+\title{Master’s Qualification Exam}
 \hypersetup{
- pdfauthor={Laura Viglioni},
- pdftitle={},
+ pdfauthor={Candidate: Laura Viglioni \\ Supervisor: Prof. Dr. Ricardo Dahab},
+ pdftitle={Master’s Qualification Exam},
  pdfkeywords={},
  pdfsubject={},
  pdfcreator={Emacs 27.1 (Org mode 9.4.3)}, 
  pdflang={English}}
 \begin{document}
 
-\autora{Laura Viglioni}
-\title{The Dissertation or Thesis Title in English}
-\orientador{Prof. Dr. Ricardo Dahab}
-\mestrado
-\datadadefesa{22}{04}{1500}
-\paginasiniciais
+\maketitle
+\begin{abstract}
+lorem ipsum
+\end{abstract}
+\pagebreak
 
 
-\chapter{Introduction}
-\label{sec:orga62b0cc}
+
+\section{Introduction}
+\label{sec:orgd26b946}
 escrever sobre como é usado em cripto, qual é nossa motivaçao, lattices sao quentes, problemas de eficiencia, segurança, alternativa nova
-\chapter{Mathematical background}
-\label{sec:org024c52f}
+\subsubsection*{Motivation}
+\label{sec:org44b8461}
+\subsubsection*{Summary of objectives}
+\label{sec:org7cd88af}
+\subsubsection*{Organization of this document}
+\label{sec:org0edff0c}
+\section{Mathematical background}
+\label{sec:org0dc7bf3}
+\subsection{Preliminaries}
+\label{sec:org353e16e}
 In this text we will consider the Natural Numbers \(\N\) the set of all positive integers: \(\N = \{1,2,3,\dots\}\) and \(\P\) the set of all prime numbers. 
-\section{Groups}
-\label{sec:org3a42cb3}
+\subsection{Groups}
+\label{sec:orgf81c638}
 
 \begin{definition}
   A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
@@ -81,8 +91,8 @@ operation is addition or multiplication, respectively.
   \end{itemize}
 \end{definition}
 
-\section{Rings and fields}
-\label{sec:org8b9dbce}
+\subsection{Rings and fields}
+\label{sec:org97fab88}
 
    \begin{definition}
   A \textbf{ring} is a set together with two binary operations, we will note by
@@ -114,8 +124,8 @@ operation is addition or multiplication, respectively.
   A \textbf{field} is a commutative division ring.
 \end{definition}
 
-\section{Number  fields}
-\label{sec:orgd6953d3}
+\subsection{Number  fields}
+\label{sec:org95d0a01}
 
    \begin{definition}
   Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
@@ -169,7 +179,7 @@ Note that in a field extension \(L/K\), \(L\) has a structure of a vector space 
 \end{example}
 
 \begin{theorem}
-  [add font 45 p.40] If $K$ is a number field, then $K = \Q[\theta]$ for some
+  [\cite{stewart2002}, p.40] If $K$ is a number field, then $K = \Q[\theta]$ for some
   algebraic number $\theta \in K$, called primitive element.
 \end{theorem}
 
@@ -193,7 +203,7 @@ An \textbf{integral basis} is a basis for a ring of integers.
 \end{definition}
 
 \begin{definition}[\cite{Peikert2017}, Section 2.3.2]
-  A \textbf{fractional ideal} $\Id \subset K$ is a set sutch that $d\Id \subset \Ok$ is an
+  A \textbf{fractional ideal} $\Id \subset K$ is a set such that $d\Id \subset \Ok$ is an
   integral ideal for some $d \in \Ok$
 \end{definition}
 
@@ -204,15 +214,15 @@ An \textbf{integral basis} is a basis for a ring of integers.
   $\Ok^v$, \ie, the dual ideal of the ring of integers: $\Ok^v \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Ok \}$.
 \end{definition}
 
-    \begin{definition}[Foxed field by involution]
+    \begin{definition}[Fixed field by involution]
 \label{def:fixed-field-by-involution}
-      A map $f: K \rightarrow K$, where $K$ is a number field, is callend \textbf{involution}
-      of $K$ if $\forall a,b \in K \; f(a+b) = f(a) + f(b) \; f(a\cdot b) = f(a) \cdot f(b)$ and
+      A map $f: K \rightarrow K$, where $K$ is a number field, is called \textbf{involution}
+      of $K$ if $\forall a,b \in K \; f(a+b) = f(a) + f(b) \; f(a \cdot b) = f(a) \cdot f(b)$ and
       $f(f(a)) = a$. The subfield $F = \{a \in K \; f(a) = a\}$ is called \textbf{fixed field by
         involution} of $K$.
     \end{definition}
-\section{The inner product space \emph{H}}
-\label{sec:org2b27f5c}
+\subsection{The inner product space \emph{H}}
+\label{sec:org8dbfef2}
 \begin{definition}
   \label{def:h-space}
   Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
@@ -232,10 +242,10 @@ An \textbf{integral basis} is a basis for a ring of integers.
 \end{definition}
 
 It can be proven that \(H\) and \(\R^n\) are isomorphic.
-\section{Lattices}
-\label{sec:org20ccf62}
-\subsection{Basic definitions}
-\label{sec:orgca624f4}
+\subsection{Lattices}
+\label{sec:orgd644982}
+\subsubsection{Basic definitions}
+\label{sec:org4aa3eff}
 
    \begin{definition}
   A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$
@@ -271,8 +281,8 @@ Since the space \(H\) (\ref{def:h-space}) is isomorphic to \(\R^n\), all definit
   \textbf{shortest independent vectors} of $\Lambda$.
 \end{definition}
 
-\subsection{Lattice problems}
-\label{sec:orgc2caf22}
+\subsubsection{Lattice problems}
+\label{sec:orgd757d7b}
 \begin{definition}[\cite{Peikert2017}, Definition 2.8, Gap Shortest Vector
   Problem]
   \label{def:gapsvp}
@@ -287,11 +297,11 @@ $\lambda_1(L) > \gamma d$.
   For an approximation factor $\gamma = \gamma(n) \geq 1$, the $SIVP_\gamma$ is: given a lattice $\Lambda$, output $n$ linearly independent lattice vectors of length at most $\gamma(n) \cdot \lambda_n(\Lambda)$.
 \end{definition}
 
-\section{Learning problems}
-\label{sec:org99d4656}
+\subsection{Learning problems}
+\label{sec:org69a2377}
 I this section we will describe some problems that are believed to be hard and used in cryptography. 
-\subsection{Learning from Parity}
-\label{sec:orgbb83f1f}
+\subsubsection{Learning from Parity}
+\label{sec:org8e16f81}
  \begin{definition}
   \label{def:LWP}
   Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
@@ -304,11 +314,11 @@ I this section we will describe some problems that are believed to be hard and u
 
 \end{definition}
 
-\subsection{Learning with Errors}
-\label{sec:org9941e25}
+\subsubsection{Learning with Errors}
+\label{sec:org5694415}
 \begin{definition}
   \label{def:LWE}
-  Learning With Erros (LWE) is a generalization of LFP (\ref{def:LWP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
+  Learning With Errors (LWE) is a generalization of LFP (\ref{def:LWP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
 
      $$ <s, a_i> \; \approx_\chi \; b_i \;\; (mod\; p) $$
      or
@@ -332,11 +342,28 @@ I this section we will describe some problems that are believed to be hard and u
   $$
 \end{theorem}
 
-\subsection{Ring-LWE}
-\label{sec:orgdc06995}
-Let \(K\) be a number field, \(R = \Ok\) its ring of integers and \(R^\vee\) the
-codifferent ideal of \(K\). Let \(2 \leq q \in \N\) and for any fractional ideal \(\Id \subset
-    K\), let \(\Id_q = \Id/q\Id\) and \(\mathbb{T} = K_\R/R^\vee\).  
+\subsubsection{Ring-LWE}
+\label{sec:org848a8c9}
+\begin{text}
+  Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
+  codifferent ideal of $K$. Let $2 \leq q \in \N$ and for any fractional ideal $\Id \subset
+  K$. Also let $K_\R$ be the tensor product $K \otimes_\Q \R$, $\Id_q = \Id/q\Id$
+  and $\mathbb{T} = K_\R/R^\vee$.
+
+  The twisted embeddings can be extended from $K$ to $K_\R$ as follows [\cite{Ortiz2021},
+  Section 3]: for any totally positive $\tau \in F$, the $\R$-vector space
+  $\sigma_\tau(K_\R)$ is isomorphic to $H \simeq \R^n$. Consider the extension of the trace
+  function $Tr_K : K \rightarrow \Q$ to $Tr_K : K_\R \rightarrow \R$, for any $\tau \in F$ totally
+  positive integer we can define the inner product as:
+
+  $$
+  \langle{a,b}\rangle_\tau \defsym \langle{\sigma_\tau(a), \sigma_\tau(b)}\rangle_H  = Tr_K (\tau a \overline{b}) , \;\; a,b \in K_\R
+  $$
+
+  By considering the inner product $\langle{a,b}\rangle_\tau$, the $\R$-vector space $K_\R$
+  is an Euclidian vector space of dimention $n$ isometric to both $\left(
+    H , \langle{a,b}\rangle_H  \right)$ and $\left( \R , \langle{a,b}\rangle  \right)$.
+\end{text}
 
 \begin{definition}[\cite{Peikert2017}, Definition 2.15, Ring-LWE Average-Case Decision]
   \label{def:rlwe-decision}
@@ -369,24 +396,24 @@ Let $\Psi$ be a family of distributions over $K_\R$. The search version of the $
   where $\xi = \alpha \cdot ( nl/ \log{(nl)} )^{1/4}$
 \end{theorem}
 
-\section{Twisted Embeddings}
-\label{sec:orgb319ea8}
-\subsection{Embeddings}
-\label{sec:orgbe8abdc}
+\subsection{Twisted Embeddings}
+\label{sec:org21a739f}
+\subsubsection{Embeddings}
+\label{sec:org709839a}
 
 \begin{definition}
 Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$ 
 \end{definition}
 
 \begin{definition}
-A $\Q-homomorphism ; \phi: K \rightarrow \C$ is callend an \textbf{embedding}.
+A $\Q-homomorphism ; \phi: K \rightarrow \C$ is called an \textbf{embedding}.
 \end{definition}
 
 \begin{theorem}
-[inserir fonte 45, p.41] If $K$ is a number field with degree $n$ then there are
+[\cite{stewart2002}, p.41] If $K$ is a number field with degree $n$ then there are
 exactly $n$ embeddings $\sigma_i : K \rightarrow \C$ where by $\sigma_i(\theta) =
 \theta_i$ where $\theta_i \in \C$ is a distinct zero of the $K$'s
-mininum polynomial.
+minimum polynomial.
 \end{theorem}
 
       \begin{definition}[Trace and Norm]
@@ -400,7 +427,7 @@ mininum polynomial.
   $$
 
 \end{definition}
-\begin{theorem}[] \todo{inserir referencia 45, p54}
+\begin{theorem}[\cite{stewart2002}, p.54]
   For any $x \in K$, we have $N(x), Tr(x) \in \Q$. If $x \in \Ok$, we have $N(x),
   Tr(x) \in \Z$.
 \end{theorem}
@@ -432,12 +459,12 @@ $$
 
 \end{definition}
 
-\subsection{Algebraic lattices}
-\label{sec:orgee3e644}
+\subsubsection{Algebraic lattices}
+\label{sec:org063e263}
 
-\begin{theorem}[]\label{theo:algebraic-lattice}\todo{adicionar citaçao 45, p155}
+\begin{theorem}[\cite{stewart2002}, p.155]\label{theo:algebraic-lattice}
 Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$, The $n$ vectors $v_i = \sigma(\omega_i)
-\in \R^n$ are linearly independent, so thety define a full rank algebraic lattice
+\in \R^n$ are linearly independent, so they define a full rank algebraic lattice
 $\Lambda = \Lambda(\Ok) = \sigma(\Ok)$.
 \end{theorem} 
 The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by:
@@ -471,8 +498,8 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by:
 
 \end{remark}
 
-\subsection{Twisted embeddings}
-\label{sec:org552b454}
+\subsubsection{Twisted embeddings}
+\label{sec:org70a5197}
 
 \begin{definition}
 Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a
@@ -491,12 +518,13 @@ number $\tau \in F$, where $F$ is the fixed field by involution of $K$ (Definiti
 
   where $\tau_i = \sigma_i(\tau)$.
 \end{definition}
-
-\chapter{Twisted embeddings and cryptography}
-\label{sec:org9ad39e8}
-\section{Twisted Ring-LWE}
-\label{sec:orgee007e8}
+\section{Twisted embeddings and cryptography}
+\label{sec:org98307f2}
+\subsection{Twisted Ring-LWE}
+\label{sec:org728a6ad}
 In this section we present variant of the Ring-LWE (Definition \ref{def:rlwe-search}) using twisted embeddings (Definition \ref{def:twisted-emb}).
+
+
 
 \begin{definition}[\cite{Ortiz2021}, Twisted Ring-LWE distribution]
   \label{def:twisted-ring-lwe}
@@ -515,16 +543,16 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated 
   \label{theo:twisted-rlwe-hardness}
   Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
   Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
-  Then thereis a polynomial-time reduction from $Ring-LWE_{q,\psi}$ to $Ring-LWE^\tau_{q,\psi_\tau}$ .
+  Then there is a polynomial-time reduction from $Ring-LWE_{q,\psi}$ to $Ring-LWE^\tau_{q,\psi_\tau}$ .
 \end{theorem}
-\section{Error sampling in rotated \(\Z^n\)-lattices}
-\label{sec:org8c04363}
+\subsection{Error sampling in rotated \(\Z^n\)-lattices}
+\label{sec:orgbfca036}
 
 \begin{text}
   In this section we present the \textit{Ortiz et al.} (\cite{Ortiz2021}, Section 8)
   variation of the cryptosystem of Lyubashevsky, Peikert, and Regev
   (\cite{LPV2013}, Section 8.2) using twisted embeddings. Let $R$ be an $m$-th
-  cyclotomic ring and $p, q \in \Z$ coprimes. The message sapce is defined as
+  cyclotomic ring and $p, q \in \Z$ coprimes. The message space is defined as
   $R_p$ and it is required $q$ to be coprime with every odd prime dividing
   $m$. Consider that $\phi_\tau$ is an error distribution over $(K_\R,\langle{\cdot,\cdot}\rangle_\tau)$
   and $\lfloor{\cdot}\rceil$ denotes a valid discretization to (cosets) of $R^\vee$ or $pR^\vee$.
@@ -556,15 +584,35 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated 
 of discrete sampling when $K = \Q(\zeta_p + \zeta_p^{-1})$ is reinforced by the fact
 that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding to the nearest integer. (\cite{Ortiz2021}, Section 8).
 \end{text}
+\subsection{Impacts of the twisted embeddings}
+\label{sec:orgf91d663}
+\subsubsection{generaliza o mergulho can construir mais reticulados}
+\label{sec:org014b7ca}
+ciclotomico potencia 2: representaçao boa arit, amostragem de erro eficiente --> zn rotacionado, maximal real nao era usada ainda
+\begin{itemize}
+\item amostragem de erros -> segurança (reticulado), implementaçao rapida polinomial
+\begin{itemize}
+\item zn rotacionado amostragem de erros nao precisa converter pra pol
+\end{itemize}
+\end{itemize}
 
 
-\chapter{Objectives}
-\label{sec:org6b78ef3}
+\section{Objectives}
+\label{sec:orgab51583}
 validar a ideia de twisted embedings em varios aspectos, investigaçao em parte teorica e pratica das hipoteses levantadas no artigo sobre as vantagens de usar o twisted, practical impacts do artigo
-\chapter{Methodology}
-\label{sec:orge88ddc3}
-\section{atividades, cronograma}
-\label{sec:org9125674}
+\section{Methodology}
+\label{sec:org0ced550}
+\subsection{Literature review}
+\label{sec:orgf86856b}
+\subsection{Activities}
+\label{sec:org117c42f}
+\begin{itemize}
+\item Second semester of 2021
+\item \ldots{}
+\end{itemize}
+\section{Conclusion}
+\label{sec:orgd7b7d19}
+
 \bibliographystyle{plain}
 \bibliography{library,ic-tese-v3}
 \end{document}
