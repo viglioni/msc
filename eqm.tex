@@ -1,4 +1,4 @@
-% Created 2021-02-13 Sat 15:00
+% Created 2021-02-13 Sat 15:53
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -36,21 +36,21 @@ lorem ipsum
 
 
 \section{Introduction}
-\label{sec:org6f1c4a6}
+\label{sec:org896d7bd}
 escrever sobre como é usado em cripto, qual é nossa motivaçao, lattices sao quentes, problemas de eficiencia, segurança, alternativa nova
 \subsubsection*{Motivation}
-\label{sec:orgaba916c}
+\label{sec:org69ae6df}
 \subsubsection*{Summary of objectives}
-\label{sec:orgcefd833}
+\label{sec:org8f301ca}
 \subsubsection*{Organization of this document}
-\label{sec:orgc555a2f}
+\label{sec:orgf561ba1}
 \section{Mathematical background}
-\label{sec:orgc3ff093}
+\label{sec:org83c7e4b}
 \subsection{Preliminaries}
-\label{sec:orgc4ed3b9}
-In this text we will consider the Natural Numbers \(\N\) the set of all positive integers: \(\N = \{1,2,3,\dots\}\) and \(\P\) the set of all prime numbers. 
+\label{sec:org169302c}
+In this text, we will consider the Natural Numbers \(\N\) the set of all positive integers: \(\N = \{1,2,3,\dots\}\) and \(\P\) the set of all prime numbers. 
 \subsection{Groups}
-\label{sec:orgb1ea44f}
+\label{sec:org55ef9ad}
 
 \begin{definition}
   A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
@@ -92,7 +92,7 @@ operation is addition or multiplication, respectively.
 \end{definition}
 
 \subsection{Rings and fields}
-\label{sec:orgd3a12e0}
+\label{sec:org4217bf2}
 
    \begin{definition}
   A \textbf{ring} is a set together with two binary operations, we will note by
@@ -103,7 +103,7 @@ operation is addition or multiplication, respectively.
   \item $*$ is distributive over $+$
   \end{itemize}
 
-  And it is denoted by $\langle R,+,*\rangle$, or simply $G$ if the operations are implied.
+  And it is denoted by $\langle R,+,*\rangle$, or simply $R$ if the operations are implied.
 \end{definition}
 
 \begin{definition}
@@ -111,7 +111,7 @@ operation is addition or multiplication, respectively.
 \end{definition}
 
 \begin{definition}
-  A ring is said to be \textbf{with unity} if $*$ has a identity element. We
+  A ring is said to be \textbf{with unity} if $*$ has an identity element. We
   shall note it by $1$ and it is called \textbf{unity}.
 
 \end{definition}
@@ -124,8 +124,8 @@ operation is addition or multiplication, respectively.
   A \textbf{field} is a commutative division ring.
 \end{definition}
 
-\subsection{Number  fields}
-\label{sec:orgf7c7547}
+\subsection{Number fields}
+\label{sec:orgaca6fc9}
 
    \begin{definition}
   Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
@@ -166,7 +166,7 @@ Note that in a field extension \(L/K\), \(L\) has a structure of a vector space 
 \end{example}
 
 \begin{example}[\cite{Ortiz2021}, Cyclotomic number field]
-  A number field of particular interest is $\Q(\zeta_m)$, the m-th cyclotomic field,
+  A number field of particular interest is $\Q(\zeta_m)$, the $m$-th cyclotomic field,
   where $\zeta_m = \exp{2\pi i /m}$ is a primitive $m$-th root of unity for any
   integer number $m \geq 1$. The degree of $\Q(\zeta_m)$ is $\phi(m)$, where $\phi(\cdot)$
   denotes the Euler’s totient function. The minimal polynomial of $\zeta_m$, called
@@ -209,9 +209,9 @@ An \textbf{integral basis} is a basis for a ring of integers.
 
 \begin{definition}[\cite{Peikert2017}, Section 2.3.3]
   For any fractional ideal $\Id \subset K$, its \textbf{dual ideal} is defined as
-  $\Id^v \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Z \}$. An important canonical
+  $\Id^\vee \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Z \}$. An important canonical
   fractional ideal in a number field K is the \textbf{codifferent ideal}
-  $\Ok^v$, \ie, the dual ideal of the ring of integers: $\Ok^v \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Ok \}$.
+  $\Ok^\vee$, \ie, the dual ideal of the ring of integers: $\Ok^\vee \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Ok \}$.
 \end{definition}
 
     \begin{definition}[Fixed field by involution]
@@ -222,7 +222,7 @@ An \textbf{integral basis} is a basis for a ring of integers.
         involution} of $K$.
     \end{definition}
 \subsection{The inner product space \emph{H}}
-\label{sec:org8f4e4a1}
+\label{sec:org843d1f0}
 \begin{definition}
   \label{def:h-space}
   Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
@@ -230,11 +230,11 @@ An \textbf{integral basis} is a basis for a ring of integers.
   \begin{equation*}
     H = \{(a_1,\dots, a_r, b_1,\dots, b_s, \overline{b_1}, \dots, \overline{b_s}) \in \C^n\}
   \end{equation*}
-  where $a_i \in \R, \; \forall i \in \{1,\dots,r\}$ and $b_j \in \C \setminus \R, \; j \in \{1,\dots,
+  where $a_i \in \R, \; \forall i \in \{1,\dots,r\}$ and $b_j \in \C, \; \forall \; j \in \{1,\dots,
   s\}$. For all $x = \left(x_1, \dots, x_n\right), y = \left(y_1, \dots, y_n\right) \in H$ the space
   $H$ is endowed with inner product $\langle {x,y} \rangle_H$ defined as:
   \begin{equation*}
-    \langle {x,y} \rangle_H = \sum_{i=1}^n{x_i \overline{y_i}} = \sum_{i=1}^r{x_i \overline{y_i}} + \sum_{i=1}^s{x_{i+r} \overline{y_{i+r}}} + \sum_{i=1}^s{\overline{x_{i+r}} y_{i+r}}
+    \langle {x,y} \rangle_H = \sum_{i=1}^n{x_i \overline{y_i}} = \sum_{i=1}^r{x_i y_i} + \sum_{i=1}^s{x_{i+r} \overline{y_{i+r}}} + \sum_{i=1}^s{\overline{x_{i+r}} y_{i+r}}
   \end{equation*}
 
   The $\ell_2$-norm and infinity norm of any $x \in H$ are defined as $\|x\| =
@@ -243,29 +243,25 @@ An \textbf{integral basis} is a basis for a ring of integers.
 
 It can be proven that \(H\) and \(\R^n\) are isomorphic.
 \subsection{Lattices}
-\label{sec:org58b9d00}
+\label{sec:orgf7cfa27}
 \subsubsection{Basic definitions}
-\label{sec:org34adb07}
+\label{sec:org43af2db}
 
-   \begin{definition}
-  A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$
-\end{definition}
+ \begin{definition}
+A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$.  In other words, given $m$ linear independent vectors in $\R^n$, the set
+ $\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the Lattice may defined
+ by:
 
-In other words, given \(m\) linear independent vectors in \(\R^n\), the set
-\(\{v_1, v_2, ..., v_m\}\) is called a \textbf{basis} for \(\Lambda\) and the Lattice may defined
-by:
+   \begin{equation*}
+     \Lambda := \left\{x = \sum_{i=1}^m{\lambda_iv_i} \in \R^n \; | \; \lambda_i \in \Z\right\}
+   \end{equation*}
 
-\begin{definition}
-  \begin{equation*}
-    \Lambda := \left\{x = \sum_{i=1}^m{\lambda_iv_i} \in \R^n \; | \; \lambda_i \in \Z\right\}
-  \end{equation*}
+ \emph{I.e.}, any $\lambda \in \Lambda$ can be written as $\lambda = Mv$ where $M$ is the
+ \textbf{generator matrix} of $\Lambda$ where each row is a vector from the basis and
+ $v \in \Z^n$.
+ \end{definition}
 
-\emph{I.e.}, any $\lambda \in \Lambda$ can be written as $\lambda = Mv$ where $M$ is the
-\textbf{generator matrix} of $\Lambda$ where each row is a vector from the basis and
-$v \in \Z^n$.
-\end{definition}
-
-Since the space \(H\) (\ref{def:h-space}) is isomorphic to \(\R^n\), all definitions above can be switched from \(\R^n\) to \(H\) without any loss of generality.
+Since space \(H\) (\ref{def:h-space}) is isomorphic to \(\R^n\), all definitions above can be switched from \(\R^n\) to \(H\) without any loss of generality.
 
 \begin{definition}
   The \textbf{minimum distance} of an Lattice $\Lambda$ is the shortest nonzero vector
@@ -275,8 +271,7 @@ Since the space \(H\) (\ref{def:h-space}) is isomorphic to \(\R^n\), all definit
   $$
 
   We define $\lambda_m$ as the set of $m \in \N$  linear independent vectors of $\Lambda$
-  such that the biggest vector from $\lambda_m$ is equal or smaller than the biggest
-  vector of any linear independent set of length $m$ in $\Lambda$. We usually use
+  such that the biggest vector from $\lambda_m$ is equal or smaller than the biggest vector of any linearly independent set of length $m$ in $\Lambda$. We usually use
   $\lambda_n$, where $n$ is the size of the basis of $\Lambda$ and we call them
   \textbf{shortest independent vectors} of $\Lambda$.
 \end{definition}
@@ -285,7 +280,7 @@ Since the space \(H\) (\ref{def:h-space}) is isomorphic to \(\R^n\), all definit
   Let $\Lambda$ be a lattice and $M$ its generator matrix. The matrix $G = MM^T$ is called \textbf{Gram matrix} for $\Lambda$.
 \end{definition}
 \subsubsection{Lattice problems}
-\label{sec:org3a326ab}
+\label{sec:org651b9d8}
 \begin{definition}[\cite{Peikert2017}, Definition 2.8, Gap Shortest Vector
   Problem]
   \label{def:gapsvp}
@@ -301,14 +296,14 @@ $\lambda_1(L) > \gamma d$.
 \end{definition}
 
 \subsection{Learning problems}
-\label{sec:org40422cd}
+\label{sec:org61fbed5}
 I this section we will describe some problems that are believed to be hard and used in cryptography. 
 \subsubsection{Learning from Parity}
-\label{sec:orgce8af1a}
+\label{sec:org915f73d}
  \begin{definition}
-  \label{def:LWP}
+  \label{def:LFP}
   Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
-  define the problem \textbf{Learn With Parity (LWP)} as:
+  define the problem \textbf{Learning from Parity (LFP)} as:
 
   find $s \in \Z^n_2$ such that for $i \in \{1,\dots,m\}$
      $$ \langle{s, a_i}\rangle \; \approx_\epsilon \; b_i \;\; (mod\; 2) $$
@@ -318,15 +313,12 @@ I this section we will describe some problems that are believed to be hard and u
 \end{definition}
 
 \subsubsection{Learning with Errors}
-\label{sec:orgc27dbe6}
-\begin{definition}
-  \label{def:LWE}
-  Learning With Errors (LWE) is a generalization of LFP (\ref{def:LWP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
-
-     $$ <s, a_i> \; \approx_\chi \; b_i \;\; (mod\; p) $$
-     or
-     $$ <s, a_i> + e_i \; = \;  b_i \;\; (mod\; p) $$
-
+\label{sec:org60510e2}
+\begin{definition}\label{def:LWE}
+  Learning with Errors (LWE) is a generalization of LFP (\ref{def:LFP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
+\[
+  <s, a_i> \; \approx_\chi \; b_i \;\; (\mod\; p) \;\;\; \text{or} \;\;\; <s, a_i> + e_i \; = \;  b_i \;\; (\mod\; p) 
+    \]
      Where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$
 
 \end{definition}
@@ -346,7 +338,7 @@ I this section we will describe some problems that are believed to be hard and u
 \end{theorem}
 
 \subsubsection{Ring-LWE}
-\label{sec:orgea55b39}
+\label{sec:orgce36565}
 \begin{text}
   Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
   codifferent ideal of $K$. Let $2 \leq q \in \N$ and for any fractional ideal $\Id \subset
@@ -400,16 +392,16 @@ Let $\Psi$ be a family of distributions over $K_\R$. The search version of the $
 \end{theorem}
 
 \subsection{Twisted Embeddings}
-\label{sec:org88320a4}
+\label{sec:org864ba01}
 \subsubsection{Embeddings}
-\label{sec:org50b0c0b}
+\label{sec:org6c873fd}
 
 \begin{definition}
 Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$ 
 \end{definition}
 
 \begin{definition}
-A $\Q-homomorphism ; \phi: K \rightarrow \C$ is called an \textbf{embedding}.
+A $\Q$-homomorphism $\phi: K \rightarrow \C$ is called an \textbf{embedding}.
 \end{definition}
 
 \begin{theorem}
@@ -463,7 +455,7 @@ $$
 \end{definition}
 
 \subsubsection{Algebraic lattices}
-\label{sec:org243fb52}
+\label{sec:orge34f983}
 
 \begin{theorem}[\cite{stewart2002}, p.155]\label{theo:algebraic-lattice}
 Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$, The $n$ vectors $v_i = \sigma(\omega_i)
@@ -502,7 +494,7 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by:
 \end{remark}
 
 \subsubsection{Twisted embeddings}
-\label{sec:org2d010e7}
+\label{sec:org0e0927c}
 
 \begin{definition}
   Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a
@@ -521,9 +513,9 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by:
   where $\tau_i = \sigma_i(\tau)$.
 \end{definition}
 \section{Twisted embeddings and cryptography}
-\label{sec:org02d0130}
+\label{sec:orgfb95940}
 \subsection{Twisted Ring-LWE}
-\label{sec:orgb495212}
+\label{sec:org4d3b77e}
 In this section we present variant of the Ring-LWE (Definition\textasciitilde{}\ref{def:rlwe-search}) using twisted embeddings (Definition\textasciitilde{}\ref{def:twisted-emb}).
 
 
@@ -548,7 +540,7 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated 
   Then there is a polynomial-time reduction from $Ring-LWE_{q,\psi}$ to $Ring-LWE^\tau_{q,\psi_\tau}$ .
 \end{theorem}
 \subsection{Error sampling in rotated \(\Z^n\)-lattices}
-\label{sec:orgf2a5e1b}
+\label{sec:orgc7d6d33}
 
 \begin{text}
   In this section we present the \textit{Ortiz et al.} (\cite{Ortiz2021}, Section 8)
@@ -576,18 +568,14 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated 
     d \mod{pR}$. 
   \end{itemize}
 
-  In this cryptosystem, the most expensive operations to compute are the error
-  sampling, its discretization and the polynomial multiplications. When $R$ is
+  In this cryptosystem, the most expensive operations to compute are the error sampling, its discretization and the polynomial multiplications. When $R$ is
   the ring of integers of the maximum real subfield
-  (\ref{ex:maximum-real-subfield}) $\maxrs$, the sampling of error
-  terms can be performed directly over $(K_\R, \langle{\cdot,\cdot}\rangle_\tau)$ in the orthonormal
-  basis while preserving the spherical format and standard deviation in respect
-  to the corresponding distribution in $H$. The efficiency
+  (\ref{ex:maximum-real-subfield}) $\maxrs$, the sampling of error terms can be performed directly over $(K_\R, \langle{\cdot,\cdot}\rangle_\tau)$ in the orthonormal basis while preserving the spherical format and standard deviation in respect to the corresponding distribution in $H$. The efficiency
 of discrete sampling when $K = \Q(\zeta_p + \zeta_p^{-1})$ is reinforced by the fact
 that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding to the nearest integer. (\cite{Ortiz2021}, Section 8).
 \end{text}
 \subsection{Impacts of the twisted embeddings}
-\label{sec:org956960d}
+\label{sec:orgfc6c889}
 
 \begin{text}
   The correspondence between a point $\lambda \in \Lambda$ of a lattice and an algebraic
@@ -653,12 +641,9 @@ that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding 
 \end{text}
 
 \begin{theorem}[\cite{Ortiz2021}, Theorem 5]\label{theo-ideal-lattices-doesnt-change-gaussian}
-  Let $K$ be a number field with fixed field by the involution $F$. Consider $\tau
+  Let $K$ be a number field with a fixed field by the involution $F$. Consider $\tau
   \in F$ totally positive and $\Id \subset \Ok$ a fractional ideal such that $\Id$ is an
-  ideal lattice in $(K_\R , \langle \cdot,\cdot \rangle_\tau )$. If $\Id$ is an orthonormal lattice, then
-  both the format and the standard deviation of a spherical Gaussian
-  distribution in an orthonormal basis of $\Id \subset K_\R$ are preserved when seen in
-  the canonical basis of the space $H$ (via the twisted embedding $\sigma_\tau$).
+  ideal lattice in $(K_\R , \langle \cdot,\cdot \rangle_\tau )$. If $\Id$ is an orthonormal lattice, then both the format and the standard deviation of a spherical Gaussian distribution in an orthonormal basis of $\Id \subset K_\R$ are preserved when seen in the canonical basis of the space $H$ (via the twisted embedding $\sigma_\tau$).
 \end{theorem}
 
 \begin{proposition}[\cite{Ortiz2021}, Proposition 2]\label{prop:maximal-real-subfield-generates-orthonormal-lattice}
@@ -676,25 +661,25 @@ Let $p \geq 5$ be a prime number, and let $K = \maxrs$ and $\tau =
   canonical basis of $H$, is the spherical Gaussian $\psi_s^n$.
 \end{corollary}
 
-These new constructions with a more variety of possible rings increase the security notions of Ring-LWE (Definitions\textasciitilde{}\ref{def:rlwe-search},\textasciitilde{}\ref{def:rlwe-decision}), since specific rings might have specific vulnerabilities, thinking about cryptosystems security, that other rings don't. It's important to remark that each number field has it's own polynomial representation and specifically a polynomial \(f(x)\) that defines the ring we use as a parameter in the Ring-LWE cryptosystems. That said, the size of the parameters, therefore keys, encrypted messages etc, and the cost of the Ring-LWE operations depends on the polynomial representation of the ring and of \(f(x)\).
+These new constructions with a more variety of possible rings increase the security notions of Ring-LWE (Definitions\textasciitilde{}\ref{def:rlwe-search},\textasciitilde{}\ref{def:rlwe-decision}) since specific rings might have specific vulnerabilities, thinking about cryptosystems security, that other rings don't. It's important to remark that each number field has its own polynomial representation and specifically a polynomial \(f(x)\) that defines the ring we use as a parameter in the Ring-LWE cryptosystems. That said, the size of the parameters, therefore keys, encrypted messages etc, and the cost of the Ring-LWE operations depend on the polynomial representation of the ring and of \(f(x)\).
 
-There is though an open question if there exist other number fields that we build orthonormal lattices and its polynomial arithmetic are efficiently enough for be used in cryptosystems.
+There is, though, an open question if there exist other number fields that we build orthonormal lattices and its polynomial arithmetic are efficient enough to be used in cryptosystems.
 
 \section{Objectives}
-\label{sec:orgd57af41}
+\label{sec:org6cc2125}
 validar a ideia de twisted embedings em varios aspectos, investigaçao em parte teorica e pratica das hipoteses levantadas no artigo sobre as vantagens de usar o twisted, practical impacts do artigo
 \section{Methodology}
-\label{sec:org5dc7f08}
+\label{sec:orgde42caf}
 \subsection{Literature review}
-\label{sec:org7e06953}
+\label{sec:org7963dcc}
 \subsection{Activities}
-\label{sec:org5e78b2b}
+\label{sec:orgf058e06}
 \begin{itemize}
 \item Second semester of 2021
 \item \ldots{}
 \end{itemize}
 \section{Conclusion}
-\label{sec:orgb18dbdd}
+\label{sec:org6c55878}
 
 \bibliographystyle{plain}
 \bibliography{library,ic-tese-v3}
