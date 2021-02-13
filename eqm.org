@@ -29,9 +29,8 @@ lorem ipsum
 \pagebreak
 
 
-
 * Introduction
-  escrever sobre como é usado em cripto, qual é nossa motivaçao, lattices sao quentes, problemas de eficiencia, segurança, alternativa nova
+    escrever sobre como é usado em cripto, qual é nossa motivaçao, lattices sao quentes, problemas de eficiencia, segurança, alternativa nova
 *** Motivation
     :PROPERTIES:  
     :UNNUMBERED: t
@@ -87,7 +86,7 @@ lorem ipsum
      \item A \textbf{right coset} is defined by $Hg := \{h\cdot g \; ; \; h \in H\}$
      \end{itemize}
    \end{definition}
-
+   
 ** Rings and fields
    
       \begin{definition}
@@ -273,6 +272,9 @@ lorem ipsum
   \textbf{shortest independent vectors} of $\Lambda$.
 \end{definition}
 
+\begin{definition}\label{def:gram-matrix}
+  Let $\Lambda$ be a lattice and $M$ its generator matrix. The matrix $G = MM^T$ is called \textbf{Gram matrix} for $\Lambda$.
+\end{definition}
 *** Lattice problems
     \begin{definition}[\cite{Peikert2017}, Definition 2.8, Gap Shortest Vector
       Problem]
@@ -320,8 +322,8 @@ lorem ipsum
   Let $n$, $p$ be integers and $\alpha \in (0, 1)$ be such that $\alpha p > 2\sqrt{n}$. If
   there exists an efficient algorithm that solves $LWE_{p \Psi_\alpha}$ then there
   exists an efficient quantum algorithm that approximates the decision version
-  of the shortest vector problem ($GAP_{SVP}$ \ref{def:gapsvp}) and the
-  shortest independent vectors problem (SIVP \ref{def:sivp}) to within
+  of the shortest vector problem ($GAP_{SVP}$~\ref{def:gapsvp}) and the
+  shortest independent vectors problem (SIVP~\ref{def:sivp}) to within
   $\tilde{O}(n/\alpha)$ in the worst case.
 
   Where $\Psi_\beta$ is defined as:
@@ -464,7 +466,7 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
     
             \begin{remark}\label{rem:lat-int-correspondence}
               An embedding creates the correspondence between a point $\lambda \in \Lambda \subset \R^n$ of an algebraic lattice (Theo.
-              \ref{theo:algebraic-lattice}) and an integer in $\Ok$:
+             ~\ref{theo:algebraic-lattice}) and an integer in $\Ok$:
 
               Let $\lambda$ be a point of a lattice $\Lambda$:
 
@@ -484,11 +486,10 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
 
 *** Twisted embeddings
     
-    \begin{definition}
-    Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a
-    number $\tau \in F$, where $F$ is the fixed field by involution of $K$ (Definition
-    \ref{def:fixed-field-by-involution}) is \textbf{totally  positive} if $\forall i \in {1, \dots , n}, \; \sigma_i(\tau) \in \R^*_+$. 
-    \end{definition}
+     \begin{definition}
+       Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a
+       number $\tau \in F$, where $F$ is the fixed field by involution of $K$ (Definition~\ref{def:fixed-field-by-involution}) is \textbf{totally  positive} if $\forall i \in {1, \dots , n}, \; \sigma_i(\tau) \in \R^*_+$. 
+     \end{definition}
     
 
     \begin{definition}[Twisted Embedding]
@@ -503,7 +504,7 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
     \end{definition}
 * Twisted embeddings and cryptography
 ** Twisted Ring-LWE
-   In this section we present variant of the Ring-LWE (Definition \ref{def:rlwe-search}) using twisted embeddings (Definition \ref{def:twisted-emb}).
+   In this section we present variant of the Ring-LWE (Definition~\ref{def:rlwe-search}) using twisted embeddings (Definition~\ref{def:twisted-emb}).
 
    
     
@@ -518,7 +519,7 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
      $$
    \end{definition}
 
-   Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated in Theorem \ref{theo:twisted-rlwe-hardness}:
+   Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated in Theorem~\ref{theo:twisted-rlwe-hardness}:
 
    \begin{theorem}[\cite{Ortiz2021}, Theorem 1]
      \label{theo:twisted-rlwe-hardness}
@@ -534,7 +535,7 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
   (\cite{LPV2013}, Section 8.2) using twisted embeddings. Let $R$ be an $m$-th
   cyclotomic ring and $p, q \in \Z$ coprimes. The message space is defined as
   $R_p$ and it is required $q$ to be coprime with every odd prime dividing
-  $m$. Consider that $\phi_\tau$ is an error distribution over $(K_\R,\langle{\cdot,\cdot}\rangle_\tau)$
+  $m$. Consider that $\phi_\tau$ is an error distribution over $\krspace$
   and $\lfloor{\cdot}\rceil$ denotes a valid discretization to (cosets) of $R^\vee$ or $pR^\vee$.
   Also, $\hat{m} = m/2$ if $m$ is even, otherwise $\hat{m} = m$. Finally, for any
   $\overline{a} \in \Z_q$, let $[[\overline{a}]]$ denote the unique representative
@@ -554,10 +555,10 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
     d \mod{pR}$. 
   \end{itemize}
 
-  Im this cryptosystem, the most expensive operations to compute are the error
+  In this cryptosystem, the most expensive operations to compute are the error
   sampling, its discretization and the polynomial multiplications. When $R$ is
   the ring of integers of the maximum real subfield
-  (\ref{ex:maximum-real-subfield}) $\Q(\zeta_p + \zeta_p^{-1})$, the sampling of error
+  (\ref{ex:maximum-real-subfield}) $\maxrs$, the sampling of error
   terms can be performed directly over $(K_\R, \langle{\cdot,\cdot}\rangle_\tau)$ in the orthonormal
   basis while preserving the spherical format and standard deviation in respect
   to the corresponding distribution in $H$. The efficiency
@@ -565,11 +566,97 @@ of discrete sampling when $K = \Q(\zeta_p + \zeta_p^{-1})$ is reinforced by the 
 that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding to the nearest integer. (\cite{Ortiz2021}, Section 8).
 \end{text}
 ** Impacts of the twisted embeddings
-*** generaliza o mergulho can construir mais reticulados
-    ciclotomico potencia 2: representaçao boa arit, amostragem de erro eficiente --> zn rotacionado, maximal real nao era usada ainda
-     - amostragem de erros -> segurança (reticulado), implementaçao rapida polinomial
-       - zn rotacionado amostragem de erros nao precisa converter pra pol
-       
+   
+   \begin{text}
+     The correspondence between a point $\lambda \in \Lambda$ of a lattice and an algebraic
+     integer $x \in \Ok$ of a ring of integers (Remark~\ref{rem:lat-int-correspondence}),
+     \ie, $\lambda = (\sigma_1(x), \dots, \sigma_{r+2s}(x)) = \sigma(x)$, where $\sigma$ is the
+     canonical embedding (Definition~\ref{def:canonical-embedding}), allow us to
+     sample errors over a Lattice and convert them through the embedding to the
+     polynomial representation, \ie, the representation of an element of a ring of
+     integers.
+
+     This conversion is trivial when the Lattices we are dealing are rotations of
+     $\Z^n$, otherwise it can be very expensive. With the canonical embedding
+     (Definition~\ref{def:canonical-embedding}) we can achieve a $\Z^n$ rotated
+     Lattice with the cyclotomic number field with power of $2$ dimension
+     (\cite{Lyubashevsky2010},~\cite{DucasDurmos2012}).
+
+     Using the Twisted Embedding (Definition~\ref{def:twisted-emb}) we can obtain
+     different lattices from the same number field:
+
+   \end{text}
+
+     \begin{example}[\cite{Ortiz2021}, Example 3]
+    Let $K = \Q(\sqrt{3}) = \{a + b\sqrt{3} \;;\; a,b \in \Q\}$ be a totally
+    real number field with degree 2. It follows that the fixed field by
+    involution $F=K$. For any totally positive element $\tau \in F$, consider
+    the lattice $M_\tau = \Ok = \Z[\sqrt{3}]$ in the inner product space
+    $(K_\R,\langle \cdot,\cdot \rangle_\tau)$. The set $\{1,\sqrt{3}\}$ in a
+    $\Z$-basis of $M_\tau$ and the Gram matrix of the lattice $M_\tau$ is given by:
+    \[G_\tau =
+      \begin{bmatrix}
+        Tr_K(\tau) & Tr_K(\tau\sqrt{3}) \\
+        Tr_K(\tau\sqrt{3}) & Tr_k(3\tau)
+      \end{bmatrix}
+    \]
+
+    For example, for $\tau = 1$ \text{and} $\tau = 2 + \sqrt{3}$, the Gram matrices are
+    given by:
+    \[
+      G_1 =
+      \begin{bmatrix}
+        2 & 0 \\
+        0 & 6
+      \end{bmatrix}
+      \;\;\;and\;\;\;
+      G_{2+\sqrt{3}} =
+      \begin{bmatrix}
+        4 & 6 \\
+        6 & 12
+      \end{bmatrix}
+    \]
+    It can be shown that these two lattices are not equivalent.
+  \end{example}
+
+  \begin{text}
+    The theorem (Theorem~\ref{theo-ideal-lattices-doesnt-change-gaussian}),
+    proposition
+    (Proposition~\ref{prop:maximal-real-subfield-generates-orthonormal-lattice})
+    and corollary (Corollary~\ref{corollary:maximal-real-subfield-prime-p-greater-than-5}) bellow show that we can build $\Z^n$-rotated
+    lattices from the maximal real subfield
+    (Example~\ref{ex:maximum-real-subfield}) using twisted embeddings, \ie, the
+    errors sampled on these lattices can be trivially converted to polynomial
+    representation as elements of a number field.
+  \end{text}
+  
+\begin{theorem}[\cite{Ortiz2021}, Theorem 5]\label{theo-ideal-lattices-doesnt-change-gaussian}
+  Let $K$ be a number field with fixed field by the involution $F$. Consider $\tau
+  \in F$ totally positive and $\Id \subset \Ok$ a fractional ideal such that $\Id$ is an
+  ideal lattice in $(K_\R , \langle \cdot,\cdot \rangle_\tau )$. If $\Id$ is an orthonormal lattice, then
+  both the format and the standard deviation of a spherical Gaussian
+  distribution in an orthonormal basis of $\Id \subset K_\R$ are preserved when seen in
+  the canonical basis of the space $H$ (via the twisted embedding $\sigma_\tau$).
+\end{theorem}
+
+\begin{proposition}[\cite{Ortiz2021}, Proposition 2]\label{prop:maximal-real-subfield-generates-orthonormal-lattice}
+Let $p \geq 5$ be a prime number, and let $K = \maxrs$ and $\tau =
+  \frac{1}{p}(1 - \zeta_p)( 1 - \zeta^{- 1}_p)$. Then $\Ok$ in $\krspace$ is an
+  orthonormal lattice with basis $\Cb^\perp = \{e_1^\prime, \dots, e^\prime_n \;;\; e^\prime_n = e_n
+  \;\; \text{and} \;\; e^\prime_j = e_j +  e^\prime_{j+ 1} \}$ where $\Cb = \{e_1,\dots,e_n\}$
+  is the integral basis of $K$.
+\end{proposition}
+
+\begin{corollary}[\cite{Ortiz2021}, Corollary 1]\label{corollary:maximal-real-subfield-prime-p-greater-than-5}
+  Let $K = \maxrs$ for $p \geq 5$ prime and let $v \in \Ok$ be a random variable
+  distributed as $\psi_s^n$ in the basis $\Cb^\perp$. Then, the dstribution of $(T^{-1}
+  \circ \sigma_\tau)(v)$ for $\tau = \frac{1}{p}(1 - \zeta_p)( 1 - \zeta^{- 1}_p)$, seen in the
+  canonical basis of $H$, is the spherical Gaussian $\psi_s^n$.
+\end{corollary}
+
+These new constructions with a more variety of possible rings increase the security notions of Ring-LWE (Definitions~\ref{def:rlwe-search},~\ref{def:rlwe-decision}), since specific rings might have specific vulnerabilities, thinking about cryptosystems security, that other rings don't. It's important to remark that each number field has it's own polynomial representation and specifically a polynomial $f(x)$ that defines the ring we use as a parameter in the Ring-LWE cryptosystems. That said, the size of the parameters, therefore keys, encrypted messages etc, and the cost of the Ring-LWE operations depends on the polynomial representation of the ring and of $f(x)$.
+
+There is though an open question if there exist other number fields that we build orthonormal lattices and its polynomial arithmetic are efficiently enough for be used in cryptosystems.
 
 * Objectives
   validar a ideia de twisted embedings em varios aspectos, investigaçao em parte teorica e pratica das hipoteses levantadas no artigo sobre as vantagens de usar o twisted, practical impacts do artigo
@@ -586,3 +673,7 @@ that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding 
 
 
   
+
+
+
+

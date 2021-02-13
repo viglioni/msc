@@ -1,4 +1,4 @@
-% Created 2021-02-09 Tue 18:03
+% Created 2021-02-13 Sat 15:00
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -13,6 +13,7 @@
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
+\usepackage{fullpage}
 \input{./config/math-config}
 \input{./config/article}
 \author{Candidate: Laura Viglioni \\ Supervisor: Prof. Dr. Ricardo Dahab}
@@ -23,7 +24,7 @@
  pdftitle={Master’s Qualification Exam},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 27.1 (Org mode 9.4.3)}, 
+ pdfcreator={Emacs 27.1 (Org mode 9.4.4)}, 
  pdflang={English}}
 \begin{document}
 
@@ -34,23 +35,22 @@ lorem ipsum
 \pagebreak
 
 
-
 \section{Introduction}
-\label{sec:orgd26b946}
+\label{sec:org6f1c4a6}
 escrever sobre como é usado em cripto, qual é nossa motivaçao, lattices sao quentes, problemas de eficiencia, segurança, alternativa nova
 \subsubsection*{Motivation}
-\label{sec:org44b8461}
+\label{sec:orgaba916c}
 \subsubsection*{Summary of objectives}
-\label{sec:org7cd88af}
+\label{sec:orgcefd833}
 \subsubsection*{Organization of this document}
-\label{sec:org0edff0c}
+\label{sec:orgc555a2f}
 \section{Mathematical background}
-\label{sec:org0dc7bf3}
+\label{sec:orgc3ff093}
 \subsection{Preliminaries}
-\label{sec:org353e16e}
+\label{sec:orgc4ed3b9}
 In this text we will consider the Natural Numbers \(\N\) the set of all positive integers: \(\N = \{1,2,3,\dots\}\) and \(\P\) the set of all prime numbers. 
 \subsection{Groups}
-\label{sec:orgf81c638}
+\label{sec:orgb1ea44f}
 
 \begin{definition}
   A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
@@ -92,7 +92,7 @@ operation is addition or multiplication, respectively.
 \end{definition}
 
 \subsection{Rings and fields}
-\label{sec:org97fab88}
+\label{sec:orgd3a12e0}
 
    \begin{definition}
   A \textbf{ring} is a set together with two binary operations, we will note by
@@ -125,7 +125,7 @@ operation is addition or multiplication, respectively.
 \end{definition}
 
 \subsection{Number  fields}
-\label{sec:org95d0a01}
+\label{sec:orgf7c7547}
 
    \begin{definition}
   Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
@@ -222,7 +222,7 @@ An \textbf{integral basis} is a basis for a ring of integers.
         involution} of $K$.
     \end{definition}
 \subsection{The inner product space \emph{H}}
-\label{sec:org8dbfef2}
+\label{sec:org8f4e4a1}
 \begin{definition}
   \label{def:h-space}
   Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
@@ -243,9 +243,9 @@ An \textbf{integral basis} is a basis for a ring of integers.
 
 It can be proven that \(H\) and \(\R^n\) are isomorphic.
 \subsection{Lattices}
-\label{sec:orgd644982}
+\label{sec:org58b9d00}
 \subsubsection{Basic definitions}
-\label{sec:org4aa3eff}
+\label{sec:org34adb07}
 
    \begin{definition}
   A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$
@@ -281,8 +281,11 @@ Since the space \(H\) (\ref{def:h-space}) is isomorphic to \(\R^n\), all definit
   \textbf{shortest independent vectors} of $\Lambda$.
 \end{definition}
 
+\begin{definition}\label{def:gram-matrix}
+  Let $\Lambda$ be a lattice and $M$ its generator matrix. The matrix $G = MM^T$ is called \textbf{Gram matrix} for $\Lambda$.
+\end{definition}
 \subsubsection{Lattice problems}
-\label{sec:orgd757d7b}
+\label{sec:org3a326ab}
 \begin{definition}[\cite{Peikert2017}, Definition 2.8, Gap Shortest Vector
   Problem]
   \label{def:gapsvp}
@@ -298,10 +301,10 @@ $\lambda_1(L) > \gamma d$.
 \end{definition}
 
 \subsection{Learning problems}
-\label{sec:org69a2377}
+\label{sec:org40422cd}
 I this section we will describe some problems that are believed to be hard and used in cryptography. 
 \subsubsection{Learning from Parity}
-\label{sec:org8e16f81}
+\label{sec:orgce8af1a}
  \begin{definition}
   \label{def:LWP}
   Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
@@ -315,7 +318,7 @@ I this section we will describe some problems that are believed to be hard and u
 \end{definition}
 
 \subsubsection{Learning with Errors}
-\label{sec:org5694415}
+\label{sec:orgc27dbe6}
 \begin{definition}
   \label{def:LWE}
   Learning With Errors (LWE) is a generalization of LFP (\ref{def:LWP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
@@ -332,8 +335,8 @@ I this section we will describe some problems that are believed to be hard and u
   Let $n$, $p$ be integers and $\alpha \in (0, 1)$ be such that $\alpha p > 2\sqrt{n}$. If
   there exists an efficient algorithm that solves $LWE_{p \Psi_\alpha}$ then there
   exists an efficient quantum algorithm that approximates the decision version
-  of the shortest vector problem ($GAP_{SVP}$ \ref{def:gapsvp}) and the
-  shortest independent vectors problem (SIVP \ref{def:sivp}) to within
+  of the shortest vector problem ($GAP_{SVP}$~\ref{def:gapsvp}) and the
+  shortest independent vectors problem (SIVP~\ref{def:sivp}) to within
   $\tilde{O}(n/\alpha)$ in the worst case.
 
   Where $\Psi_\beta$ is defined as:
@@ -343,7 +346,7 @@ I this section we will describe some problems that are believed to be hard and u
 \end{theorem}
 
 \subsubsection{Ring-LWE}
-\label{sec:org848a8c9}
+\label{sec:orgea55b39}
 \begin{text}
   Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
   codifferent ideal of $K$. Let $2 \leq q \in \N$ and for any fractional ideal $\Id \subset
@@ -397,9 +400,9 @@ Let $\Psi$ be a family of distributions over $K_\R$. The search version of the $
 \end{theorem}
 
 \subsection{Twisted Embeddings}
-\label{sec:org21a739f}
+\label{sec:org88320a4}
 \subsubsection{Embeddings}
-\label{sec:org709839a}
+\label{sec:org50b0c0b}
 
 \begin{definition}
 Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$ 
@@ -460,7 +463,7 @@ $$
 \end{definition}
 
 \subsubsection{Algebraic lattices}
-\label{sec:org063e263}
+\label{sec:org243fb52}
 
 \begin{theorem}[\cite{stewart2002}, p.155]\label{theo:algebraic-lattice}
 Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$, The $n$ vectors $v_i = \sigma(\omega_i)
@@ -480,7 +483,7 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by:
 
 \begin{remark}\label{rem:lat-int-correspondence}
   An embedding creates the correspondence between a point $\lambda \in \Lambda \subset \R^n$ of an algebraic lattice (Theo.
-  \ref{theo:algebraic-lattice}) and an integer in $\Ok$:
+ ~\ref{theo:algebraic-lattice}) and an integer in $\Ok$:
 
   Let $\lambda$ be a point of a lattice $\Lambda$:
 
@@ -499,12 +502,11 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by:
 \end{remark}
 
 \subsubsection{Twisted embeddings}
-\label{sec:org70a5197}
+\label{sec:org2d010e7}
 
 \begin{definition}
-Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a
-number $\tau \in F$, where $F$ is the fixed field by involution of $K$ (Definition
-\ref{def:fixed-field-by-involution}) is \textbf{totally  positive} if $\forall i \in {1, \dots , n}, \; \sigma_i(\tau) \in \R^*_+$. 
+  Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a
+  number $\tau \in F$, where $F$ is the fixed field by involution of $K$ (Definition~\ref{def:fixed-field-by-involution}) is \textbf{totally  positive} if $\forall i \in {1, \dots , n}, \; \sigma_i(\tau) \in \R^*_+$. 
 \end{definition}
 
 
@@ -519,10 +521,10 @@ number $\tau \in F$, where $F$ is the fixed field by involution of $K$ (Definiti
   where $\tau_i = \sigma_i(\tau)$.
 \end{definition}
 \section{Twisted embeddings and cryptography}
-\label{sec:org98307f2}
+\label{sec:org02d0130}
 \subsection{Twisted Ring-LWE}
-\label{sec:org728a6ad}
-In this section we present variant of the Ring-LWE (Definition \ref{def:rlwe-search}) using twisted embeddings (Definition \ref{def:twisted-emb}).
+\label{sec:orgb495212}
+In this section we present variant of the Ring-LWE (Definition\textasciitilde{}\ref{def:rlwe-search}) using twisted embeddings (Definition\textasciitilde{}\ref{def:twisted-emb}).
 
 
 
@@ -537,7 +539,7 @@ In this section we present variant of the Ring-LWE (Definition \ref{def:rlwe-sea
   $$
 \end{definition}
 
-Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated in Theorem \ref{theo:twisted-rlwe-hardness}:
+Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated in Theorem\textasciitilde{}\ref{theo:twisted-rlwe-hardness}:
 
 \begin{theorem}[\cite{Ortiz2021}, Theorem 1]
   \label{theo:twisted-rlwe-hardness}
@@ -546,7 +548,7 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated 
   Then there is a polynomial-time reduction from $Ring-LWE_{q,\psi}$ to $Ring-LWE^\tau_{q,\psi_\tau}$ .
 \end{theorem}
 \subsection{Error sampling in rotated \(\Z^n\)-lattices}
-\label{sec:orgbfca036}
+\label{sec:orgf2a5e1b}
 
 \begin{text}
   In this section we present the \textit{Ortiz et al.} (\cite{Ortiz2021}, Section 8)
@@ -554,7 +556,7 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated 
   (\cite{LPV2013}, Section 8.2) using twisted embeddings. Let $R$ be an $m$-th
   cyclotomic ring and $p, q \in \Z$ coprimes. The message space is defined as
   $R_p$ and it is required $q$ to be coprime with every odd prime dividing
-  $m$. Consider that $\phi_\tau$ is an error distribution over $(K_\R,\langle{\cdot,\cdot}\rangle_\tau)$
+  $m$. Consider that $\phi_\tau$ is an error distribution over $\krspace$
   and $\lfloor{\cdot}\rceil$ denotes a valid discretization to (cosets) of $R^\vee$ or $pR^\vee$.
   Also, $\hat{m} = m/2$ if $m$ is even, otherwise $\hat{m} = m$. Finally, for any
   $\overline{a} \in \Z_q$, let $[[\overline{a}]]$ denote the unique representative
@@ -574,10 +576,10 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated 
     d \mod{pR}$. 
   \end{itemize}
 
-  Im this cryptosystem, the most expensive operations to compute are the error
+  In this cryptosystem, the most expensive operations to compute are the error
   sampling, its discretization and the polynomial multiplications. When $R$ is
   the ring of integers of the maximum real subfield
-  (\ref{ex:maximum-real-subfield}) $\Q(\zeta_p + \zeta_p^{-1})$, the sampling of error
+  (\ref{ex:maximum-real-subfield}) $\maxrs$, the sampling of error
   terms can be performed directly over $(K_\R, \langle{\cdot,\cdot}\rangle_\tau)$ in the orthonormal
   basis while preserving the spherical format and standard deviation in respect
   to the corresponding distribution in $H$. The efficiency
@@ -585,33 +587,114 @@ of discrete sampling when $K = \Q(\zeta_p + \zeta_p^{-1})$ is reinforced by the 
 that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding to the nearest integer. (\cite{Ortiz2021}, Section 8).
 \end{text}
 \subsection{Impacts of the twisted embeddings}
-\label{sec:orgf91d663}
-\subsubsection{generaliza o mergulho can construir mais reticulados}
-\label{sec:org014b7ca}
-ciclotomico potencia 2: representaçao boa arit, amostragem de erro eficiente --> zn rotacionado, maximal real nao era usada ainda
-\begin{itemize}
-\item amostragem de erros -> segurança (reticulado), implementaçao rapida polinomial
-\begin{itemize}
-\item zn rotacionado amostragem de erros nao precisa converter pra pol
-\end{itemize}
-\end{itemize}
+\label{sec:org956960d}
 
+\begin{text}
+  The correspondence between a point $\lambda \in \Lambda$ of a lattice and an algebraic
+  integer $x \in \Ok$ of a ring of integers (Remark~\ref{rem:lat-int-correspondence}),
+  \ie, $\lambda = (\sigma_1(x), \dots, \sigma_{r+2s}(x)) = \sigma(x)$, where $\sigma$ is the
+  canonical embedding (Definition~\ref{def:canonical-embedding}), allow us to
+  sample errors over a Lattice and convert them through the embedding to the
+  polynomial representation, \ie, the representation of an element of a ring of
+  integers.
+
+  This conversion is trivial when the Lattices we are dealing are rotations of
+  $\Z^n$, otherwise it can be very expensive. With the canonical embedding
+  (Definition~\ref{def:canonical-embedding}) we can achieve a $\Z^n$ rotated
+  Lattice with the cyclotomic number field with power of $2$ dimension
+  (\cite{Lyubashevsky2010},~\cite{DucasDurmos2012}).
+
+  Using the Twisted Embedding (Definition~\ref{def:twisted-emb}) we can obtain
+  different lattices from the same number field:
+
+\end{text}
+
+   \begin{example}[\cite{Ortiz2021}, Example 3]
+  Let $K = \Q(\sqrt{3}) = \{a + b\sqrt{3} \;;\; a,b \in \Q\}$ be a totally
+  real number field with degree 2. It follows that the fixed field by
+  involution $F=K$. For any totally positive element $\tau \in F$, consider
+  the lattice $M_\tau = \Ok = \Z[\sqrt{3}]$ in the inner product space
+  $(K_\R,\langle \cdot,\cdot \rangle_\tau)$. The set $\{1,\sqrt{3}\}$ in a
+  $\Z$-basis of $M_\tau$ and the Gram matrix of the lattice $M_\tau$ is given by:
+  \[G_\tau =
+    \begin{bmatrix}
+      Tr_K(\tau) & Tr_K(\tau\sqrt{3}) \\
+      Tr_K(\tau\sqrt{3}) & Tr_k(3\tau)
+    \end{bmatrix}
+  \]
+
+  For example, for $\tau = 1$ \text{and} $\tau = 2 + \sqrt{3}$, the Gram matrices are
+  given by:
+  \[
+    G_1 =
+    \begin{bmatrix}
+      2 & 0 \\
+      0 & 6
+    \end{bmatrix}
+    \;\;\;and\;\;\;
+    G_{2+\sqrt{3}} =
+    \begin{bmatrix}
+      4 & 6 \\
+      6 & 12
+    \end{bmatrix}
+  \]
+  It can be shown that these two lattices are not equivalent.
+\end{example}
+
+\begin{text}
+  The theorem (Theorem~\ref{theo-ideal-lattices-doesnt-change-gaussian}),
+  proposition
+  (Proposition~\ref{prop:maximal-real-subfield-generates-orthonormal-lattice})
+  and corollary (Corollary~\ref{corollary:maximal-real-subfield-prime-p-greater-than-5}) bellow show that we can build $\Z^n$-rotated
+  lattices from the maximal real subfield
+  (Example~\ref{ex:maximum-real-subfield}) using twisted embeddings, \ie, the
+  errors sampled on these lattices can be trivially converted to polynomial
+  representation as elements of a number field.
+\end{text}
+
+\begin{theorem}[\cite{Ortiz2021}, Theorem 5]\label{theo-ideal-lattices-doesnt-change-gaussian}
+  Let $K$ be a number field with fixed field by the involution $F$. Consider $\tau
+  \in F$ totally positive and $\Id \subset \Ok$ a fractional ideal such that $\Id$ is an
+  ideal lattice in $(K_\R , \langle \cdot,\cdot \rangle_\tau )$. If $\Id$ is an orthonormal lattice, then
+  both the format and the standard deviation of a spherical Gaussian
+  distribution in an orthonormal basis of $\Id \subset K_\R$ are preserved when seen in
+  the canonical basis of the space $H$ (via the twisted embedding $\sigma_\tau$).
+\end{theorem}
+
+\begin{proposition}[\cite{Ortiz2021}, Proposition 2]\label{prop:maximal-real-subfield-generates-orthonormal-lattice}
+Let $p \geq 5$ be a prime number, and let $K = \maxrs$ and $\tau =
+  \frac{1}{p}(1 - \zeta_p)( 1 - \zeta^{- 1}_p)$. Then $\Ok$ in $\krspace$ is an
+  orthonormal lattice with basis $\Cb^\perp = \{e_1^\prime, \dots, e^\prime_n \;;\; e^\prime_n = e_n
+  \;\; \text{and} \;\; e^\prime_j = e_j +  e^\prime_{j+ 1} \}$ where $\Cb = \{e_1,\dots,e_n\}$
+  is the integral basis of $K$.
+\end{proposition}
+
+\begin{corollary}[\cite{Ortiz2021}, Corollary 1]\label{corollary:maximal-real-subfield-prime-p-greater-than-5}
+  Let $K = \maxrs$ for $p \geq 5$ prime and let $v \in \Ok$ be a random variable
+  distributed as $\psi_s^n$ in the basis $\Cb^\perp$. Then, the dstribution of $(T^{-1}
+  \circ \sigma_\tau)(v)$ for $\tau = \frac{1}{p}(1 - \zeta_p)( 1 - \zeta^{- 1}_p)$, seen in the
+  canonical basis of $H$, is the spherical Gaussian $\psi_s^n$.
+\end{corollary}
+
+These new constructions with a more variety of possible rings increase the security notions of Ring-LWE (Definitions\textasciitilde{}\ref{def:rlwe-search},\textasciitilde{}\ref{def:rlwe-decision}), since specific rings might have specific vulnerabilities, thinking about cryptosystems security, that other rings don't. It's important to remark that each number field has it's own polynomial representation and specifically a polynomial \(f(x)\) that defines the ring we use as a parameter in the Ring-LWE cryptosystems. That said, the size of the parameters, therefore keys, encrypted messages etc, and the cost of the Ring-LWE operations depends on the polynomial representation of the ring and of \(f(x)\).
+
+There is though an open question if there exist other number fields that we build orthonormal lattices and its polynomial arithmetic are efficiently enough for be used in cryptosystems.
 
 \section{Objectives}
-\label{sec:orgab51583}
+\label{sec:orgd57af41}
 validar a ideia de twisted embedings em varios aspectos, investigaçao em parte teorica e pratica das hipoteses levantadas no artigo sobre as vantagens de usar o twisted, practical impacts do artigo
 \section{Methodology}
-\label{sec:org0ced550}
+\label{sec:org5dc7f08}
 \subsection{Literature review}
-\label{sec:orgf86856b}
+\label{sec:org7e06953}
 \subsection{Activities}
-\label{sec:org117c42f}
+\label{sec:org5e78b2b}
 \begin{itemize}
 \item Second semester of 2021
 \item \ldots{}
 \end{itemize}
 \section{Conclusion}
-\label{sec:orgd7b7d19}
+\label{sec:orgb18dbdd}
 
 \bibliographystyle{plain}
 \bibliography{library,ic-tese-v3}

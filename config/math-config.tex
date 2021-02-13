@@ -8,6 +8,8 @@
 % definitions
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{corollary}{Corollary}[theorem]
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -43,8 +45,18 @@
 % Ring of integers set
 \newcommand{\Id}{\mathfrak{I}}
 
+% Canonical basis
+\newcommand{\Cb}{\mathcal{C}}
+
+
 % Definition
 \newcommand{\defsym}{\vcentcolon =}
 
 % Id Est i.e.
 \newcommand{\ie}{\textit{i.e.}}
+
+% Maximum real subfield
+\newcommand{\maxrs}{\Q(\zeta_{p} + \zeta_{p} ^{-1})}
+
+% K_\R inner space
+\newcommand{\krspace}{(K_\R,\langle{\cdot,\cdot}\rangle_\tau)}
