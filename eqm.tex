@@ -1,4 +1,4 @@
-% Created 2021-02-27 Sat 21:02
+% Created 2021-02-28 Sun 11:25
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -33,21 +33,21 @@
 
 
 \section{Introduction}
-\label{sec:org5c24cb5}
+\label{sec:org9428d99}
 \subsubsection*{Motivation}
-\label{sec:org3b595ef}
+\label{sec:orgff530ac}
 escrever sobre como é usado em cripto, qual é nossa motivaçao, lattices sao quentes, problemas de eficiencia, segurança, alternativa nova, nao pretende trabalhar com nenhuma das propostas do nist, investigar o uso de twisted embeddings, explorar o que nao esta explorado no artigo
 \subsubsection*{Summary of objectives}
-\label{sec:org204178b}
+\label{sec:orga9274cf}
 \subsubsection*{Organization of this document}
-\label{sec:orgb986113}
+\label{sec:org2e16f3e}
 \section{Mathematical background}
-\label{sec:org8f6df47}
+\label{sec:org134f49d}
 \subsection{Preliminaries}
-\label{sec:orgd7b61d7}
+\label{sec:orga7c08aa}
 In this text, we will consider the Natural Numbers \(\N\) the set of all positive integers: \(\N = \{1,2,3,\dots\}\) and \(\P\) the set of all prime numbers. 
 \subsection{Groups}
-\label{sec:org95289f4}
+\label{sec:org91937d4}
 
 \begin{definition}
   A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
@@ -89,7 +89,7 @@ operation is addition or multiplication, respectively.
 \end{definition}
 
 \subsection{Rings and fields}
-\label{sec:org30ae03f}
+\label{sec:org29a817c}
 
    \begin{definition}
   A \textbf{ring} is a set together with two binary operations, we will note by
@@ -122,7 +122,7 @@ operation is addition or multiplication, respectively.
 \end{definition}
 
 \subsection{Number fields}
-\label{sec:org54b5c8a}
+\label{sec:org5a63c82}
 
    \begin{definition}
   Let $K$ and $L$ be two fields, $L$ is said to be a \textbf{field extension} of
@@ -219,7 +219,7 @@ An \textbf{integral basis} is a basis for a ring of integers.
         involution} of $K$.
     \end{definition}
 \subsection{The inner product space \emph{H}}
-\label{sec:org08b1a3a}
+\label{sec:org5e9802a}
 \begin{definition}
   \label{definition:h-space}
   Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
@@ -240,9 +240,9 @@ An \textbf{integral basis} is a basis for a ring of integers.
 
 It can be proven that \(H\) and \(\R^n\) are isomorphic.
 \subsection{Lattices}
-\label{sec:org5ff762c}
+\label{sec:orgd4c664a}
 \subsubsection{Basic definitions}
-\label{sec:org2321370}
+\label{sec:orgd28ccb5}
 
  \begin{definition}
 A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$.  In other words, given $m$ linear independent vectors in $\R^n$, the set
@@ -277,7 +277,7 @@ Since space \(H\) (\ref{definition:h-space}) is isomorphic to \(\R^n\), all defi
   Let $\Lambda$ be a lattice and $M$ its generator matrix. The matrix $G = MM^T$ is called \textbf{Gram matrix} for $\Lambda$.
 \end{definition}
 \subsubsection{Lattice problems}
-\label{sec:org8aafc6b}
+\label{sec:org8f5df3f}
 \begin{definition}[\cite{Peikert2017}, Definition 2.8, Gap Shortest Vector
   Problem]
   \label{definition:gapsvp}
@@ -293,10 +293,10 @@ $\lambda_1(L) > \gamma d$.
 \end{definition}
 
 \subsection{Learning problems}
-\label{sec:org5ef8a33}
+\label{sec:orga5bdda4}
 I this section we will describe some problems that are believed to be hard and used in cryptography. 
 \subsubsection{Learning from Parity}
-\label{sec:org02ab549}
+\label{sec:org93c5d09}
  \begin{definition}
   \label{definition:LFP}
   Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
@@ -310,7 +310,7 @@ I this section we will describe some problems that are believed to be hard and u
 \end{definition}
 
 \subsubsection{Learning with Errors}
-\label{sec:org95e9446}
+\label{sec:orgddb0006}
 \begin{definition}\label{definition:LWE}
   Learning with Errors (LWE) is a generalization of LFP (\ref{definition:LFP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
 \[
@@ -335,7 +335,7 @@ I this section we will describe some problems that are believed to be hard and u
 \end{theorem}
 
 \subsubsection{Ring-LWE}
-\label{sec:orgdfe0b07}
+\label{sec:org6c84289}
 \begin{text}
   Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
   codifferent ideal of $K$. Let $2 \leq q \in \N$ and for any fractional ideal $\Id \subset
@@ -389,9 +389,9 @@ Let $\Psi$ be a family of distributions over $K_\R$. The search version of the $
 \end{theorem}
 
 \subsection{Twisted Embeddings}
-\label{sec:orgeb8c95f}
+\label{sec:org8b2ed05}
 \subsubsection{Embeddings}
-\label{sec:orga17c0e1}
+\label{sec:orgfef50d8}
 
 \begin{definition}
 Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$ 
@@ -452,7 +452,7 @@ $$
 \end{definition}
 
 \subsubsection{Algebraic lattices}
-\label{sec:org6c74b65}
+\label{sec:org94b69ac}
 
 \begin{theorem}[\cite{stewart2002}, p.155]\label{theorem:algebraic-lattice}
 Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$, The $n$ vectors $v_i = \sigma(\omega_i)
@@ -491,7 +491,7 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by:
 \end{remark}
 
 \subsubsection{Twisted embeddings}
-\label{sec:org65e2454}
+\label{sec:org2af1d27}
 
 \begin{definition}
   Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a
@@ -510,10 +510,10 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by:
   where $\tau_i = \sigma_i(\tau)$.
 \end{definition}
 \section{Twisted embeddings and cryptography}
-\label{sec:orgdbd0c4b}
+\label{sec:org34de351}
 
 \subsection{Twisted Ring-LWE}
-\label{sec:orgca93e90}
+\label{sec:org9b3ee9f}
 In this section we present variant of the Ring-LWE (Definition \ref{definition:ring-lwe-search}) using twisted embeddings (Definition \ref{definition:twisted-embeddings}).
 
 
@@ -538,7 +538,7 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE as stated 
   Then there is a polynomial-time reduction from $Ring-LWE_{q,\psi}$ to $Ring-LWE^\tau_{q,\psi_\tau}$ .
 \end{theorem}
 \subsection{Error sampling in rotated \(\Z^n\)-lattices}
-\label{sec:orga1d2066}
+\label{sec:orgf838f9f}
 
 \begin{text}
   In this section we present the \textit{Ortiz et al.} (\cite{Ortiz2021}, Section 8)
@@ -573,7 +573,7 @@ of discrete sampling when $K = \Q(\zeta_p + \zeta_p^{-1})$ is reinforced by the 
 that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding to the nearest integer. (\cite{Ortiz2021}, Section 8).
 \end{text}
 \subsection{Impacts of the twisted embeddings}
-\label{sec:orgccb26a8}
+\label{sec:org72cd437}
 
 \begin{text}
   The correspondence between a point $\lambda \in \Lambda$ of a lattice and an algebraic
@@ -664,7 +664,7 @@ These new constructions with a more variety of possible rings increase the secur
 There is, though, an open question if there exist other number fields that we build orthonormal lattices and its polynomial arithmetic are efficient enough to be used in cryptosystems. 
 
 \section{Objectives}
-\label{sec:orgd43cb7f}
+\label{sec:org98a2558}
 As presented in previous sections, the study of Ortiz et al. [\cite{Ortiz2021}] showed that it is possible and as secure [Theorem \ref{theorem:twisted-ring-lwe-hardness}] as default Ring-LWE [Definitions \ref{definition:ring-lwe-search}, \ref{definition:ring-lwe-decision}] to use Twisted Embeddings [Definition \ref{definition:twisted-embeddings}] instead of the Canonical Embedding [Definition \ref{definition:canonical-embedding}] to increase the variety of rings and lattices that can be used, \ie, the arithmetic involved can be done in an efficient way. Example [\ref{example:twisted-embeddings-generating-different-lattices-from-the-same-ring}] shows that from the same ring, it is possible to generate different lattices, changing the parameters in the Twisted Embedding.
 
 With the cyclotomic power of two number field [Example \ref{example:cyclotomic-number-field}] we can sample errors from orthonormal lattices using the canonical embedding, with the twisted embeddings we can do it with the maximal real subfield [Example \ref{example:maximal-real-subfield}] for any prime \(p\) bigger than \(3\) [Prop \ref{prop:maximal-real-subfield-generates-orthonormal-lattice}, Corollary \ref{corollary:maximal-real-subfield-prime-p-greater-than-5}], we want in this work to validate the idea of using twisted embeddings in cryptography, explore the theoretical and the practical aspects of this proposal.
@@ -673,7 +673,7 @@ In practical aspects, the core of this study, we want to compare the implementat
 
 In theoretical aspects, we want to study the polynomial arithmetic of the maximal real subfield along with lattices generated by it and its properties, including the relation between the orthonormal basis and the efficient conversion between lattices points and elements of number fields [Remmark \ref{remmark:lattices-number-field-correspondence}] and if it is possible to achieve a satisfactory efficiency with non-orthonormal basis, also, within the orthonormal context, if more number fields have efficient polynomial arithmetic. And, of course, a discovery about keys and message sizes using these number fields.
 \subsection{Objectives-list [5/5]}
-\label{sec:org6fe120a}
+\label{sec:org8a0805c}
 \begin{itemize}
 \item[{$\boxtimes$}] Long shot: tentar descobrir outros casos alem do max. real sub.
 \begin{itemize}
@@ -691,18 +691,30 @@ no artigo sobre as vantagens de usar o twisted, practical impacts do artigo
 \end{itemize}
 
 \section{Methodology}
-\label{sec:org3c53f7a}
+\label{sec:org2472da2}
 \subsection{Literature review}
-\label{sec:org7c63340}
+\label{sec:orgcdf973b}
 metodologia consiste em fazer implementaçoes progressivamente mais eficientes ou por meio de melhorias na forma da implementação ou propondo melhoras teóricas que tenham impacto na implmentação, representação de estruturas matemáticas 
 \section{Cronograma}
-\label{sec:org22b5fcd}
+\label{sec:org962daf7}
 \subsection{Activities}
-\label{sec:org44949cf}
+\label{sec:orgdac1d34}
 \begin{itemize}
-\item Second semester of 2021
-\item \ldots{}
+\item First semester of 2021
+\begin{itemize}
+\item Study the Twisted Ring LWE problem and implementation
+\item Start implementing a cryptosystem based on Ring LWE problem
 \end{itemize}
+\item Second semester of 2021 and first semester of 2022
+\begin{itemize}
+\item Compare instances of Ring LWE and Twisted Ring LWE, \ie, analyze the cryptosystem
+\item Re-implement the cryptosystem with new theoretical and practical points discovered in the implementation analysis
+\item Study the arithmetic of the maximum real subfield and the relation between orthonormal basis and the twisted embedding
+\end{itemize}
+\item Second semester of 2022
+Defense of research thesis
+\end{itemize}
+
 
 \bibliographystyle{plain}
 \bibliography{library,ic-tese-v3}

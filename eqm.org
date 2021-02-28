@@ -662,10 +662,18 @@ There is, though, an open question if there exist other number fields that we bu
 * Methodology
 ** Literature review
    metodologia consiste em fazer implementaçoes progressivamente mais eficientes ou por meio de melhorias na forma da implementação ou propondo melhoras teóricas que tenham impacto na implmentação, representação de estruturas matemáticas 
-* Cronograma
+* Timeline
 ** Activities
-   - Second semester of 2021
-   - ...
+   - First semester of 2021
+     - Study the Twisted Ring LWE problem and implementation
+     - Start implementing a cryptosystem based on Ring LWE problem
+   - Second semester of 2021 and first semester of 2022
+     - Compare instances of Ring LWE and Twisted Ring LWE, \ie, analyze the cryptosystem
+     - Re-implement the cryptosystem with new theoretical and practical points discovered in the implementation analysis
+     - Study the arithmetic of the maximum real subfield and the relation between orthonormal basis and the twisted embedding 
+   - Second semester of 2022
+     Defense of research thesis
+     
 
   \bibliographystyle{plain}
   \bibliography{library,ic-tese-v3}
@@ -678,5 +686,5 @@ There is, though, an open question if there exist other number fields that we bu
 
 
 
-
+  
 
