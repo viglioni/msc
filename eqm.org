@@ -1,8 +1,9 @@
 #+language: en
 #+latex_compiler: latexmk
 #+OPTIONS: tex:t  toc:nil todo:nil
-#+STARTUP: latexpreview fold
+#+STARTUP: latexpreview:nil fold
 #+LATEX_HEADER: \input{./config/math-config}
+#+EXCLUDE_TAGS: noexport
 
 # ################ template ic
 # #+latex_class: ic-tese-v3
@@ -23,37 +24,43 @@
 #+author: Candidate: Laura Viglioni @@latex:\\@@ Supervisor: Prof. Dr. Ricardo Dahab
 #+date: March 12, 2021
 
-
-
 * Introduction
 *** Motivation
     :PROPERTIES:  
     :UNNUMBERED: t
     :END:
-    escrever sobre como é usado em cripto, qual é nossa motivaçao, lattices sao quentes, problemas de eficiencia, segurança, alternativa nova, nao pretende trabalhar com nenhuma das propostas do nist, investigar o uso de twisted embeddings, explorar o que nao esta explorado no artigo
-*** Summary of objectives
-    :PROPERTIES:  
-    :UNNUMBERED: t
-    :END: 
+    
+The imminent arrival of quantum computers in large scale demanded new research fields on how to create quantum-resistant cryptosystems. In the last two decades, lattice-based cryptosystems have became an important field in the cryptography community since these cryptosystems rely on mathematical problems we believe are hard, such as the Shortest Vector Problem [Definition \ref{definition:GapSVP-gap-shortest-vector-problem}] and the Shortest Independent Vectors Problem [Definition \ref{definition:SIVP-shortest-independent-vector-problem}].
+
+    Some cryptosystems of our interest in this study are the ones based on the LWE (Learning With Errors) problem [Definition \ref{definition:LWE-learning-with-errors-problem}] and on the Ring-LWE (Learning With Errors over Rings)[Definitions \ref{definition:ring-lwe-search}, \ref{definition:ring-lwe-decision}]. The usual instances of the Ring-LWE are the power-of-two cyclotomic number fields [Example \ref{example:cyclotomic-number-field}], since they are homomorphic to a lattice in the $H$ [Definition \ref{definition:the-h-space}]  with known orthonormal basis through the canonical embedding [Definition \ref{definition:canonical-embedding}] and the errors can be sampled in the lattice and later converted to an element of the number field with reasonable efficiency.
+
+    Ortiz et al. [\cite{Ortiz2021}] proposed a new variety of number fields that can be used as instances of the Ring-LWE based cryptosystems using twisted embeddings [Definition \ref{definition:twisted-embeddings}] -- which are extension of the canonical --, that are as secure as the usual Ring-LWE [Theorem \ref{theorem:twisted-ring-lwe-hardness}]. The main goal of this study is to compare the implementations of usual instances of Ring-LWE and the instances of the Twisted Ring-LWE [Definition \ref{definition:twisted-ring-lwe}], exploring theoretical and practical aspects of the Twisted Ring-LWE cryptosystem [Section \ref{sampling-in-zn-rotated-lattices}], which include an analysis of both keys and messages sizes; the study of the relation between number fields and lattices with known orthonormal basis and if it is possible to use lattices without orthonormal basis and maintain a satisfactory efficiency in converting the error samplings from $\R^n$ points into number field elements.
+    
+    
 *** Organization of this document
     :PROPERTIES:  
     :UNNUMBERED: t
-    :END: 
+    :END:
+    In section [\ref{mathematical-background}] we present the fundamental mathematical background of the Twisted Ring-LWE schema. In section [\ref{twisted-embeddings-and-cryptography}] we discuss the impacts of the twisted embeddings in cryptography and in sections [\ref{objectives}, \ref{methodology}, \ref{timeline}] we discuss the objectives, methodology and an activity plan of this study.
 * Mathematical background
+  :PROPERTIES:
+  :CUSTOM_ID: mathematical-background
+  :END:
+  
 ** Preliminaries
-      In this text, we will consider the Natural Numbers $\N$ the set of all positive integers: $\N = \{1,2,3,\dots\}$ and $\P$ the set of all prime numbers. 
+   In this text, we will consider the Natural Numbers $\N$ the set of all positive integers: $\N = \{1,2,3,\dots\}$ and $\P$ the set of all prime numbers. 
 ** Groups
   
-      \begin{definition}
-        A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
-        that:
-        \begin{itemize}
-        \item \textbf{Associativity: } $\forall a,b,c \in G, \; a\cdot(b\cdot c) = (a\cdot b)\cdot c$
-        \item \textbf{Identity element: } $\exists e \in G \; ; \; \forall a \in G, \; a\cdot e = e\cdot a = a$
-        \item \textbf{Inverse element: } $\forall a \in G, \; \exists b \in G \; ; \; a\cdot b = b \cdot a = e$
-        \end{itemize}
-      And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is implied.
-      \end{definition}
+   \begin{definition}
+     A \textbf{group} is a set $G$ closed under a binary operation $\cdot$ defined on $G$ such
+     that:
+     \begin{itemize}
+     \item \textbf{Associativity: } $\forall a,b,c \in G, \; a\cdot(b\cdot c) = (a\cdot b)\cdot c$
+     \item \textbf{Identity element: } $\exists e \in G \; ; \; \forall a \in G, \; a\cdot e = e\cdot a = a$
+     \item \textbf{Inverse element: } $\forall a \in G, \; \exists b \in G \; ; \; a\cdot b = b \cdot a = e$
+     \end{itemize}
+   And it is denoted by $\langle G,\cdot\rangle$, or simply $G$ if the operation is implied.
+   \end{definition}
 
    \begin{definition}
      A group is said to be \textbf{commutative} or \textbf{abelian}
@@ -85,27 +92,27 @@
    
 ** Rings and fields
    
-      \begin{definition}
-     A \textbf{ring} is a set together with two binary operations, we will note by
-     $+$ and $*$ and call it addition and multiplication, respectively, such that:
-     \begin{itemize}
-     \item $\langle R,+\rangle$ is an abelian group.
-     \item $*$ is associative
-     \item $*$ is distributive over $+$
-     \end{itemize}
+   \begin{definition}
+  A \textbf{ring} is a set together with two binary operations, we will note by
+  $+$ and $*$ and call it addition and multiplication, respectively, such that:
+  \begin{itemize}
+  \item $\langle R,+\rangle$ is an abelian group.
+  \item $*$ is associative
+  \item $*$ is distributive over $+$
+  \end{itemize}
 
-     And it is denoted by $\langle R,+,*\rangle$, or simply $R$ if the operations are implied.
-   \end{definition}
+  And it is denoted by $\langle R,+,*\rangle$, or simply $R$ if the operations are implied.
+\end{definition}
 
    \begin{definition}
      A ring is said to be \textbf{commutative} if its $*$ operation is commutative.
    \end{definition}
 
-      \begin{definition}
-        A ring is said to be \textbf{with unity} if $*$ has an identity element. We
-        shall note it by $1$ and it is called \textbf{unity}.
+   \begin{definition}
+     A ring is said to be \textbf{with unity} if $*$ has an identity element. We
+     shall note it by $1$ and it is called \textbf{unity}.
 
-      \end{definition}
+   \end{definition}
 
    \begin{definition}
      A \textbf{division ring} is a ring R where $\forall r \in R, \; \exists s \in R \; ; \; r*s = 1$.
@@ -155,18 +162,18 @@
      is $3$.
    \end{example}
 
-\begin{example}[\cite{Ortiz2021}, Cyclotomic number field]\label{example:cyclotomic-number-field}
-  A number field of particular interest is $\Q(\zeta_m)$, the $m$-th cyclotomic field,
-  where $\zeta_m = \exp{2\pi i /m}$ is a primitive $m$-th root of unity for any
-  integer number $m \geq 1$. The degree of $\Q(\zeta_m)$ is $\phi(m)$, where $\phi(\cdot)$
-  denotes the Euler’s totient function. The minimal polynomial of $\zeta_m$, called
-  the $m$-th cyclotomic polynomial, is $\Phi_m(x) = \prod_{k \in \Z_{m}^*}$, where $\Z^*_m$ denotes the group of invertible elements in $\Z/m\Z$.
-\end{example}
+   \begin{example}[\cite{Ortiz2021}, Cyclotomic number field]\label{example:cyclotomic-number-field}
+     A number field of particular interest is $\Q(\zeta_m)$, the $m$-th cyclotomic field,
+     where $\zeta_m = \exp{2\pi i /m}$ is a primitive $m$-th root of unity for any
+     integer number $m \geq 1$. The degree of $\Q(\zeta_m)$ is $\phi(m)$, where $\phi(\cdot)$
+     denotes the Euler’s totient function. The minimal polynomial of $\zeta_m$, called
+     the $m$-th cyclotomic polynomial, is $\Phi_m(x) = \prod_{k \in \Z_{m}^*}$, where $\Z^*_m$ denotes the group of invertible elements in $\Z/m\Z$.
+   \end{example}
 
-\begin{example}[\cite{Ortiz2021}, Maximal real subfield]
-  \label{example:maximal-real-subfield}
-  The number field $\Q(\zeta_m + \zeta_m^{-1}) \subset \R \cap \Q(\zeta_m)$ is the maximal real subfield of $\Q(\zeta_m)$ and has degree $\phi(m)/2$ if $m \geq 3$.
-\end{example}
+   \begin{example}[\cite{Ortiz2021}, Maximal real subfield]
+     \label{example:maximal-real-subfield}
+     The number field $\Q(\zeta_m + \zeta_m^{-1}) \subset \R \cap \Q(\zeta_m)$ is the maximal real subfield of $\Q(\zeta_m)$ and has degree $\phi(m)/2$ if $m \geq 3$.
+   \end{example}
 
    \begin{theorem}
      [\cite{stewart2002}, p.40] If $K$ is a number field, then $K = \Q[\theta]$ for some
@@ -184,36 +191,36 @@
    An \textbf{integral basis} is a basis for a ring of integers. 
    \end{definition}
 
-\begin{definition}[\cite{Peikert2017}, Section 2.3.2]
-  An \textbf{integral Ideal} $\Id \subset \Ok$ is a  nontrivial additive subgroup that
-  is also closed under multiplication by $\Ok$, \textit{i.e.}, $r \cdot a \in \Id$ for
-  any $r \in \Ok$ and $a \in \Id$. Any ideal $\Id$ is a free $\Z$-module of rank
-  $n$, \ie, it is the set off all $\Z$-linear combinations of some basis
-  $\{b_1,\dots,b_n\} \subset \Id$  of linearly independents (over $\Z$) elements $b_i$.
-\end{definition}
+   \begin{definition}[\cite{Peikert2017}, Section 2.3.2]
+     An \textbf{integral Ideal} $\Id \subset \Ok$ is a  nontrivial additive subgroup that
+     is also closed under multiplication by $\Ok$, \textit{i.e.}, $r \cdot a \in \Id$ for
+     any $r \in \Ok$ and $a \in \Id$. Any ideal $\Id$ is a free $\Z$-module of rank
+     $n$, \ie, it is the set off all $\Z$-linear combinations of some basis
+     $\{b_1,\dots,b_n\} \subset \Id$  of linearly independents (over $\Z$) elements $b_i$.
+   \end{definition}
 
-\begin{definition}[\cite{Peikert2017}, Section 2.3.2]
-  A \textbf{fractional ideal} $\Id \subset K$ is a set such that $d\Id \subset \Ok$ is an
-  integral ideal for some $d \in \Ok$
-\end{definition}
+   \begin{definition}[\cite{Peikert2017}, Section 2.3.2]
+     A \textbf{fractional ideal} $\Id \subset K$ is a set such that $d\Id \subset \Ok$ is an
+     integral ideal for some $d \in \Ok$
+   \end{definition}
 
-\begin{definition}[\cite{Peikert2017}, Section 2.3.3]
-  For any fractional ideal $\Id \subset K$, its \textbf{dual ideal} is defined as
-  $\Id^\vee \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Z \}$. An important canonical
-  fractional ideal in a number field K is the \textbf{codifferent ideal}
-  $\Ok^\vee$, \ie, the dual ideal of the ring of integers: $\Ok^\vee \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Ok \}$.
-\end{definition}
+   \begin{definition}[\cite{Peikert2017}, Section 2.3.3]
+     For any fractional ideal $\Id \subset K$, its \textbf{dual ideal} is defined as
+     $\Id^\vee \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Z \}$. An important canonical
+     fractional ideal in a number field K is the \textbf{codifferent ideal}
+     $\Ok^\vee$, \ie, the dual ideal of the ring of integers: $\Ok^\vee \defsym \{ a \in K \;;\; Tr(a\Id) \subset \Ok \}$.
+   \end{definition}
 
-        \begin{definition}[Fixed field by involution]
-    \label{definition:fixed-field-by-involution}
-          A map $f: K \rightarrow K$, where $K$ is a number field, is called \textbf{involution}
-          of $K$ if $\forall a,b \in K \; f(a+b) = f(a) + f(b) \; f(a \cdot b) = f(a) \cdot f(b)$ and
-          $f(f(a)) = a$. The subfield $F = \{a \in K \; f(a) = a\}$ is called \textbf{fixed field by
-            involution} of $K$.
-        \end{definition}
+   \begin{definition}[Fixed field by involution]
+\label{definition:fixed-field-by-involution}
+     A map $f: K \rightarrow K$, where $K$ is a number field, is called \textbf{involution}
+     of $K$ if $\forall a,b \in K \; f(a+b) = f(a) + f(b) \; f(a \cdot b) = f(a) \cdot f(b)$ and
+     $f(f(a)) = a$. The subfield $F = \{a \in K \; f(a) = a\}$ is called \textbf{fixed field by
+       involution} of $K$.
+   \end{definition}
 ** The inner product space /H/ 
    \begin{definition}
-     \label{definition:h-space}
+     \label{definition:the-h-space}
      Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
      as:
      \begin{equation*}
@@ -234,42 +241,42 @@
 ** Lattices
 *** Basic definitions
 
-   \begin{definition}
-  A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$.  In other words, given $m$ linear independent vectors in $\R^n$, the set
-   $\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the Lattice may defined
-   by:
+    \begin{definition}
+   A Lattice $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$.  In other words, given $m$ linear independent vectors in $\R^n$, the set
+    $\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the Lattice may defined
+    by:
 
-     \begin{equation*}
-       \Lambda := \left\{x = \sum_{i=1}^m{\lambda_iv_i} \in \R^n \; | \; \lambda_i \in \Z\right\}
-     \end{equation*}
+      \begin{equation*}
+        \Lambda := \left\{x = \sum_{i=1}^m{\lambda_iv_i} \in \R^n \; | \; \lambda_i \in \Z\right\}
+      \end{equation*}
 
-   \emph{I.e.}, any $\lambda \in \Lambda$ can be written as $\lambda = Mv$ where $M$ is the
-   \textbf{generator matrix} of $\Lambda$ where each row is a vector from the basis and
-   $v \in \Z^n$.
-   \end{definition}
+    \emph{I.e.}, any $\lambda \in \Lambda$ can be written as $\lambda = Mv$ where $M$ is the
+    \textbf{generator matrix} of $\Lambda$ where each row is a vector from the basis and
+    $v \in \Z^n$.
+    \end{definition}
 
-   Since space $H$ (\ref{definition:h-space}) is isomorphic to $\R^n$, all definitions above can be switched from $\R^n$ to $H$ without any loss of generality.
+    Since space $H$ (\ref{definition:the-h-space}) is isomorphic to $\R^n$, all definitions above can be switched from $\R^n$ to $H$ without any loss of generality.
    
-\begin{definition}
-  The \textbf{minimum distance} of an Lattice $\Lambda$ is the shortest nonzero vector
-  from $\Lambda$, given some norm, \textit{i.e.}:
-  $$
-  \lambda_1(\Lambda) \defsym \min_{0 \ne v \in \Lambda}{\|v\|}
-  $$
+    \begin{definition}
+      The \textbf{minimum distance} of an Lattice $\Lambda$ is the shortest nonzero vector
+      from $\Lambda$, given some norm, \textit{i.e.}:
+      $$
+      \lambda_1(\Lambda) \defsym \min_{0 \ne v \in \Lambda}{\|v\|}
+      $$
 
-  We define $\lambda_m$ as the set of $m \in \N$  linear independent vectors of $\Lambda$
-  such that the biggest vector from $\lambda_m$ is equal or smaller than the biggest vector of any linearly independent set of length $m$ in $\Lambda$. We usually use
-  $\lambda_n$, where $n$ is the size of the basis of $\Lambda$ and we call them
-  \textbf{shortest independent vectors} of $\Lambda$.
-\end{definition}
+      We define $\lambda_m$ as the set of $m \in \N$  linear independent vectors of $\Lambda$
+      such that the biggest vector from $\lambda_m$ is equal or smaller than the biggest vector of any linearly independent set of length $m$ in $\Lambda$. We usually use
+      $\lambda_n$, where $n$ is the size of the basis of $\Lambda$ and we call them
+      \textbf{shortest independent vectors} of $\Lambda$.
+    \end{definition}
 
-\begin{definition}\label{definition:gram-matrix}
-  Let $\Lambda$ be a lattice and $M$ its generator matrix. The matrix $G = MM^T$ is called \textbf{Gram matrix} for $\Lambda$.
-\end{definition}
+    \begin{definition}\label{definition:gram-matrix}
+      Let $\Lambda$ be a lattice and $M$ its generator matrix. The matrix $G = MM^T$ is called \textbf{Gram matrix} for $\Lambda$.
+    \end{definition}
 *** Lattice problems
     \begin{definition}[\cite{Peikert2017}, Definition 2.8, Gap Shortest Vector
       Problem]
-      \label{definition:gapsvp}
+      \label{definition:GapSVP-gap-shortest-vector-problem}
     For an approximation factor $\gamma  = \gamma(n) \geq 1$, the $GapSVP_\gamma $ is: given a lattice
     $\Lambda$ and length $d > 0$, output \textbf{YES} if $\lambda_1(\Lambda) \leq d$ and \textbf{NO} if
     $\lambda_1(L) > \gamma d$.  
@@ -277,70 +284,70 @@
     
     \begin{definition}[\cite{Peikert2017}, Definition 2.8, Shortest Independent
       Vectors Problem]
-      \label{definition:sivp}
+      \label{definition:SIVP-shortest-independent-vector-problem}
       For an approximation factor $\gamma = \gamma(n) \geq 1$, the $SIVP_\gamma$ is: given a lattice $\Lambda$, output $n$ linearly independent lattice vectors of length at most $\gamma(n) \cdot \lambda_n(\Lambda)$.
     \end{definition}
     
 ** Learning problems
    I this section we will describe some problems that are believed to be hard and used in cryptography. 
 *** Learning from Parity
-      \begin{definition}
-       \label{definition:LFP}
-       Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
-       define the problem \textbf{Learning from Parity (LFP)} as:
+    \begin{definition}
+     \label{definition:LFP-learning-from-parity-problem}
+     Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
+     define the problem \textbf{Learning from Parity (LFP)} as:
 
-       find $s \in \Z^n_2$ such that for $i \in \{1,\dots,m\}$
-          $$ \langle{s, a_i}\rangle \; \approx_\epsilon \; b_i \;\; (mod\; 2) $$
+     find $s \in \Z^n_2$ such that for $i \in \{1,\dots,m\}$
+        $$ \langle{s, a_i}\rangle \; \approx_\epsilon \; b_i \;\; (mod\; 2) $$
 
-          In other words, the equality holds with probability $1 - \epsilon$
+        In other words, the equality holds with probability $1 - \epsilon$
 
-     \end{definition}
+   \end{definition}
 
 *** Learning with Errors
-\begin{definition}\label{definition:LWE}
-  Learning with Errors (LWE) is a generalization of LFP (\ref{definition:LFP}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
-\[
-  <s, a_i> \; \approx_\chi \; b_i \;\; (\mod\; p) \;\;\; \text{or} \;\;\; <s, a_i> + e_i \; = \;  b_i \;\; (\mod\; p) 
-    \]
-     Where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$
+    \begin{definition}\label{definition:LWE-learning-with-errors-problem}
+      Learning with Errors (LWE) is a generalization of LFP (\ref{definition:LFP-learning-from-parity-problem}) with two new parameters $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
+    \[
+      <s, a_i> \; \approx_\chi \; b_i \;\; (\mod\; p) \;\;\; \text{or} \;\;\; <s, a_i> + e_i \; = \;  b_i \;\; (\mod\; p) 
+        \]
+         Where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$
 
-\end{definition}
+    \end{definition}
 
-\begin{theorem}[\cite{regev2009}, Theorem 1.1]
-  Let $n$, $p$ be integers and $\alpha \in (0, 1)$ be such that $\alpha p > 2\sqrt{n}$. If
-  there exists an efficient algorithm that solves $LWE_{p \Psi_\alpha}$ then there
-  exists an efficient quantum algorithm that approximates the decision version
-  of the shortest vector problem ($GAP_{SVP}$ \ref{definition:gapsvp}) and the
-  shortest independent vectors problem (SIVP \ref{definition:sivp}) to within
-  $\tilde{O}(n/\alpha)$ in the worst case.
+    \begin{theorem}[\cite{regev2009}, Theorem 1.1]
+      Let $n$, $p$ be integers and $\alpha \in (0, 1)$ be such that $\alpha p > 2\sqrt{n}$. If
+      there exists an efficient algorithm that solves $LWE_{p \Psi_\alpha}$ then there
+      exists an efficient quantum algorithm that approximates the decision version
+      of the shortest vector problem ($GAP_{SVP}$ \ref{definition:GapSVP-gap-shortest-vector-problem}) and the
+      shortest independent vectors problem (SIVP \ref{definition:SIVP-shortest-independent-vector-problem}) to within
+      $\tilde{O}(n/\alpha)$ in the worst case.
 
-  Where $\Psi_\beta$ is defined as:
-  $$
-  \forall r \in [0,1), \; \Psi_\beta(r) \defsym \sum_{k=-\infty}^\infty{\frac{1}{\beta} . \exp{\left( -\pi \left( \frac{r-k}{\beta} \right)^2 \right)}}
-  $$
-\end{theorem}
+      Where $\Psi_\beta$ is defined as:
+      $$
+      \forall r \in [0,1), \; \Psi_\beta(r) \defsym \sum_{k=-\infty}^\infty{\frac{1}{\beta} . \exp{\left( -\pi \left( \frac{r-k}{\beta} \right)^2 \right)}}
+      $$
+    \end{theorem}
 
 *** Ring-LWE
-\begin{text}
-  Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
-  codifferent ideal of $K$. Let $2 \leq q \in \N$ and for any fractional ideal $\Id \subset
-  K$. Also let $K_\R$ be the tensor product $K \otimes_\Q \R$, $\Id_q = \Id/q\Id$
-  and $\mathbb{T} = K_\R/R^\vee$.
+    \begin{text}
+      Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
+      codifferent ideal of $K$. Let $2 \leq q \in \N$ and for any fractional ideal $\Id \subset
+      K$. Also let $K_\R$ be the tensor product $K \otimes_\Q \R$, $\Id_q = \Id/q\Id$
+      and $\mathbb{T} = K_\R/R^\vee$.
 
-  The twisted embeddings can be extended from $K$ to $K_\R$ as follows [\cite{Ortiz2021},
-  Section 3]: for any totally positive $\tau \in F$, the $\R$-vector space
-  $\sigma_\tau(K_\R)$ is isomorphic to $H \simeq \R^n$. Consider the extension of the trace
-  function $Tr_K : K \rightarrow \Q$ to $Tr_K : K_\R \rightarrow \R$, for any $\tau \in F$ totally
-  positive integer we can define the inner product as:
+      The twisted embeddings can be extended from $K$ to $K_\R$ as follows [\cite{Ortiz2021},
+      Section 3]: for any totally positive $\tau \in F$, the $\R$-vector space
+      $\sigma_\tau(K_\R)$ is isomorphic to $H \simeq \R^n$. Consider the extension of the trace
+      function $Tr_K : K \rightarrow \Q$ to $Tr_K : K_\R \rightarrow \R$, for any $\tau \in F$ totally
+      positive integer we can define the inner product as:
 
-  $$
-  \langle{a,b}\rangle_\tau \defsym \langle{\sigma_\tau(a), \sigma_\tau(b)}\rangle_H  = Tr_K (\tau a \overline{b}) , \;\; a,b \in K_\R
-  $$
+      $$
+      \langle{a,b}\rangle_\tau \defsym \langle{\sigma_\tau(a), \sigma_\tau(b)}\rangle_H  = Tr_K (\tau a \overline{b}) , \;\; a,b \in K_\R
+      $$
 
-  By considering the inner product $\langle{a,b}\rangle_\tau$, the $\R$-vector space $K_\R$
-  is an Euclidian vector space of dimention $n$ isometric to both $\left(
-    H , \langle{a,b}\rangle_H  \right)$ and $\left( \R , \langle{a,b}\rangle  \right)$.
-\end{text}
+      By considering the inner product $\langle{a,b}\rangle_\tau$, the $\R$-vector space $K_\R$
+      is an Euclidian vector space of dimention $n$ isometric to both $\left(
+        H , \langle{a,b}\rangle_H  \right)$ and $\left( \R , \langle{a,b}\rangle  \right)$.
+    \end{text}
 
     \begin{definition}[\cite{Peikert2017}, Definition 2.15, Ring-LWE Average-Case Decision]
       \label{definition:ring-lwe-decision}
@@ -357,90 +364,90 @@
       and $GapSVP_{\gamma'}$ \emph{to (average-case, decision)} $LWE_{q,\alpha}$.
     \end{theorem}
 
-\begin{definition}[\cite{Lyubashevsky2010}, Definition 3.2, Ring-LWE Search]
-  \label{definition:ring-lwe-search}
-Let $\Psi$ be a family of distributions over $K_\R$. The search version of the $ring-LWE$ problem, denoted $R-LWE_{q,\Psi}$, is defined as follows: given access to arbitrarily many independent samples from $A_{s,\psi}$ for some arbitrary $s \in R_q^\vee$ and $\psi \in \Psi$, find $s$.
-\end{definition}
+    \begin{definition}[\cite{Lyubashevsky2010}, Definition 3.2, Ring-LWE Search]
+      \label{definition:ring-lwe-search}
+    Let $\Psi$ be a family of distributions over $K_\R$. The search version of the $ring-LWE$ problem, denoted $R-LWE_{q,\Psi}$, is defined as follows: given access to arbitrarily many independent samples from $A_{s,\psi}$ for some arbitrary $s \in R_q^\vee$ and $\psi \in \Psi$, find $s$.
+    \end{definition}
 
-\begin{theorem}[\cite{Lyubashevsky2010}, Theorem 3.6]
-  Let K be the mth cyclotomic number field having dimension $n = \phi(m)$ and $R =
-  \Ok$ be its ring of integers. Let $\alpha < \sqrt{(\log{n})/n}$, and let $q = q(n)
-  \geq 2, \; q = 1 \; (mod \; m)$ be a $poly(n)$-bounded prime such that $\alpha q \geq
-  \omega(\sqrt{\log{n}})$. Then there is a polynomial-time quantum reduction from
-  $\tilde{O}(n/\alpha)$-approximate $SIVP$ (or $SVP$) on ideal lattices in $K$ to
-  $R-DLWE_{q,\Upsilon_\alpha}$. Alternatively, for any $l \geq 1$, we can replace the target
-  problem by the problem of solving $R-DLWE_{q,D_\xi}$ given only $l$ samples,
-  where $\xi = \alpha \cdot ( nl/ \log{(nl)} )^{1/4}$
-\end{theorem}
+    \begin{theorem}[\cite{Lyubashevsky2010}, Theorem 3.6]
+      Let K be the mth cyclotomic number field having dimension $n = \phi(m)$ and $R =
+      \Ok$ be its ring of integers. Let $\alpha < \sqrt{(\log{n})/n}$, and let $q = q(n)
+      \geq 2, \; q = 1 \; (mod \; m)$ be a $poly(n)$-bounded prime such that $\alpha q \geq
+      \omega(\sqrt{\log{n}})$. Then there is a polynomial-time quantum reduction from
+      $\tilde{O}(n/\alpha)$-approximate $SIVP$ (or $SVP$) on ideal lattices in $K$ to
+      $R-DLWE_{q,\Upsilon_\alpha}$. Alternatively, for any $l \geq 1$, we can replace the target
+      problem by the problem of solving $R-DLWE_{q,D_\xi}$ given only $l$ samples,
+      where $\xi = \alpha \cdot ( nl/ \log{(nl)} )^{1/4}$
+    \end{theorem}
 
 ** Twisted Embeddings
 *** Embeddings
    
-   \begin{definition}
-   Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$ 
-   \end{definition}
+    \begin{definition}
+    Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$ 
+    \end{definition}
 
-   \begin{definition}
-   A $\Q$-homomorphism $\phi: K \rightarrow \C$ is called an \textbf{embedding}.
-   \end{definition}
+    \begin{definition}
+    A $\Q$-homomorphism $\phi: K \rightarrow \C$ is called an \textbf{embedding}.
+    \end{definition}
 
-   \begin{theorem}
-   [\cite{stewart2002}, p.41] If $K$ is a number field with degree $n$ then there are
-   exactly $n$ embeddings $\sigma_i : K \rightarrow \C$ where by $\sigma_i(\theta) =
-   \theta_i$ where $\theta_i \in \C$ is a distinct zero of the $K$'s
-   minimum polynomial.
-   \end{theorem}
+    \begin{theorem}
+    [\cite{stewart2002}, p.41] If $K$ is a number field with degree $n$ then there are
+    exactly $n$ embeddings $\sigma_i : K \rightarrow \C$ where by $\sigma_i(\theta) =
+    \theta_i$ where $\theta_i \in \C$ is a distinct zero of the $K$'s
+    minimum polynomial.
+    \end{theorem}
 
-         \begin{definition}[Trace and Norm]
-     \label{definition:trace-and-norm}
-     Let $x \in K$ be an element of a number field and $\{\sigma_i\}_{i=1}^n$ the possible
-     embeddings. The elements $\{\sigma_i(x)\}_{i=1}^n$ are called \textbf{conjugates} of
-     x and we define the \textbf{norm} of $x$ $N(x)$ and \textbf{Trace} of $x$ $Tr(x)$
-     respectively:
-     $$
-     N(x) = \prod_{i=1}^n{\sigma_i(x)} \;,\;   Tr(x) = \sum_{i=1}^n{\sigma_i(x)}
-     $$
+    \begin{definition}[Trace and Norm]
+\label{definition:trace-and-norm}
+Let $x \in K$ be an element of a number field and $\{\sigma_i\}_{i=1}^n$ the possible
+embeddings. The elements $\{\sigma_i(x)\}_{i=1}^n$ are called \textbf{conjugates} of
+x and we define the \textbf{norm} of $x$ $N(x)$ and \textbf{Trace} of $x$ $Tr(x)$
+respectively:
+$$
+N(x) = \prod_{i=1}^n{\sigma_i(x)} \;,\;   Tr(x) = \sum_{i=1}^n{\sigma_i(x)}
+$$
 
-   \end{definition}
-\begin{theorem}[\cite{stewart2002}, p.54]
-  For any $x \in K$, we have $N(x), Tr(x) \in \Q$. If $x \in \Ok$, we have $N(x),
-  Tr(x) \in \Z$.
-\end{theorem}
-
-   
-   \begin{definition}
-Let $\{\sigma_i\}_n$ the possible embeddings of a number field $K$. Let $r$ the number of embeddings with real images and $2s$ the complex ones, then
-$r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
 \end{definition}
+    \begin{theorem}[\cite{stewart2002}, p.54]
+      For any $x \in K$, we have $N(x), Tr(x) \in \Q$. If $x \in \Ok$, we have $N(x),
+      Tr(x) \in \Z$.
+    \end{theorem}
 
-                     \begin{definition}\label{definition:canonical-embedding}
-                  The homomorphism $\sigma: K \rightarrow \R^r \times \C^s$, where $(r,s)$ is the signature of $K$, is
-                  said to be the \textbf{canonical embedding} and is defined by:
-                  $$
-                  \sigma(x) = \left(\sigma_1(x), ... , \sigma_r(x), \sigma_{r+1}(x), ..., \sigma_{r+s}(x) \right)
-                  $$
 
-                  Note that we could rewrite the canonical embedding as $\sigma : K \rightarrow \R^n$
-                  $$
-                  \sigma(x) = \left( \sigma_1(x), ... , \sigma_r(x), \Re(\sigma_{r+1}(x)), \Im(\sigma_{r+1}(x)), ...,
-                    \Re(\sigma_{r+s}(x)), \Im(\sigma_{r+s}(x)) \right)
-                  $$
+    \begin{definition}
+ Let $\{\sigma_i\}_n$ the possible embeddings of a number field $K$. Let $r$ the number of embeddings with real images and $2s$ the complex ones, then
+ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
+ \end{definition}
 
-                  For now on we will denote it simply by:
+    \begin{definition}\label{definition:canonical-embedding}
+ The homomorphism $\sigma: K \rightarrow \R^r \times \C^s$, where $(r,s)$ is the signature of $K$, is
+ said to be the \textbf{canonical embedding} and is defined by:
+ $$
+ \sigma(x) = \left(\sigma_1(x), ... , \sigma_r(x), \sigma_{r+1}(x), ..., \sigma_{r+s}(x) \right)
+ $$
 
-                  $$
-                  \sigma(x) = \left( \sigma_1(x), \dots , \sigma_r(x), \sigma_{r+1}(x), \dots, \sigma_{r+2s}(x) \right)
-                  $$
+ Note that we could rewrite the canonical embedding as $\sigma : K \rightarrow \R^n$
+ $$
+ \sigma(x) = \left( \sigma_1(x), ... , \sigma_r(x), \Re(\sigma_{r+1}(x)), \Im(\sigma_{r+1}(x)), ...,
+   \Re(\sigma_{r+s}(x)), \Im(\sigma_{r+s}(x)) \right)
+ $$
 
-                  \end{definition}
-            
+ For now on we will denote it simply by:
+
+ $$
+ \sigma(x) = \left( \sigma_1(x), \dots , \sigma_r(x), \sigma_{r+1}(x), \dots, \sigma_{r+2s}(x) \right)
+ $$
+
+ \end{definition}
+
 *** Algebraic lattices
     
-            \begin{theorem}[\cite{stewart2002}, p.155]\label{theorem:algebraic-lattice}
-            Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$, The $n$ vectors $v_i = \sigma(\omega_i)
-            \in \R^n$ are linearly independent, so they define a full rank algebraic lattice
-            $\Lambda = \Lambda(\Ok) = \sigma(\Ok)$.
-            \end{theorem} 
+    \begin{theorem}[\cite{stewart2002}, p.155]\label{theorem:algebraic-lattice}
+    Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$, The $n$ vectors $v_i = \sigma(\omega_i)
+    \in \R^n$ are linearly independent, so they define a full rank algebraic lattice
+    $\Lambda = \Lambda(\Ok) = \sigma(\Ok)$.
+    \end{theorem} 
     The generator matrix of $\Lambda = \sigma(\Ok)$ is defined by:
     
     \begin{equation}
@@ -452,33 +459,33 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
       \end{pmatrix}  
     \end{equation}
     
-            \begin{remark}\label{remmark:lattices-number-field-correspondence}
-              An embedding creates the correspondence between a point $\lambda \in \Lambda \subset \R^n$ of an algebraic lattice (Theo.
-              \ref{theorem:algebraic-lattice}) and an integer in $\Ok$:
+    \begin{remark}\label{remmark:lattices-number-field-correspondence}
+      An embedding creates the correspondence between a point $\lambda \in \Lambda \subset \R^n$ of an algebraic lattice (Theo.
+      \ref{theorem:algebraic-lattice}) and an integer in $\Ok$:
 
-              Let $\lambda$ be a point of a lattice $\Lambda$:
+      Let $\lambda$ be a point of a lattice $\Lambda$:
 
-            \begin{align*} 
-                 \lambda &= (\lambda_1,\dots,\lambda_{r+2s}) \in \Lambda \\
-                   &= \left( \sum_{i=1}^n{z_i\sigma_1(\omega_i)} , \dots , \sum_{i=1}^n{z_i\sigma_{r+2s}(\omega_i)} \right) \\
-                   &= \left( \sigma_1\left(   \sum_{i=1}^n{z_i\omega_i} \right) , \dots , \sigma_{r+2s} \left( \sum_{i=1}^n{z_i\omega_i}  \right) \right) 
-            \end{align*}
-              where $z_i \in \Z$. Since any element $x \in \Ok$ has the form $x =
-              \sum_{i=1}^n{\lambda_i\omega_i}$, we can conclude that:
+    \begin{align*} 
+         \lambda &= (\lambda_1,\dots,\lambda_{r+2s}) \in \Lambda \\
+           &= \left( \sum_{i=1}^n{z_i\sigma_1(\omega_i)} , \dots , \sum_{i=1}^n{z_i\sigma_{r+2s}(\omega_i)} \right) \\
+           &= \left( \sigma_1\left(   \sum_{i=1}^n{z_i\omega_i} \right) , \dots , \sigma_{r+2s} \left( \sum_{i=1}^n{z_i\omega_i}  \right) \right) 
+    \end{align*}
+      where $z_i \in \Z$. Since any element $x \in \Ok$ has the form $x =
+      \sum_{i=1}^n{\lambda_i\omega_i}$, we can conclude that:
 
-              \begin{equation*}
-                \lambda = \left( \sigma_1(x), \dots, \sigma_{r+2s}(x) \right) = \sigma(x)
-              \end{equation*}
+      \begin{equation*}
+        \lambda = \left( \sigma_1(x), \dots, \sigma_{r+2s}(x) \right) = \sigma(x)
+      \end{equation*}
 
-            \end{remark}
+    \end{remark}
 
 *** Twisted embeddings
     
-     \begin{definition}
-       Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a
-       number $\tau \in F$, where $F$ is the fixed field by involution of $K$ (Definition \ref{definition:fixed-field-by-involution}) is \textbf{totally  positive} if $\forall i \in {1, \dots , n}, \; \sigma_i(\tau) \in \R^*_+$. 
-     \end{definition}
-    
+    \begin{definition}
+      Let $K$ be a number field with degree $n$ and $\sigma$ an embedding. We say that a
+      number $\tau \in F$, where $F$ is the fixed field by involution of $K$ (Definition \ref{definition:fixed-field-by-involution}) is \textbf{totally  positive} if $\forall i \in {1, \dots , n}, \; \sigma_i(\tau) \in \R^*_+$. 
+    \end{definition}
+
 
     \begin{definition}[Twisted Embedding]
       \label{definition:twisted-embeddings}
@@ -491,6 +498,9 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
       where $\tau_i = \sigma_i(\tau)$.
     \end{definition}
 * Twisted embeddings and cryptography
+  :PROPERTIES:
+  :CUSTOM_ID: twisted-embeddings-and-cryptography
+  :END:
   
 ** Twisted Ring-LWE
    In this section we present variant of the Ring-LWE (Definition \ref{definition:ring-lwe-search}) using twisted embeddings (Definition \ref{definition:twisted-embeddings}).
@@ -517,39 +527,42 @@ $r + 2s = n$. The pair $\left(r,s\right)$ is called \textbf{signature} of $K$.
      Then there is a polynomial-time reduction from $Ring-LWE_{q,\psi}$ to $Ring-LWE^\tau_{q,\psi_\tau}$ .
    \end{theorem}
 ** Error sampling in rotated \(\Z^n\)-lattices
+   :PROPERTIES:
+   :CUSTOM_ID: sampling-in-zn-rotated-lattices
+   :END:
 
-\begin{text}
-  In this section we present the \textit{Ortiz et al.} (\cite{Ortiz2021}, Section 8)
-  variation of the cryptosystem of Lyubashevsky, Peikert, and Regev
-  (\cite{LPV2013}, Section 8.2) using twisted embeddings. Let $R$ be an $m$-th
-  cyclotomic ring and $p, q \in \Z$ coprimes. The message space is defined as
-  $R_p$ and it is required $q$ to be coprime with every odd prime dividing
-  $m$. Consider that $\phi_\tau$ is an error distribution over $\krspace$
-  and $\lfloor{\cdot}\rceil$ denotes a valid discretization to (cosets) of $R^\vee$ or $pR^\vee$.
-  Also, $\hat{m} = m/2$ if $m$ is even, otherwise $\hat{m} = m$. Finally, for any
-  $\overline{a} \in \Z_q$, let $[[\overline{a}]]$ denote the unique representative
-  $a \in (\overline{a} + q\Z) \cap [-q/2, q/2)$, which is entry-wise extended to
-  polynomials.
+   \begin{text}
+     In this section we present the \textit{Ortiz et al.} (\cite{Ortiz2021}, Section 8)
+     variation of the cryptosystem of Lyubashevsky, Peikert, and Regev
+     (\cite{LPV2013}, Section 8.2) using twisted embeddings. Let $R$ be an $m$-th
+     cyclotomic ring and $p, q \in \Z$ coprimes. The message space is defined as
+     $R_p$ and it is required $q$ to be coprime with every odd prime dividing
+     $m$. Consider that $\phi_\tau$ is an error distribution over $\krspace$
+     and $\lfloor{\cdot}\rceil$ denotes a valid discretization to (cosets) of $R^\vee$ or $pR^\vee$.
+     Also, $\hat{m} = m/2$ if $m$ is even, otherwise $\hat{m} = m$. Finally, for any
+     $\overline{a} \in \Z_q$, let $[[\overline{a}]]$ denote the unique representative
+     $a \in (\overline{a} + q\Z) \cap [-q/2, q/2)$, which is entry-wise extended to
+     polynomials.
 
-  \begin{itemize}
-  \item \textbf{Key generation}: choose a uniformly random $a \in R_q$. Choose $x
-    \longleftarrow \lfloor{\phi_\tau}\rceil$ and $e \longleftarrow \lfloor{p \cdot \phi_\tau}\rceil_{pR^\vee}$. Output $(a,b = \hat{m}\cdot(a \cdot x + e)
-    \mod{qR} ) \in R_q \times R_q$ as the public key and $x$ as the secret key.
-  \item \textbf{Encryption}: choose $z \longleftarrow \longleftarrow \lfloor{\phi_\tau}\rceil_R^\vee$, $e' \longleftarrow \lfloor{p \cdot
-      \phi_\tau}\rceil_{pR^\vee}$ and  $e'' \longleftarrow \lfloor{p \cdot \phi_\tau}\rceil_{t^{-1}\mu +pR^\vee}$, where $\mu \in R_p$ is
-    the word to be encrypted. Let $u = \hat{m} \cdot (a \cdot z + e') \mod{qR}$ and $v =
-    z \cdot b + e'' \in R_q^\vee$. Output $(u,v) \in R_q \times R^\vee_q$.
-  \item \textbf{Decryption}: Given the encrypted message $(u,v)$, compute $v - u
-    \cdot x \mod{qR^\vee}$, and decode it to $d = [[v - u \cdot x]] \in R^\vee$. Output $\mu = t \cdot
-    d \mod{pR}$. 
-  \end{itemize}
+     \begin{itemize}
+     \item \textbf{Key generation}: choose a uniformly random $a \in R_q$. Choose $x
+       \longleftarrow \lfloor{\phi_\tau}\rceil$ and $e \longleftarrow \lfloor{p \cdot \phi_\tau}\rceil_{pR^\vee}$. Output $(a,b = \hat{m}\cdot(a \cdot x + e)
+       \mod{qR} ) \in R_q \times R_q$ as the public key and $x$ as the secret key.
+     \item \textbf{Encryption}: choose $z \longleftarrow \longleftarrow \lfloor{\phi_\tau}\rceil_R^\vee$, $e' \longleftarrow \lfloor{p \cdot
+         \phi_\tau}\rceil_{pR^\vee}$ and  $e'' \longleftarrow \lfloor{p \cdot \phi_\tau}\rceil_{t^{-1}\mu +pR^\vee}$, where $\mu \in R_p$ is
+       the word to be encrypted. Let $u = \hat{m} \cdot (a \cdot z + e') \mod{qR}$ and $v =
+       z \cdot b + e'' \in R_q^\vee$. Output $(u,v) \in R_q \times R^\vee_q$.
+     \item \textbf{Decryption}: Given the encrypted message $(u,v)$, compute $v - u
+       \cdot x \mod{qR^\vee}$, and decode it to $d = [[v - u \cdot x]] \in R^\vee$. Output $\mu = t \cdot
+       d \mod{pR}$. 
+     \end{itemize}
 
-  In this cryptosystem, the most expensive operations to compute are the error sampling, its discretization and the polynomial multiplications. When $R$ is
-  the ring of integers of the maximal real subfield
-  (\ref{example:maximal-real-subfield}) $\maxrs$, the sampling of error terms can be performed directly over $(K_\R, \langle{\cdot,\cdot}\rangle_\tau)$ in the orthonormal basis while preserving the spherical format and standard deviation in respect to the corresponding distribution in $H$. The efficiency
-of discrete sampling when $K = \Q(\zeta_p + \zeta_p^{-1})$ is reinforced by the fact
-that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding to the nearest integer. (\cite{Ortiz2021}, Section 8).
-\end{text}
+     In this cryptosystem, the most expensive operations to compute are the error sampling, its discretization and the polynomial multiplications. When $R$ is
+     the ring of integers of the maximal real subfield
+     (\ref{example:maximal-real-subfield}) $\maxrs$, the sampling of error terms can be performed directly over $(K_\R, \langle{\cdot,\cdot}\rangle_\tau)$ in the orthonormal basis while preserving the spherical format and standard deviation in respect to the corresponding distribution in $H$. The efficiency
+   of discrete sampling when $K = \Q(\zeta_p + \zeta_p^{-1})$ is reinforced by the fact
+   that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding to the nearest integer. (\cite{Ortiz2021}, Section 8).
+   \end{text}
 ** Impacts of the twisted embeddings
    
    \begin{text}
@@ -572,80 +585,84 @@ that the discretization in $\Z^n$-lattices is simply a coordinate-wise rounding 
 
    \end{text}
 
-     \begin{example}[\cite{Ortiz2021}, Example 3]\label{example:twisted-embeddings-generating-different-lattices-from-the-same-ring}
-    Let $K = \Q(\sqrt{3}) = \{a + b\sqrt{3} \;;\; a,b \in \Q\}$ be a totally
-    real number field with degree 2. It follows that the fixed field by
-    involution $F=K$. For any totally positive element $\tau \in F$, consider
-    the lattice $M_\tau = \Ok = \Z[\sqrt{3}]$ in the inner product space
-    $(K_\R,\langle \cdot,\cdot \rangle_\tau)$. The set $\{1,\sqrt{3}\}$ in a
-    $\Z$-basis of $M_\tau$ and the Gram matrix of the lattice $M_\tau$ is given by:
-    \[G_\tau =
-      \begin{bmatrix}
-        Tr_K(\tau) & Tr_K(\tau\sqrt{3}) \\
-        Tr_K(\tau\sqrt{3}) & Tr_k(3\tau)
-      \end{bmatrix}
-    \]
+   \begin{example}[\cite{Ortiz2021}, Example 3]\label{example:twisted-embeddings-generating-different-lattices-from-the-same-ring}
+  Let $K = \Q(\sqrt{3}) = \{a + b\sqrt{3} \;;\; a,b \in \Q\}$ be a totally
+  real number field with degree 2. It follows that the fixed field by
+  involution $F=K$. For any totally positive element $\tau \in F$, consider
+  the lattice $M_\tau = \Ok = \Z[\sqrt{3}]$ in the inner product space
+  $(K_\R,\langle \cdot,\cdot \rangle_\tau)$. The set $\{1,\sqrt{3}\}$ in a
+  $\Z$-basis of $M_\tau$ and the Gram matrix of the lattice $M_\tau$ is given by:
+  \[G_\tau =
+    \begin{bmatrix}
+      Tr_K(\tau) & Tr_K(\tau\sqrt{3}) \\
+      Tr_K(\tau\sqrt{3}) & Tr_k(3\tau)
+    \end{bmatrix}
+  \]
 
-    For example, for $\tau = 1$ \text{and} $\tau = 2 + \sqrt{3}$, the Gram matrices are
-    given by:
-    \[
-      G_1 =
-      \begin{bmatrix}
-        2 & 0 \\
-        0 & 6
-      \end{bmatrix}
-      \;\;\;and\;\;\;
-      G_{2+\sqrt{3}} =
-      \begin{bmatrix}
-        4 & 6 \\
-        6 & 12
-      \end{bmatrix}
-    \]
-    It can be shown that these two lattices are not equivalent.
-  \end{example}
+  For example, for $\tau = 1$ \text{and} $\tau = 2 + \sqrt{3}$, the Gram matrices are
+  given by:
+  \[
+    G_1 =
+    \begin{bmatrix}
+      2 & 0 \\
+      0 & 6
+    \end{bmatrix}
+    \;\;\;and\;\;\;
+    G_{2+\sqrt{3}} =
+    \begin{bmatrix}
+      4 & 6 \\
+      6 & 12
+    \end{bmatrix}
+  \]
+  It can be shown that these two lattices are not equivalent.
+\end{example}
 
-  \begin{text}
-    The theorem (Theorem \ref{theorem:ideal-lattices-doesnt-change-gaussian}),
-    proposition
-    (Proposition \ref{prop:maximal-real-subfield-generates-orthonormal-lattice})
-    and corollary (Corollary \ref{corollary:maximal-real-subfield-prime-p-greater-than-5}) bellow show that we can build $\Z^n$-rotated
-    lattices from the maximal real subfield
-    (Example \ref{example:maximal-real-subfield}) using twisted embeddings, \ie, the
-    errors sampled on these lattices can be trivially converted to polynomial
-    representation as elements of a number field.
-  \end{text}
-  
-\begin{theorem}[\cite{Ortiz2021}, Theorem 5]\label{theorem:ideal-lattices-doesnt-change-gaussian}
-  Let $K$ be a number field with a fixed field by the involution $F$. Consider $\tau
-  \in F$ totally positive and $\Id \subset \Ok$ a fractional ideal such that $\Id$ is an
-  ideal lattice in $(K_\R , \langle \cdot,\cdot \rangle_\tau )$. If $\Id$ is an orthonormal lattice, then both the format and the standard deviation of a spherical Gaussian distribution in an orthonormal basis of $\Id \subset K_\R$ are preserved when seen in the canonical basis of the space $H$ (via the twisted embedding $\sigma_\tau$).
-\end{theorem}
+   \begin{text}
+     The theorem (Theorem \ref{theorem:ideal-lattices-doesnt-change-gaussian}),
+     proposition
+     (Proposition \ref{prop:maximal-real-subfield-generates-orthonormal-lattice})
+     and corollary (Corollary \ref{corollary:maximal-real-subfield-prime-p-greater-than-5}) bellow show that we can build $\Z^n$-rotated
+     lattices from the maximal real subfield
+     (Example \ref{example:maximal-real-subfield}) using twisted embeddings, \ie, the
+     errors sampled on these lattices can be trivially converted to polynomial
+     representation as elements of a number field.
+   \end{text}
 
-\begin{proposition}[\cite{Ortiz2021}, Proposition 2]\label{prop:maximal-real-subfield-generates-orthonormal-lattice}
-Let $p \geq 5$ be a prime number, and let $K = \maxrs$ and $\tau =
-  \frac{1}{p}(1 - \zeta_p)( 1 - \zeta^{- 1}_p)$. Then $\Ok$ in $\krspace$ is an
-  orthonormal lattice with basis $\Cb^\perp = \{e_1^\prime, \dots, e^\prime_n \;;\; e^\prime_n = e_n
-  \;\; \text{and} \;\; e^\prime_j = e_j +  e^\prime_{j+ 1} \}$ where $\Cb = \{e_1,\dots,e_n\}$
-  is the integral basis of $K$.
-\end{proposition}
+   \begin{theorem}[\cite{Ortiz2021}, Theorem 5]\label{theorem:ideal-lattices-doesnt-change-gaussian}
+     Let $K$ be a number field with a fixed field by the involution $F$. Consider $\tau
+     \in F$ totally positive and $\Id \subset \Ok$ a fractional ideal such that $\Id$ is an
+     ideal lattice in $(K_\R , \langle \cdot,\cdot \rangle_\tau )$. If $\Id$ is an orthonormal lattice, then both the format and the standard deviation of a spherical Gaussian distribution in an orthonormal basis of $\Id \subset K_\R$ are preserved when seen in the canonical basis of the space $H$ (via the twisted embedding $\sigma_\tau$).
+   \end{theorem}
 
-\begin{corollary}[\cite{Ortiz2021}, Corollary 1]\label{corollary:maximal-real-subfield-prime-p-greater-than-5}
-  Let $K = \maxrs$ for $p \geq 5$ prime and let $v \in \Ok$ be a random variable
-  distributed as $\psi_s^n$ in the basis $\Cb^\perp$. Then, the dstribution of $(T^{-1}
-  \circ \sigma_\tau)(v)$ for $\tau = \frac{1}{p}(1 - \zeta_p)( 1 - \zeta^{- 1}_p)$, seen in the
-  canonical basis of $H$, is the spherical Gaussian $\psi_s^n$.
-\end{corollary}
+   \begin{proposition}[\cite{Ortiz2021}, Proposition 2]\label{prop:maximal-real-subfield-generates-orthonormal-lattice}
+   Let $p \geq 5$ be a prime number, and let $K = \maxrs$ and $\tau =
+     \frac{1}{p}(1 - \zeta_p)( 1 - \zeta^{- 1}_p)$. Then $\Ok$ in $\krspace$ is an
+     orthonormal lattice with basis $\Cb^\perp = \{e_1^\prime, \dots, e^\prime_n \;;\; e^\prime_n = e_n
+     \;\; \text{and} \;\; e^\prime_j = e_j +  e^\prime_{j+ 1} \}$ where $\Cb = \{e_1,\dots,e_n\}$
+     is the integral basis of $K$.
+   \end{proposition}
 
-These new constructions with a more variety of possible rings increase the security notions of Ring-LWE (Definitions \ref{definition:ring-lwe-search}, \ref{definition:ring-lwe-decision}) since specific rings might have specific vulnerabilities, thinking about cryptosystems security, that other rings don't. It's important to remark that each number field has its own polynomial representation and specifically a polynomial $f(x)$ that defines the ring we use as a parameter in the Ring-LWE cryptosystems. That said, the size of the parameters, therefore keys, encrypted messages etc, and the cost of the Ring-LWE operations depend on the polynomial representation of the ring and of $f(x)$.
+   \begin{corollary}[\cite{Ortiz2021}, Corollary 1]\label{corollary:maximal-real-subfield-prime-p-greater-than-5}
+     Let $K = \maxrs$ for $p \geq 5$ prime and let $v \in \Ok$ be a random variable
+     distributed as $\psi_s^n$ in the basis $\Cb^\perp$. Then, the dstribution of $(T^{-1}
+     \circ \sigma_\tau)(v)$ for $\tau = \frac{1}{p}(1 - \zeta_p)( 1 - \zeta^{- 1}_p)$, seen in the
+     canonical basis of $H$, is the spherical Gaussian $\psi_s^n$.
+   \end{corollary}
 
-There is, though, an open question if there exist other number fields that we build orthonormal lattices and its polynomial arithmetic are efficient enough to be used in cryptosystems. 
+   These new constructions with a more variety of possible rings increase the security notions of Ring-LWE (Definitions \ref{definition:ring-lwe-search}, \ref{definition:ring-lwe-decision}) since specific rings might have specific vulnerabilities, thinking about cryptosystems security, that other rings don't. It's important to remark that each number field has its own polynomial representation and specifically a polynomial $f(x)$ that defines the ring we use as a parameter in the Ring-LWE cryptosystems. That said, the size of the parameters, therefore keys, encrypted messages etc, and the cost of the Ring-LWE operations depend on the polynomial representation of the ring and of $f(x)$.
+
+   There is, though, an open question if there exist other number fields that we build orthonormal lattices and its polynomial arithmetic are efficient enough to be used in cryptosystems. 
 
 * Objectives
+  :PROPERTIES:
+  :CUSTOM_ID: objectives
+  :END:
+  
   As presented in previous sections, the study of Ortiz et al. [\cite{Ortiz2021}] showed that it is possible and as secure [Theorem \ref{theorem:twisted-ring-lwe-hardness}] as default Ring-LWE [Definitions \ref{definition:ring-lwe-search}, \ref{definition:ring-lwe-decision}] to use Twisted Embeddings [Definition \ref{definition:twisted-embeddings}] instead of the Canonical Embedding [Definition \ref{definition:canonical-embedding}] to increase the variety of rings and lattices that can be used, \ie, the arithmetic involved can be done in an efficient way. Example [\ref{example:twisted-embeddings-generating-different-lattices-from-the-same-ring}] shows that from the same ring, it is possible to generate different lattices, changing the parameters in the Twisted Embedding.
 
-  With the cyclotomic power of two number field [Example \ref{example:cyclotomic-number-field}] we can sample errors from orthonormal lattices using the canonical embedding, with the twisted embeddings we can do it with the maximal real subfield [Example \ref{example:maximal-real-subfield}] for any prime $p$ bigger than $3$ [Prop \ref{prop:maximal-real-subfield-generates-orthonormal-lattice}, Corollary \ref{corollary:maximal-real-subfield-prime-p-greater-than-5}], we want in this work to validate the idea of using twisted embeddings in cryptography, explore the theoretical and the practical aspects of this proposal.
+  With the cyclotomic power-of-two number field [Example \ref{example:cyclotomic-number-field}] we can sample errors from orthonormal lattices using the canonical embedding, with the twisted embeddings we can do it with the maximal real subfield [Example \ref{example:maximal-real-subfield}] for any prime $p$ bigger than $3$ [Prop \ref{prop:maximal-real-subfield-generates-orthonormal-lattice}, Corollary \ref{corollary:maximal-real-subfield-prime-p-greater-than-5}], we want in this work to validate the idea of using twisted embeddings in cryptography, explore the theoretical and the practical aspects of this proposal.
 
-  In practical aspects, the core of this study, we want to compare the implementation of the Twisted Ring-LWE and Ring-LWE comparing specific instances, \ie, maximum real subfield versus the cyclotomic power of two, that includes our implementation and discovery about the sizes of the keys and the messages to check the viability of this proposal not only in security terms [Theorem \ref{theorem:twisted-ring-lwe-hardness}] but also the content sizes and efficiency terms.
+  In practical aspects, the core of this study, we want to compare the implementation of the Twisted Ring-LWE and Ring-LWE comparing specific instances, \ie, maximum real subfield versus the cyclotomic power-of-two, that includes our implementation and discovery about the sizes of the keys and the messages to check the viability of this proposal not only in security terms [Theorem \ref{theorem:twisted-ring-lwe-hardness}] but also the content sizes and efficiency terms.
 
   In theoretical aspects, we want to study the polynomial arithmetic of the maximal real subfield along with lattices generated by it and its properties, including the relation between the orthonormal basis and the efficient conversion between lattices points and elements of number fields [Remmark \ref{remmark:lattices-number-field-correspondence}] and if it is possible to achieve a satisfactory efficiency with non-orthonormal basis, also, within the orthonormal context, if more number fields have efficient polynomial arithmetic. And, of course, a discovery about keys and message sizes using these number fields.
 ** Objectives-list [5/5]
@@ -660,9 +677,19 @@ There is, though, an open question if there exist other number fields that we bu
    - [X] investigar o tamanho das chaves e mensagens quando usamos esses aneis 
   
 * Methodology
-** Literature review
-   metodologia consiste em fazer implementaçoes progressivamente mais eficientes ou por meio de melhorias na forma da implementação ou propondo melhoras teóricas que tenham impacto na implmentação, representação de estruturas matemáticas 
+  :PROPERTIES:
+  :CUSTOM_ID: methodology
+  :END:
+
+  With the aim of validating the idea of using twisted embeddings in Ring LWE based cryptosystems the proposed methodology consists in making progressively more efficient implementations or proposing theoretical improvements that impacts the implementation itself, such as representation of mathematical structures.
+
+  In order to achieve that, the research approach will rely on a consistent literature reviewof new literature;
+
 * Timeline
+  :PROPERTIES:
+  :CUSTOM_ID: timeline
+  :END:
+  
 ** Activities
    - First semester of 2021
      - Study the Twisted Ring LWE problem and implementation
@@ -674,7 +701,12 @@ There is, though, an open question if there exist other number fields that we bu
    - Second semester of 2022
      Defense of research thesis
      
-
+* Bibliography
+  :PROPERTIES:
+  :UNNUMBERED: t
+  :CUSTOM_ID: bibliography
+  :END:
+  
   \bibliographystyle{plain}
   \bibliography{library,ic-tese-v3}
 
