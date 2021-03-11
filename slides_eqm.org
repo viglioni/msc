@@ -106,6 +106,40 @@
      \end{align*}
 
    \end{text}
+** Algebraic lattices
+     Let $\{\omega_1,...,\omega_n\}$ be an integral basis of $K$. The $n$ vectors $v_i = \sigma(\omega_i)
+\in \R^n$ are linearly independent, so they define a full rank algebraic lattice
+$\Lambda = \Lambda(\Ok) = \sigma(\Ok)$.
+
+The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by
+
+\begin{equation*}
+  \label{definition:gen-matrix-alg-lattices}
+  \begin{pmatrix}
+    \sigma_1(\omega_1) & $\dots$ &  \sigma_{r+2s}(\omega_1) \\
+    & \vdots & \\
+    \sigma_1(\omega_n) & $\dots$ & \sigma_{r+2s}(\omega_n) \\
+  \end{pmatrix}.  
+\end{equation*}
+** Twisted embeddings and number fields
+     
+ \begin{text}
+   An embedding creates the correspondence between a point $\lambda \in \Lambda \subset \R^n$ of an algebraic lattice.
+   \begin{align*} 
+     \lambda &= (\lambda_1,\dots,\lambda_{r+2s}) \in \Lambda \\
+             &= \left( \sum_{i=1}^n{z_i\sigma_1(\omega_i)} , \dots , \sum_{i=1}^n{z_i\sigma_{r+2s}(\omega_i)} \right) \\
+             &= \left( \sigma_1\left(   \sum_{i=1}^n{z_i\omega_i} \right) , \dots , \sigma_{r+2s} \left( \sum_{i=1}^n{z_i\omega_i}  \right) \right), 
+   \end{align*}
+
+   where $z_i \in \Z$. Since any element $x \in \Ok$ has the form $x =
+   \sum_{i=1}^n{\lambda_i\omega_i}$, we can conclude that
+
+   \begin{equation*}
+     \lambda = \left( \sigma_1(x), \dots, \sigma_{r+2s}(x) \right) = \sigma(x).
+   \end{equation*}
+ \end{text}
+
+
 * Learning problems
 ** Learning from Parity
    \begin{text}
@@ -157,7 +191,8 @@
    - Let $R$ be an /m/-th cyclotomic ring and $p, q \in \Z$ coprime numbers.
    - The message space is defined as $R_p$.
    - Consider that $\phi_\tau$ is an error distribution over $\krspace$ and $\lfloor{\cdot}\rceil$ denotes a valid discretization to (cosets) of $R^\vee$ or $pR^\vee$.
-   - Finally, for any $\overline{a} \in \Z_q$, let $[[\overline{a}]]$ denote the unique representative $a \in (\overline{a} + q\Z) \cap [-q/2, q/2)$, which is entry-wise extended to polynomials.
+   - $\hat{m} = m/2$ if $m$ is even, otherwise $\hat{m} = m$.
+   - For any $\overline{a} \in \Z_q$, let $[[\overline{a}]]$ denote the unique representative $a \in (\overline{a} + q\Z) \cap [-q/2, q/2)$, which is entry-wise extended to polynomials.
 ** Cryptosystem presented by Ortiz et al.
    \begin{itemize}
   \item \textbf{Key generation}: choose a uniformly random $a \in R_q$. Choose $x
