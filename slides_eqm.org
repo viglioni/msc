@@ -150,15 +150,31 @@
    \end{text}
 ** Twisted Ring-LWE hardness
    Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
-\begin{theorem}
-  \label{theorem:twisted-ring-lwe-hardness}
-  Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
-  Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
-  Then there is a polynomial-time reduction from $\mbox{Ring-LWE}_{q,\psi}$ to $\mbox{Ring-LWE}^\tau_{q,\psi_\tau}$.
-\end{theorem}
+   \begin{theorem}
+     \label{theorem:twisted-ring-lwe-hardness}
+     Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
+     Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
+     Then there is a polynomial-time reduction from $\mbox{Ring-LWE}_{q,\psi}$ to $\mbox{Ring-LWE}^\tau_{q,\psi_\tau}$.
+   \end{theorem}
 * Twisted R-LWE cryptosystem
-** asd
-   asd
+** Cryptosystem presented by Ortiz et al.
+   - Let $R$ be an /m/-th cyclotomic ring and $p, q \in \Z$ coprime numbers.
+   - The message space is defined as $R_p$.
+   - Consider that $\phi_\tau$ is an error distribution over $\krspace$ and $\lfloor{\cdot}\rceil$ denotes a valid discretization to (cosets) of $R^\vee$ or $pR^\vee$.
+   - Finally, for any $\overline{a} \in \Z_q$, let $[[\overline{a}]]$ denote the unique representative $a \in (\overline{a} + q\Z) \cap [-q/2, q/2)$, which is entry-wise extended to polynomials.
+** Cryptosystem presented by Ortiz et al.
+   \begin{itemize}
+  \item \textbf{Key generation}: choose a uniformly random $a \in R_q$. Choose $x
+    \longleftarrow \lfloor{\phi_\tau}\rceil$ and $e \longleftarrow \lfloor{p \cdot \phi_\tau}\rceil_{pR^\vee}$. Output $(a,b = \hat{m}\cdot(a \cdot x + e)
+    \mod{qR} ) \in R_q \times R_q$ as the public key and $x$ as the secret key.
+  \item \textbf{Encryption}: choose $z \longleftarrow  \lfloor{\phi_\tau}\rceil_R^\vee$, $e' \longleftarrow \lfloor{p \cdot
+      \phi_\tau}\rceil_{pR^\vee}$ and  $e'' \longleftarrow \lfloor{p \cdot \phi_\tau}\rceil_{t^{-1}\mu +pR^\vee}$, where $\mu \in R_p$ is
+    the word to be encrypted. Let $u = \hat{m} \cdot (a \cdot z + e') \mod{qR}$ and $v =
+    z \cdot b + e'' \in R_q^\vee$. Output $(u,v) \in R_q \times R^\vee_q$.
+  \item \textbf{Decryption}: Given the encrypted message $(u,v)$, compute $v - u
+    \cdot x \mod{qR^\vee}$, and decode it to $d = [[v - u \cdot x]] \in R^\vee$. Output $\mu = t \cdot
+    d \bmod{pR}$. 
+  \end{itemize}
 * Objectives
 ** Main goal
    - Validate the idea of using twisted embeddings in cryptography
