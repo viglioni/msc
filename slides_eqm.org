@@ -16,8 +16,95 @@
 #+options: tex:t toc:nil H:2
 #+LATEX_HEADER: \input{./config/math-config}
 
-* Twisted embeddings
+* Basic definitions
 ** Lattices
+   A \textbf{lattice} $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$.
+** Lattices
+\begin{text}
+  In other words, given $m$ linear independent vectors in $\R^n$, the set
+  $\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the lattice may be defined
+  by:
+
+  \begin{equation*}
+    \Lambda := \left\{x = \sum_{i=1}^m{\lambda_iv_i} \in \R^n \; | \; \lambda_i \in \Z\right\}.
+  \end{equation*}
+
+  That is, any $\lambda \in \Lambda$ can be written as $\lambda = Mv$, where $M$ is the
+  \textbf{generator matrix} of $\Lambda$ where each row is a vector from the basis and
+  $v \in \Z^n$.
+\end{text}
+** The /H/ space
+   \begin{text}
+     Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
+     as:
+     \begin{equation*}
+       H = \{(a_1,\dots, a_r, b_1,\dots, b_s, \overline{b_1}, \dots, \overline{b_s}) \in \C^n\},
+     \end{equation*}
+
+     where $a_i \in \R, \; \forall i \in \{1,\dots,r\}$ and $b_j \in \C, \; \forall \; j \in \{1,\dots,
+     s\}$.
+   \end{text}
+** The /H/ space
+   \begin{text}
+     For all $x = \left(x_1, \dots, x_n\right), y = \left(y_1, \dots, y_n\right) \in H$ the space
+     $H$ is endowed with inner product $\langle {x,y} \rangle_H$ defined as:
+     \begin{equation*}
+       \langle {x,y} \rangle_H = \sum_{i=1}^n{x_i \overline{y_i}} = \sum_{i=1}^r{x_i y_i} + \sum_{i=1}^s{x_{i+r} \overline{y_{i+r}}} + \sum_{i=1}^s{\overline{x_{i+r}} y_{i+r}}.
+     \end{equation*}
+
+     The $\ell_2$-norm and infinity norm of any $x \in H$ are defined as $\|x\| =
+     \sqrt{\langle{x,x}\rangle_H}$ and $\|x\|_\infty = \max{\{ |x_i| \}}_{i=1}^n $.
+   \end{text}
+** Number Fields
+** Twisted embeddings
+* Learning problems
+** Learning from Parity
+   \begin{text}
+     Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
+     define the problem \textbf{Learning from Parity (LFP)} as:
+
+     Find $s \in \Z^n_2$ such that, for $i \in \{1,\dots,m\}$
+     $$ \langle{s, a_i}\rangle \; \approx_\epsilon \; b_i \;\; (mod\; 2). $$
+
+     In other words, the equality holds with probability $1 - \epsilon$.
+   \end{text}
+** Learning with Errors
+   \begin{text}
+   Learning with Errors (LWE) is a generalization of LFP  with two new parameters
+   $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
+   \[
+     <s, a_i> \; \approx_\chi \; b_i \pmod p \;\;\; \text{or} \;\;\; <s, a_i> + \; e_i =  b_i \pmod p ,
+   \]
+   where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$.
+   \end{text}
+** Ring-LWE search
+   \begin{text}
+     Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
+     codifferent ideal of $K$. Also let $K_\R$ be the tensor product $K \otimes_\Q \R$.
+  
+
+     Let $\Psi$ be a family of distributions over $K_\R$. The \textbf{search version of the $ring-LWE$ problem}, denoted $R-LWE_{q,\Psi}$, is defined as follows: given access to arbitrarily many independent samples from $A_{s,\psi}$ for some arbitrary $s \in R_q^\vee$ and $\psi \in \Psi$, find $s$.
+   \end{text}
+** Twisted Ring-LWE
+   \begin{text}
+     For a totally positive element $\tau \in F$, let $\psi_\tau$ denote an error distribution
+     over the inner product $\langle{\cdot,\cdot}\rangle_\tau$ and $s \in R^\vee_q$ (the “secret”) be an
+     uniformly randomized element. The \emph{Twisted Ring-LWE distribution}
+     $\mathcal{A}_{s,\psi_\tau}$ produces samples of the form
+     \[
+       a, b = a \cdot s + e \pmod{qR^\vee} \in R_q \times K_\R/qR^\vee.
+   \]
+   \end{text}
+** Twisted Ring-LWE hardness
+   Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
+\begin{theorem}
+  \label{theorem:twisted-ring-lwe-hardness}
+  Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
+  Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
+  Then there is a polynomial-time reduction from $\mbox{Ring-LWE}_{q,\psi}$ to $\mbox{Ring-LWE}^\tau_{q,\psi_\tau}$.
+\end{theorem}
+* Twisted R-LWE cryptosystem
+** 
 * Objectives
 ** Main goal
    - Validate the idea of using twisted embeddings in cryptography
