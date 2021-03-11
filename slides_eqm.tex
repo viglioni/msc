@@ -1,4 +1,4 @@
-% Created 2021-03-11 Thu 17:30
+% Created 2021-03-11 Thu 19:04
 % Intended LaTeX compiler: pdflatex
 \documentclass[notheorems, bigger]{beamer}
 \usepackage[utf8]{inputenc}
@@ -31,11 +31,11 @@
 \maketitle
 
 \section{Basic definitions}
-\label{sec:org38c9e9f}
-\begin{frame}[label={sec:orgda25001}]{Lattices}
+\label{sec:orga810502}
+\begin{frame}[label={sec:orgc7cef8d}]{Lattices}
 A \textbf{lattice} \(\Lambda \subset \R^n\) is a subgroup of the additive group \(\R^n\).
 \end{frame}
-\begin{frame}[label={sec:orge674728}]{Lattices}
+\begin{frame}[label={sec:org44b5a9f}]{Lattices}
 \begin{text}
   In other words, given $m$ linear independent vectors in $\R^n$, the set
   $\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the lattice may be defined
@@ -50,10 +50,24 @@ A \textbf{lattice} \(\Lambda \subset \R^n\) is a subgroup of the additive group 
   $v \in \Z^n$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orge346c71}]{Lattices and cryptography}
-asd
+\begin{frame}[label={sec:org4d9886d}]{Lattices and cryptography}
+In the last two decades, lattice-based cryptosystems have become an important field in the cryptography community, since these cryptosystems rely on mathematical problems we believe are hard and quantum-resistant, such as the Shortest Vector Problem and the Shortest Independent Vectors Problem.
 \end{frame}
-\begin{frame}[label={sec:org2c93041}]{The \emph{H} space}
+\begin{frame}[label={sec:orgc58ca15}]{Lattices problems}
+\begin{block}{Gap Shortest Vector Problem}
+\begin{text}
+  For an approximation factor $\gamma  = \gamma(n) \geq 1$, the $GapSVP_\gamma $ is: given a lattice
+  $\Lambda$ and length $d > 0$, output \textbf{YES} if $\lambda_1(\Lambda) \leq d$ and \textbf{NO} if
+  $\lambda_1(L) > \gamma d$. 
+\end{text}
+\end{block}
+\begin{block}{Shortest Independent Vectors Problem}
+\begin{text}
+  For an approximation factor $\gamma = \gamma(n) \geq 1$, the $SIVP_\gamma$ is: given a lattice $\Lambda$, output $n$ linearly independent lattice vectors of length at most $\gamma(n) \cdot \lambda_n(\Lambda)$.
+\end{text}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:orgb1a6101}]{The \emph{H} space}
 \begin{text}
   Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
   as:
@@ -65,7 +79,7 @@ asd
   s\}$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org95a8ced}]{The \emph{H} space}
+\begin{frame}[label={sec:orgf53549e}]{The \emph{H} space}
 \begin{text}
   For all $x = \left(x_1, \dots, x_n\right), y = \left(y_1, \dots, y_n\right) \in H$ the space
   $H$ is endowed with inner product $\langle {x,y} \rangle_H$ defined as:
@@ -77,7 +91,7 @@ asd
   \sqrt{\langle{x,x}\rangle_H}$ and $\|x\|_\infty = \max{\{ |x_i| \}}_{i=1}^n $.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org152d71d}]{Number Fields}
+\begin{frame}[label={sec:org806e01a}]{Number Fields}
 \begin{text}
   For $K, L$ two fields, we denote by $L/K$ a \textbf{field extension} if  $K \subseteq
   L$. Then $L$ is said to be an \textbf{ extension field} over $K$, or just an
@@ -87,12 +101,44 @@ asd
   A field extension is called a  \textbf{number field} when it is over the rational field $\Q$. 
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orgf841564}]{Twisted embeddings}
+\begin{frame}[label={sec:org0444d13}]{Twisted embeddings}
+\begin{text}
+  Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is
+  said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$.
+  \\
+
+
+  A $\Q$-homomorphism $\phi: K \rightarrow \C$ is called an \textbf{embedding}.
+\end{text}
+\end{frame}
+\begin{frame}[label={sec:org7d48d9e}]{Twisted embeddings}
+\begin{theorem}
+  If $K$ is a number field with degree $n$ then there are
+  exactly $n$ embeddings $\sigma_i : K \rightarrow \C$ where by $\sigma_i(\theta) =
+  \theta_i$ where $\theta_i \in \C$ is a distinct zero of $K$'s
+  minimum polynomial.
+\end{theorem}
 \end{frame}
 
+\begin{frame}[label={sec:orgff835c3}]{Twisted embeddings}
+\begin{text}
+  The homomorphism $\sigma: K \rightarrow \R^r \times \C^s$, where $(r,s)$ is the signature of $K$, is the \textbf{canonical embedding} and is defined by:
+  \[
+  \sigma(x) = \left(\sigma_1(x), \ldots , \sigma_r(x), \sigma_{r+1}(x), \ldots, \sigma_{r+s}(x) \right).
+\]
+
+  Note that we could rewrite the canonical embedding as $\sigma : K \rightarrow \R^n,$
+
+  \begin{align*}
+    \sigma(x) = (& \sigma_1(x), \ldots , \sigma_r(x), \\
+            & \Re(\sigma_{r+1}(x)), \Im(\sigma_{r+1}(x)), \ldots, \Re(\sigma_{r+s}(x)), \Im(\sigma_{r+s}(x)) ).
+  \end{align*}
+
+\end{text}
+\end{frame}
 \section{Learning problems}
-\label{sec:org1c8a19e}
-\begin{frame}[label={sec:orgec4a900}]{Learning from Parity}
+\label{sec:orgfd65ac0}
+\begin{frame}[label={sec:org18b6dfb}]{Learning from Parity}
 \begin{text}
   Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
   define the problem \textbf{Learning from Parity (LFP)} as:
@@ -103,7 +149,7 @@ asd
   In other words, the equality holds with probability $1 - \epsilon$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orgf8a61ec}]{Learning with Errors}
+\begin{frame}[label={sec:org57b8d63}]{Learning with Errors}
 \begin{text}
 Learning with Errors (LWE) is a generalization of LFP  with two new parameters
 $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
@@ -113,7 +159,7 @@ $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
 where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org10b0a11}]{Ring-LWE search}
+\begin{frame}[label={sec:orgac1aeaa}]{Ring-LWE search}
 \begin{text}
   Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
   codifferent ideal of $K$. Also let $K_\R$ be the tensor product $K \otimes_\Q \R$.
@@ -122,7 +168,7 @@ where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$.
   Let $\Psi$ be a family of distributions over $K_\R$. The \textbf{search version of the $ring-LWE$ problem}, denoted $R-LWE_{q,\Psi}$, is defined as follows: given access to arbitrarily many independent samples from $A_{s,\psi}$ for some arbitrary $s \in R_q^\vee$ and $\psi \in \Psi$, find $s$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org940e1e7}]{Twisted Ring-LWE}
+\begin{frame}[label={sec:org5b5ff29}]{Twisted Ring-LWE}
 \begin{text}
   For a totally positive element $\tau \in F$, let $\psi_\tau$ denote an error distribution
   over the inner product $\langle{\cdot,\cdot}\rangle_\tau$ and $s \in R^\vee_q$ (the “secret”) be an
@@ -133,7 +179,7 @@ where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$.
 \]
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orgdbc8289}]{Twisted Ring-LWE hardness}
+\begin{frame}[label={sec:org950751d}]{Twisted Ring-LWE hardness}
 Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \begin{theorem}
   \label{theorem:twisted-ring-lwe-hardness}
@@ -143,26 +189,26 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \end{theorem}
 \end{frame}
 \section{Twisted R-LWE cryptosystem}
-\label{sec:org7560c84}
-\begin{frame}[label={sec:org454c63e}]{asd}
+\label{sec:orgd777b25}
+\begin{frame}[label={sec:org224dae2}]{asd}
 asd
 \end{frame}
 \section{Objectives}
-\label{sec:orgd0d812e}
-\begin{frame}[label={sec:orgc6f0adf}]{Main goal}
+\label{sec:org84b3b99}
+\begin{frame}[label={sec:org4f4d8fa}]{Main goal}
 \begin{itemize}
 \item Validate the idea of using twisted embeddings in cryptography
 \item Explore the theoretical and the practical aspects of this proposal
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:orgd408bfc}]{Practical aspects}
+\begin{frame}[label={sec:org488db8f}]{Practical aspects}
 \begin{itemize}
 \item Compare implementations and instances of the Twisted Ring-LWE and Ring-LWE
 \item Maximum realsubfield versus the cyclotomic power-of-tw
 \item Search for proper sizes of keys and messages
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:orgb3762a5}]{Theoretical aspects}
+\begin{frame}[label={sec:orgd7016a0}]{Theoretical aspects}
 \begin{itemize}
 \item Study the polynomial arithmetic of themaximal real subfield
 \item Study the relation between the orthonormal basis and the efficient conversion between latticepoints and elements of number field
@@ -170,8 +216,8 @@ asd
 \end{itemize}
 \end{frame}
 \section{Methodology and timeline}
-\label{sec:org26f7316}
-\begin{frame}[label={sec:org7df1555}]{Methodology}
+\label{sec:orga14be08}
+\begin{frame}[label={sec:org9a36077}]{Methodology}
 \begin{itemize}
 \item \textbf{Literature Review:} review proposals of new cryptosystems, such as \emph{NTTRU}.
 \item \textbf{Theoretical experiments:} perform experiments using algebra
@@ -181,7 +227,7 @@ asd
 \item \textbf{Practical experiments:} to estimate the cost in terms of clock cycles, also key and message sizes.
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:org6f43884}]{Timeline}
+\begin{frame}[label={sec:orgc9972f2}]{Timeline}
 \begin{itemize}
 \item First and second semesters of 2021
 \begin{itemize}
@@ -198,5 +244,5 @@ asd
 \end{itemize}
 \end{frame}
 \section{Thank you!}
-\label{sec:orgab0d7df}
+\label{sec:orgf34533f}
 \end{document}

@@ -34,7 +34,18 @@
   $v \in \Z^n$.
 \end{text}
 ** Lattices and cryptography
-   asd
+   In the last two decades, lattice-based cryptosystems have become an important field in the cryptography community, since these cryptosystems rely on mathematical problems we believe are hard and quantum-resistant, such as the Shortest Vector Problem and the Shortest Independent Vectors Problem.
+** Lattices problems
+*** Gap Shortest Vector Problem
+    \begin{text}
+      For an approximation factor $\gamma  = \gamma(n) \geq 1$, the $GapSVP_\gamma $ is: given a lattice
+      $\Lambda$ and length $d > 0$, output \textbf{YES} if $\lambda_1(\Lambda) \leq d$ and \textbf{NO} if
+      $\lambda_1(L) > \gamma d$. 
+    \end{text}
+*** Shortest Independent Vectors Problem
+    \begin{text}
+      For an approximation factor $\gamma = \gamma(n) \geq 1$, the $SIVP_\gamma$ is: given a lattice $\Lambda$, output $n$ linearly independent lattice vectors of length at most $\gamma(n) \cdot \lambda_n(\Lambda)$.
+    \end{text}
 ** The /H/ space
    \begin{text}
      Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
@@ -67,7 +78,38 @@
      A field extension is called a  \textbf{number field} when it is over the rational field $\Q$. 
    \end{text}
 ** Twisted embeddings
-   
+   \begin{text}
+     Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is
+     said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$.
+     \\
+
+
+     A $\Q$-homomorphism $\phi: K \rightarrow \C$ is called an \textbf{embedding}.
+   \end{text}
+** Twisted embeddings
+
+   \begin{theorem}
+     If $K$ is a number field with degree $n$ then there are
+     exactly $n$ embeddings $\sigma_i : K \rightarrow \C$ where by $\sigma_i(\theta) =
+     \theta_i$ where $\theta_i \in \C$ is a distinct zero of $K$'s
+     minimum polynomial.
+   \end{theorem}
+
+** Twisted embeddings
+   \begin{text}
+     The homomorphism $\sigma: K \rightarrow \R^r \times \C^s$, where $(r,s)$ is the signature of $K$, is the \textbf{canonical embedding} and is defined by:
+     \[
+     \sigma(x) = \left(\sigma_1(x), \ldots , \sigma_r(x), \sigma_{r+1}(x), \ldots, \sigma_{r+s}(x) \right).
+   \]
+
+     Note that we could rewrite the canonical embedding as $\sigma : K \rightarrow \R^n,$
+
+     \begin{align*}
+       \sigma(x) = (& \sigma_1(x), \ldots , \sigma_r(x), \\
+               & \Re(\sigma_{r+1}(x)), \Im(\sigma_{r+1}(x)), \ldots, \Re(\sigma_{r+s}(x)), \Im(\sigma_{r+s}(x)) ).
+     \end{align*}
+
+   \end{text}
 * Learning problems
 ** Learning from Parity
    \begin{text}
