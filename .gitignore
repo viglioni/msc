@@ -6,6 +6,9 @@
 !eqm.org
 !eqm.pdf
 !eqm.tex
+!slides_eqm.org
+!slides_eqm.pdf
+!slides_eqm.tex
 !config/
 !config/*.cls
 !config/*.toc
