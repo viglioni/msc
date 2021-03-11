@@ -33,6 +33,8 @@
   \textbf{generator matrix} of $\Lambda$ where each row is a vector from the basis and
   $v \in \Z^n$.
 \end{text}
+** Lattices and cryptography
+   asd
 ** The /H/ space
    \begin{text}
      Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
@@ -56,7 +58,16 @@
      \sqrt{\langle{x,x}\rangle_H}$ and $\|x\|_\infty = \max{\{ |x_i| \}}_{i=1}^n $.
    \end{text}
 ** Number Fields
+   \begin{text}
+     For $K, L$ two fields, we denote by $L/K$ a \textbf{field extension} if  $K \subseteq
+     L$. Then $L$ is said to be an \textbf{ extension field} over $K$, or just an
+     \textbf{extension} over $K$. In a field extension $L/K$, $L$ has the structure of a vector space over $K$.
+
+
+     A field extension is called a  \textbf{number field} when it is over the rational field $\Q$. 
+   \end{text}
 ** Twisted embeddings
+   
 * Learning problems
 ** Learning from Parity
    \begin{text}
@@ -104,7 +115,8 @@
   Then there is a polynomial-time reduction from $\mbox{Ring-LWE}_{q,\psi}$ to $\mbox{Ring-LWE}^\tau_{q,\psi_\tau}$.
 \end{theorem}
 * Twisted R-LWE cryptosystem
-** 
+** asd
+   asd
 * Objectives
 ** Main goal
    - Validate the idea of using twisted embeddings in cryptography

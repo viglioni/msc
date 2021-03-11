@@ -1,4 +1,4 @@
-% Created 2021-03-11 Thu 15:12
+% Created 2021-03-11 Thu 17:30
 % Intended LaTeX compiler: pdflatex
 \documentclass[notheorems, bigger]{beamer}
 \usepackage[utf8]{inputenc}
@@ -31,11 +31,11 @@
 \maketitle
 
 \section{Basic definitions}
-\label{sec:org910b0d3}
-\begin{frame}[label={sec:orga3d7337}]{Lattices}
+\label{sec:org38c9e9f}
+\begin{frame}[label={sec:orgda25001}]{Lattices}
 A \textbf{lattice} \(\Lambda \subset \R^n\) is a subgroup of the additive group \(\R^n\).
 \end{frame}
-\begin{frame}[label={sec:org48f51cf}]{Lattices}
+\begin{frame}[label={sec:orge674728}]{Lattices}
 \begin{text}
   In other words, given $m$ linear independent vectors in $\R^n$, the set
   $\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the lattice may be defined
@@ -50,7 +50,10 @@ A \textbf{lattice} \(\Lambda \subset \R^n\) is a subgroup of the additive group 
   $v \in \Z^n$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org80343f4}]{The \emph{H} space}
+\begin{frame}[label={sec:orge346c71}]{Lattices and cryptography}
+asd
+\end{frame}
+\begin{frame}[label={sec:org2c93041}]{The \emph{H} space}
 \begin{text}
   Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
   as:
@@ -62,7 +65,7 @@ A \textbf{lattice} \(\Lambda \subset \R^n\) is a subgroup of the additive group 
   s\}$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orgd745a28}]{The \emph{H} space}
+\begin{frame}[label={sec:org95a8ced}]{The \emph{H} space}
 \begin{text}
   For all $x = \left(x_1, \dots, x_n\right), y = \left(y_1, \dots, y_n\right) \in H$ the space
   $H$ is endowed with inner product $\langle {x,y} \rangle_H$ defined as:
@@ -74,13 +77,22 @@ A \textbf{lattice} \(\Lambda \subset \R^n\) is a subgroup of the additive group 
   \sqrt{\langle{x,x}\rangle_H}$ and $\|x\|_\infty = \max{\{ |x_i| \}}_{i=1}^n $.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orgfdd8727}]{Number Fields}
+\begin{frame}[label={sec:org152d71d}]{Number Fields}
+\begin{text}
+  For $K, L$ two fields, we denote by $L/K$ a \textbf{field extension} if  $K \subseteq
+  L$. Then $L$ is said to be an \textbf{ extension field} over $K$, or just an
+  \textbf{extension} over $K$. In a field extension $L/K$, $L$ has the structure of a vector space over $K$.
+
+
+  A field extension is called a  \textbf{number field} when it is over the rational field $\Q$. 
+\end{text}
 \end{frame}
-\begin{frame}[label={sec:orgbfac81f}]{Twisted embeddings}
+\begin{frame}[label={sec:orgf841564}]{Twisted embeddings}
 \end{frame}
+
 \section{Learning problems}
-\label{sec:org8c8f00d}
-\begin{frame}[label={sec:org66f7add}]{Learning from Parity}
+\label{sec:org1c8a19e}
+\begin{frame}[label={sec:orgec4a900}]{Learning from Parity}
 \begin{text}
   Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
   define the problem \textbf{Learning from Parity (LFP)} as:
@@ -91,7 +103,7 @@ A \textbf{lattice} \(\Lambda \subset \R^n\) is a subgroup of the additive group 
   In other words, the equality holds with probability $1 - \epsilon$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org022b019}]{Learning with Errors}
+\begin{frame}[label={sec:orgf8a61ec}]{Learning with Errors}
 \begin{text}
 Learning with Errors (LWE) is a generalization of LFP  with two new parameters
 $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
@@ -101,7 +113,7 @@ $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
 where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orgd929b35}]{Ring-LWE search}
+\begin{frame}[label={sec:org10b0a11}]{Ring-LWE search}
 \begin{text}
   Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
   codifferent ideal of $K$. Also let $K_\R$ be the tensor product $K \otimes_\Q \R$.
@@ -110,7 +122,7 @@ where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$.
   Let $\Psi$ be a family of distributions over $K_\R$. The \textbf{search version of the $ring-LWE$ problem}, denoted $R-LWE_{q,\Psi}$, is defined as follows: given access to arbitrarily many independent samples from $A_{s,\psi}$ for some arbitrary $s \in R_q^\vee$ and $\psi \in \Psi$, find $s$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org909a55f}]{Twisted Ring-LWE}
+\begin{frame}[label={sec:org940e1e7}]{Twisted Ring-LWE}
 \begin{text}
   For a totally positive element $\tau \in F$, let $\psi_\tau$ denote an error distribution
   over the inner product $\langle{\cdot,\cdot}\rangle_\tau$ and $s \in R^\vee_q$ (the “secret”) be an
@@ -121,7 +133,7 @@ where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$.
 \]
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orgd91df04}]{Twisted Ring-LWE hardness}
+\begin{frame}[label={sec:orgdbc8289}]{Twisted Ring-LWE hardness}
 Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \begin{theorem}
   \label{theorem:twisted-ring-lwe-hardness}
@@ -131,25 +143,26 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \end{theorem}
 \end{frame}
 \section{Twisted R-LWE cryptosystem}
-\label{sec:org0663289}
-\begin{frame}[label={sec:orgc5d7884}]{}
+\label{sec:org7560c84}
+\begin{frame}[label={sec:org454c63e}]{asd}
+asd
 \end{frame}
 \section{Objectives}
-\label{sec:orgf0d1a96}
-\begin{frame}[label={sec:orgbe9ec04}]{Main goal}
+\label{sec:orgd0d812e}
+\begin{frame}[label={sec:orgc6f0adf}]{Main goal}
 \begin{itemize}
 \item Validate the idea of using twisted embeddings in cryptography
 \item Explore the theoretical and the practical aspects of this proposal
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:org62e0a38}]{Practical aspects}
+\begin{frame}[label={sec:orgd408bfc}]{Practical aspects}
 \begin{itemize}
 \item Compare implementations and instances of the Twisted Ring-LWE and Ring-LWE
 \item Maximum realsubfield versus the cyclotomic power-of-tw
 \item Search for proper sizes of keys and messages
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:orgdf7e6b7}]{Theoretical aspects}
+\begin{frame}[label={sec:orgb3762a5}]{Theoretical aspects}
 \begin{itemize}
 \item Study the polynomial arithmetic of themaximal real subfield
 \item Study the relation between the orthonormal basis and the efficient conversion between latticepoints and elements of number field
@@ -157,8 +170,8 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \end{itemize}
 \end{frame}
 \section{Methodology and timeline}
-\label{sec:org43d1509}
-\begin{frame}[label={sec:org7d8e502}]{Methodology}
+\label{sec:org26f7316}
+\begin{frame}[label={sec:org7df1555}]{Methodology}
 \begin{itemize}
 \item \textbf{Literature Review:} review proposals of new cryptosystems, such as \emph{NTTRU}.
 \item \textbf{Theoretical experiments:} perform experiments using algebra
@@ -168,7 +181,7 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \item \textbf{Practical experiments:} to estimate the cost in terms of clock cycles, also key and message sizes.
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:orgc115c17}]{Timeline}
+\begin{frame}[label={sec:org6f43884}]{Timeline}
 \begin{itemize}
 \item First and second semesters of 2021
 \begin{itemize}
@@ -185,5 +198,5 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \end{itemize}
 \end{frame}
 \section{Thank you!}
-\label{sec:orgf84f7c8}
+\label{sec:orgab0d7df}
 \end{document}
