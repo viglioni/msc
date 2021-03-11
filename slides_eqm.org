@@ -1,0 +1,52 @@
+# #+options: ':nil *:t -:t ::t <:t H:2 \n:nil ^:t arch:headline author:t
+# #+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+# #+options: f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+# #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+title: A study of some practical impacts of twisted embeddings in lattice-based cryptography
+#+date: March 12, 2021
+#+author: Candidate: Laura Viglioni @@latex:\\@@ Supervisor: Prof. Dr. Ricardo Dahab
+#+email: l106665@dac.unicamp.br
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [notheorems, bigger]
+#+beamer_theme: metropolis
+#+options: tex:t toc:nil H:2
+#+LATEX_HEADER: \input{./config/math-config}
+
+* Twisted embeddings
+** Lattices
+* Objectives
+** Main goal
+   - Validate the idea of using twisted embeddings in cryptography
+   - Explore the theoretical and the practical aspects of this proposal
+** Practical aspects
+   - Compare implementations and instances of the Twisted Ring-LWE and Ring-LWE
+   - Maximum realsubfield versus the cyclotomic power-of-tw
+   - Search for proper sizes of keys and messages
+** Theoretical aspects
+   - Study the polynomial arithmetic of themaximal real subfield
+   - Study the relation between the orthonormal basis and the efficient conversion between latticepoints and elements of number field
+   - Examine if it is possible toachieve a satisfactory efficiency with non-orthonormal basis
+* Methodology and timeline
+** Methodology
+   \begin{itemize}
+   \item \textbf{Literature Review:} review proposals of new cryptosystems, such as \emph{NTTRU}.
+   \item \textbf{Theoretical experiments:} perform experiments using algebra
+     libraries to discover twist factors and to discover orthonormal bases.
+   \item \textbf{Experimental outcome:} to calculate the expansion factor of the polynomial \(f(x)\) that defines the ring \(\Z[x]/f(x)\). Adapt or develop algorithms for polynomial multiplication.
+   \item \textbf{Implementation:} implement a Twisted Ring-LWE based cryptosystem.
+   \item \textbf{Practical experiments:} to estimate the cost in terms of clock cycles, also key and message sizes.
+   \end{itemize}
+** Timeline
+   - First and second semesters of 2021
+     - Study the Twisted Ring LWE problem and implementation.
+     - Perform theoretical experiments with number fields, twist factors and lattices.
+     - Calculate the expansion factor and adapt/develop algorithms for polynomial multiplication.
+   - First and second semesters of 2022
+     - Implement a Twisted Ring-LWE based cryptosystem.
+     - Compare instances of Ring LWE and Twisted Ring LWE, \ie, analyze the cryptosystem in both terms of clock cycles and key sizes.
+     - Defense of dissertation.
+* Thank you!
