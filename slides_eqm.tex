@@ -1,4 +1,4 @@
-% Created 2021-03-11 Thu 19:52
+% Created 2021-03-11 Thu 21:46
 % Intended LaTeX compiler: pdflatex
 \documentclass[notheorems, bigger]{beamer}
 \usepackage[utf8]{inputenc}
@@ -29,13 +29,16 @@
 \begin{document}
 
 \maketitle
+\begin{frame}{Agenda for this presentation}
+\tableofcontents
+\end{frame}
 
 \section{Basic definitions}
-\label{sec:orge83d328}
-\begin{frame}[label={sec:orgd7ae2d4}]{Lattices}
+\label{sec:org7bf0605}
+\begin{frame}[label={sec:orga347da9}]{Lattices}
 A \textbf{lattice} \(\Lambda \subset \R^n\) is a subgroup of the additive group \(\R^n\).
 \end{frame}
-\begin{frame}[label={sec:org26b5cc7}]{Lattices}
+\begin{frame}[label={sec:orga945a59}]{Lattices}
 \begin{text}
   In other words, given $m$ linear independent vectors in $\R^n$, the set
   $\{v_1, v_2, ..., v_m\}$ is called a \textbf{basis} for $\Lambda$ and the lattice may be defined
@@ -50,10 +53,10 @@ A \textbf{lattice} \(\Lambda \subset \R^n\) is a subgroup of the additive group 
   $v \in \Z^n$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orga6649a6}]{Lattices and cryptography}
+\begin{frame}[label={sec:orgfc8adf0}]{Lattices and cryptography}
 In the last two decades, lattice-based cryptosystems have become an important field in the cryptography community, since these cryptosystems rely on mathematical problems we believe are hard and quantum-resistant, such as the Shortest Vector Problem and the Shortest Independent Vectors Problem.
 \end{frame}
-\begin{frame}[label={sec:org7e5f115}]{Lattices problems}
+\begin{frame}[label={sec:org5683683}]{Lattices problems}
 \begin{block}{Gap Shortest Vector Problem}
 \begin{text}
   For an approximation factor $\gamma  = \gamma(n) \geq 1$, the $GapSVP_\gamma $ is: given a lattice
@@ -67,7 +70,7 @@ In the last two decades, lattice-based cryptosystems have become an important fi
 \end{text}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:org4307949}]{The \emph{H} space}
+\begin{frame}[label={sec:org27c980e}]{The \emph{H} space}
 \begin{text}
   Let $r,s,n \in \Z_+$ such that $n = r + 2s > 0$. The space $H \subset \C^n$ is defined
   as:
@@ -79,7 +82,7 @@ In the last two decades, lattice-based cryptosystems have become an important fi
   s\}$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org64998c6}]{The \emph{H} space}
+\begin{frame}[label={sec:org39ca0fb}]{The \emph{H} space}
 \begin{text}
   For all $x = \left(x_1, \dots, x_n\right), y = \left(y_1, \dots, y_n\right) \in H$ the space
   $H$ is endowed with inner product $\langle {x,y} \rangle_H$ defined as:
@@ -91,7 +94,7 @@ In the last two decades, lattice-based cryptosystems have become an important fi
   \sqrt{\langle{x,x}\rangle_H}$ and $\|x\|_\infty = \max{\{ |x_i| \}}_{i=1}^n $.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org0b699d3}]{Number Fields}
+\begin{frame}[label={sec:orgf8a532d}]{Number Fields}
 \begin{text}
   For $K, L$ two fields, we denote by $L/K$ a \textbf{field extension} if  $K \subseteq
   L$. Then $L$ is said to be an \textbf{ extension field} over $K$, or just an
@@ -101,7 +104,7 @@ In the last two decades, lattice-based cryptosystems have become an important fi
   A field extension is called a  \textbf{number field} when it is over the rational field $\Q$. 
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org956cfa8}]{Twisted embeddings}
+\begin{frame}[label={sec:org096ae58}]{Twisted embeddings}
 \begin{text}
   Let $K$ and $L$ be two field extensions and a homomorphism $\phi: K \rightarrow L$. $\phi$ is
   said to be a \textbf{$\Q$-homomorphism} if $\phi(a) = a, ; \forall a \in \Q$.
@@ -111,7 +114,7 @@ In the last two decades, lattice-based cryptosystems have become an important fi
   A $\Q$-homomorphism $\phi: K \rightarrow \C$ is called an \textbf{embedding}.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orgac1f6a1}]{Twisted embeddings}
+\begin{frame}[label={sec:org50493c3}]{Twisted embeddings}
 \begin{theorem}
   If $K$ is a number field with degree $n$ then there are
   exactly $n$ embeddings $\sigma_i : K \rightarrow \C$ where by $\sigma_i(\theta) =
@@ -120,7 +123,7 @@ In the last two decades, lattice-based cryptosystems have become an important fi
 \end{theorem}
 \end{frame}
 
-\begin{frame}[label={sec:org5c35171}]{Twisted embeddings}
+\begin{frame}[label={sec:org2507af9}]{Twisted embeddings}
 \begin{text}
   The homomorphism $\sigma: K \rightarrow \R^r \times \C^s$, where $(r,s)$ is the signature of $K$, is the \textbf{canonical embedding} and is defined by:
   \[
@@ -136,7 +139,7 @@ In the last two decades, lattice-based cryptosystems have become an important fi
 
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org7742a47}]{Algebraic lattices}
+\begin{frame}[label={sec:org8b8868f}]{Algebraic lattices}
 Let \(\{\omega_1,...,\omega_n\}\) be an integral basis of \(K\). The \(n\) vectors \(v_i = \sigma(\omega_i)
 \in \R^n\) are linearly independent, so they define a full rank algebraic lattice
 \(\Lambda = \Lambda(\Ok) = \sigma(\Ok)\).
@@ -152,7 +155,7 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by
   \end{pmatrix}.  
 \end{equation*}
 \end{frame}
-\begin{frame}[label={sec:org008af64}]{Twisted embeddings and number fields}
+\begin{frame}[label={sec:orgefca1f4}]{Twisted embeddings and number fields}
 \begin{text}
   An embedding creates the correspondence between a point $\lambda \in \Lambda \subset \R^n$ of an algebraic lattice.
   \begin{align*} 
@@ -170,10 +173,9 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by
 \end{text}
 \end{frame}
 
-
 \section{Learning problems}
-\label{sec:org48c00ec}
-\begin{frame}[label={sec:orgbce80ae}]{Learning from Parity}
+\label{sec:org12dc3ac}
+\begin{frame}[label={sec:org3cacdee}]{Learning from Parity}
 \begin{text}
   Given $m$ vectors uniformly chosen  $a_i \gets \Z^n_2$ and some $\epsilon \in [0,1]$, we
   define the problem \textbf{Learning from Parity (LFP)} as:
@@ -184,7 +186,7 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by
   In other words, the equality holds with probability $1 - \epsilon$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org0f7a595}]{Learning with Errors}
+\begin{frame}[label={sec:org004f0e6}]{Learning with Errors}
 \begin{text}
 Learning with Errors (LWE) is a generalization of LFP  with two new parameters
 $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
@@ -194,7 +196,7 @@ $p \in \P$ and $\chi$ a probability distribution on $\Z_p$ so that we have:
 where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:orgd6b0cf0}]{Ring-LWE search}
+\begin{frame}[label={sec:org9010551}]{Ring-LWE search}
 \begin{text}
   Let $K$ be a number field, $R = \Ok$ its ring of integers and $R^\vee$ the
   codifferent ideal of $K$. Also let $K_\R$ be the tensor product $K \otimes_\Q \R$.
@@ -203,7 +205,24 @@ where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$.
   Let $\Psi$ be a family of distributions over $K_\R$. The \textbf{search version of the $ring-LWE$ problem}, denoted $R-LWE_{q,\Psi}$, is defined as follows: given access to arbitrarily many independent samples from $A_{s,\psi}$ for some arbitrary $s \in R_q^\vee$ and $\psi \in \Psi$, find $s$.
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org50124b4}]{Twisted Ring-LWE}
+\begin{frame}[label={sec:org69f0bbe}]{Ring-LWE hardness}
+\begin{text}
+
+  \begin{theorem}
+    Let K be the $m^{th}$ cyclotomic number field having dimension $n = \phi(m)$ and $R =
+    \Ok$ be its ring of integers. Let $\alpha < \sqrt{(\log{n})/n}$, and let $q = q(n)
+    \geq 2, \; q = 1 \; (mod \; m)$ be a $poly(n)$-bounded prime such that $\alpha q \geq
+    \omega(\sqrt{\log{n}})$. Then there is a polynomial-time quantum reduction from
+    $\tilde{O}(n/\alpha)$-approximate $SIVP$ (or $SVP$) on ideal lattices in $K$ to
+    $R-DLWE_{q,\Upsilon_\alpha}$.
+  \end{theorem}
+
+
+  \tiny Lyubashevsky, Peikert, and Regev. On ideal lattices and learning with errors over rings.
+\end{text}
+\end{frame}
+
+\begin{frame}[label={sec:org1097246}]{Twisted Ring-LWE}
 \begin{text}
   For a totally positive element $\tau \in F$, let $\psi_\tau$ denote an error distribution
   over the inner product $\langle{\cdot,\cdot}\rangle_\tau$ and $s \in R^\vee_q$ (the “secret”) be an
@@ -214,18 +233,17 @@ where $a_i \gets \Z^n_p$ uniformly and $e_i \gets \Z$ according to $\chi$.
 \]
 \end{text}
 \end{frame}
-\begin{frame}[label={sec:org90f0492}]{Twisted Ring-LWE hardness}
+\begin{frame}[label={sec:org8b744ea}]{Twisted Ring-LWE hardness}
 Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \begin{theorem}
-  \label{theorem:twisted-ring-lwe-hardness}
   Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
   Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
   Then there is a polynomial-time reduction from $\mbox{Ring-LWE}_{q,\psi}$ to $\mbox{Ring-LWE}^\tau_{q,\psi_\tau}$.
 \end{theorem}
 \end{frame}
-\section{Twisted R-LWE cryptosystem}
-\label{sec:org9f527a3}
-\begin{frame}[label={sec:orga082b1e}]{Cryptosystem presented by Ortiz et al.}
+\section{Twisted Ring-LWE cryptosystem}
+\label{sec:orgb553f6f}
+\begin{frame}[label={sec:org66bce8d}]{Cryptosystem presented by Ortiz et al.}
 \begin{itemize}
 \item Let \(R\) be an \emph{m}-th cyclotomic ring and \(p, q \in \Z\) coprime numbers.
 \item The message space is defined as \(R_p\).
@@ -234,7 +252,7 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \item For any \(\overline{a} \in \Z_q\), let \([[\overline{a}]]\) denote the unique representative \(a \in (\overline{a} + q\Z) \cap [-q/2, q/2)\), which is entry-wise extended to polynomials.
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:org09fb4ff}]{Cryptosystem presented by Ortiz et al.}
+\begin{frame}[label={sec:orgcda9158}]{Cryptosystem presented by Ortiz et al.}
  \begin{itemize}
 \item \textbf{Key generation}: choose a uniformly random $a \in R_q$. Choose $x
   \longleftarrow \lfloor{\phi_\tau}\rceil$ and $e \longleftarrow \lfloor{p \cdot \phi_\tau}\rceil_{pR^\vee}$. Output $(a,b = \hat{m}\cdot(a \cdot x + e)
@@ -249,21 +267,21 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \end{itemize}
 \end{frame}
 \section{Objectives}
-\label{sec:org4397ce7}
-\begin{frame}[label={sec:org099c7cc}]{Main goal}
+\label{sec:orga71a6a8}
+\begin{frame}[label={sec:org5696dea}]{Main goal}
 \begin{itemize}
 \item Validate the idea of using twisted embeddings in cryptography
 \item Explore the theoretical and the practical aspects of this proposal
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:org0d4f2de}]{Practical aspects}
+\begin{frame}[label={sec:org40d9c5f}]{Practical aspects}
 \begin{itemize}
 \item Compare implementations and instances of the Twisted Ring-LWE and Ring-LWE
 \item Maximum real subfield versus the cyclotomic power-of-two
 \item Search for proper sizes of keys and messages
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:org4b50e57}]{Theoretical aspects}
+\begin{frame}[label={sec:org11183a3}]{Theoretical aspects}
 \begin{itemize}
 \item Study the polynomial arithmetic of the maximal real subfield
 \item Study the relation between the orthonormal basis and the efficient conversion between lattice points and elements of number field
@@ -271,8 +289,8 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \end{itemize}
 \end{frame}
 \section{Methodology and timeline}
-\label{sec:orge02fe9b}
-\begin{frame}[label={sec:orgc0adc97}]{Methodology}
+\label{sec:org77b5eb4}
+\begin{frame}[label={sec:org83a0dcf}]{Methodology}
 \begin{itemize}
 \item \textbf{Literature Review:} review proposals of new cryptosystems, such as \emph{NTTRU}.
 \item \textbf{Theoretical experiments:} perform experiments using algebra
@@ -282,7 +300,7 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \item \textbf{Practical experiments:} to estimate the cost in terms of clock cycles, also key and message sizes.
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:org3088abd}]{Timeline}
+\begin{frame}[label={sec:org1fa6e49}]{Timeline}
 \begin{itemize}
 \item First and second semesters of 2021
 \begin{itemize}
@@ -298,6 +316,6 @@ Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
 \end{itemize}
 \end{itemize}
 \end{frame}
-\section{Thank you!}
-\label{sec:org6487b7d}
+\section*{Thank you!}
+\label{sec:orgef4f087}
 \end{document}

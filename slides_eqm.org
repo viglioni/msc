@@ -12,6 +12,11 @@
 #+options: tex:t toc:nil H:2
 #+LATEX_HEADER: \input{./config/math-config}
 
+
+\begin{frame}{Agenda for this presentation}
+\tableofcontents
+\end{frame}
+
 * Basic definitions
 ** Lattices
    A \textbf{lattice} $\Lambda \subset \R^n$ is a subgroup of the additive group $\R^n$.
@@ -139,7 +144,6 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by
    \end{equation*}
  \end{text}
 
-
 * Learning problems
 ** Learning from Parity
    \begin{text}
@@ -168,6 +172,22 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by
 
      Let $\Psi$ be a family of distributions over $K_\R$. The \textbf{search version of the $ring-LWE$ problem}, denoted $R-LWE_{q,\Psi}$, is defined as follows: given access to arbitrarily many independent samples from $A_{s,\psi}$ for some arbitrary $s \in R_q^\vee$ and $\psi \in \Psi$, find $s$.
    \end{text}
+** Ring-LWE hardness
+   \begin{text}
+
+     \begin{theorem}
+       Let K be the $m^{th}$ cyclotomic number field having dimension $n = \phi(m)$ and $R =
+       \Ok$ be its ring of integers. Let $\alpha < \sqrt{(\log{n})/n}$, and let $q = q(n)
+       \geq 2, \; q = 1 \; (mod \; m)$ be a $poly(n)$-bounded prime such that $\alpha q \geq
+       \omega(\sqrt{\log{n}})$. Then there is a polynomial-time quantum reduction from
+       $\tilde{O}(n/\alpha)$-approximate $SIVP$ (or $SVP$) on ideal lattices in $K$ to
+       $R-DLWE_{q,\Upsilon_\alpha}$.
+     \end{theorem}
+
+
+     \tiny Lyubashevsky, Peikert, and Regev. On ideal lattices and learning with errors over rings.
+   \end{text}
+   
 ** Twisted Ring-LWE
    \begin{text}
      For a totally positive element $\tau \in F$, let $\psi_\tau$ denote an error distribution
@@ -181,12 +201,11 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by
 ** Twisted Ring-LWE hardness
    Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
    \begin{theorem}
-     \label{theorem:twisted-ring-lwe-hardness}
      Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
      Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
      Then there is a polynomial-time reduction from $\mbox{Ring-LWE}_{q,\psi}$ to $\mbox{Ring-LWE}^\tau_{q,\psi_\tau}$.
    \end{theorem}
-* Twisted R-LWE cryptosystem
+* Twisted Ring-LWE cryptosystem
 ** Cryptosystem presented by Ortiz et al.
    - Let $R$ be an /m/-th cyclotomic ring and $p, q \in \Z$ coprime numbers.
    - The message space is defined as $R_p$.
@@ -238,3 +257,9 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by
      - Compare instances of Ring LWE and Twisted Ring LWE, \ie, analyze the cryptosystem in both terms of clock cycles and key sizes.
      - Defense of dissertation.
 * Thank you!
+  :PROPERTIES:
+  :UNNUMBERED: t
+  :END:
+  
+
+  
