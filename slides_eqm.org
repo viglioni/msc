@@ -89,13 +89,18 @@
    \end{text}
 ** Twisted embeddings
 
-   \begin{theorem}
-     If $K$ is a number field with degree $n$ then there are
-     exactly $n$ embeddings $\sigma_i : K \rightarrow \C$ where by $\sigma_i(\theta) =
-     \theta_i$ where $\theta_i \in \C$ is a distinct zero of $K$'s
-     minimum polynomial.
-   \end{theorem}
+   \begin{text}
+  
+     \begin{theorem}
+       If $K$ is a number field with degree $n$ then there are
+       exactly $n$ embeddings $\sigma_i : K \rightarrow \C$ where by $\sigma_i(\theta) =
+       \theta_i$ where $\theta_i \in \C$ is a distinct zero of $K$'s
+       minimum polynomial.
+     \end{theorem}
 
+     \tiny Ian Stewart and David Tall.Algebraic number theory. A K Peters, 2002.
+   \end{text}
+   
 ** Twisted embeddings
    \begin{text}
      The homomorphism $\sigma: K \rightarrow \R^r \times \C^s$, where $(r,s)$ is the signature of $K$, is the \textbf{canonical embedding} and is defined by:
@@ -200,11 +205,16 @@ The generator matrix of \(\Lambda = \sigma(\Ok)\) is defined by
    \end{text}
 ** Twisted Ring-LWE hardness
    Solving the Twisted Ring-LWE is as hard as solving the usual Ring-LWE.
-   \begin{theorem}
-     Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
-     Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
-     Then there is a polynomial-time reduction from $\mbox{Ring-LWE}_{q,\psi}$ to $\mbox{Ring-LWE}^\tau_{q,\psi_\tau}$.
-   \end{theorem}
+   \begin{text}
+
+     \begin{theorem}
+       Let $K$ be an arbitrary number field, and let $\tau \in F$ be totally positive.
+       Also, let $(s,\psi)$ be randomly chosen from $(U(R_q^\vee)\times \Psi)$ in $(K_\R,\langle{\cdot,\cdot}\rangle_{\tau=1})$.
+       Then there is a polynomial-time reduction from $\mbox{Ring-LWE}_{q,\psi}$ to $\mbox{Ring-LWE}^\tau_{q,\psi_\tau}$.
+     \end{theorem}
+
+     \tiny Ortiz, Araujo, Aranha, Costa, and Dahab. The Ring-LWE problem in lattice-based cryptography: in praise ofthe twisted embeddings.
+   \end{text}
 * Twisted Ring-LWE cryptosystem
 ** Cryptosystem presented by Ortiz et al.
    - Let $R$ be an /m/-th cyclotomic ring and $p, q \in \Z$ coprime numbers.
