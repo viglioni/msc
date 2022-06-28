@@ -1,0 +1,8 @@
+
+* EQM text
+
+** compile
+   #+begin_src shell
+latexmk -f -pdf [file].tex
+#+end_src
+Obs.: eqm.tex might be outdated since i'm writing directly in eqm.org
