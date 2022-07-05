@@ -6,7 +6,7 @@
 ** Definition
 A *group* is a set G endowed with a binary operation $(\cdot)$ such that the following properties hold:
 - *Closure:* $\forall a,b \in G \; a\cdot b \in G$.
-- *Associativity:* $\forall a,b,c \in G \; a\cdot (b\codt c) = (a\cdot b)\cdot c$.
+- *Associativity:* $\forall a,b,c \in G \; a\cdot (b \cdot c) = (a\cdot b)\cdot c$.
 - *Existence of identity element:* $\exists e \in G \; ; \; \forall a \in G, \; a\cdot e = e \cdot a = a$.
 - *Existence of inverse element:* $\forall a \in G, \; \exists b \in G \; ; \; a\cdot b = b \cdot a = e$.
 
@@ -30,7 +30,7 @@ A *ring* is a set, together with two binary operations that we denote $+$ and $*
 - $*$ is associative.
 - $*$ is distributive over $+ $.
 
-A ring is denoted by $langle R, +, * \rangle$ or, simply, $R$ if the operations are clear from the context.
+A ring is denoted by $\langle R, +, * \rangle$ or, simply, $R$ if the operations are clear from the context.
 
 A ring is said to be *commutative* if its $*$ operation is commutative.
 
