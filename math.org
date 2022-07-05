@@ -36,7 +36,7 @@ A ring is said to be *commutative* if its $*$ operation is commutative.
 
 A ring is said to be *with unity* if $*$ has an identity element. We shall denote it by $1$ and call it *unity*.
 
-A *division ring* is a ring $R$ with unity where, $\forall r \in R \; ; \; \exists s \in R \; ;\; r*s =1$.
+A *division ring* is a ring $R$ with unity, where, $\forall r \in R, \; \exists s \in R \; ;\; r*s=1$.
 
 A *field* is a commutative division ring.
 
