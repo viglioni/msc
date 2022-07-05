@@ -12,7 +12,7 @@ A *group* is a set G endowed with a binary operation $(\cdot)$ such that the fol
 
 A *group* is said to be *commutative* or *abelian* if $\forall a,b \in G, \; a \cdot b = b \cdot a$.
 
-A subset $H$ of $G$ is a *subgroup* of $\langle G, \cdot \rangle$ if it is closed under $(\cdot)$ induced. The *trivial subgroup* of any group is the set consisting of just the identity element.
+A subset $H$ of $G$ is a *subgroup* of $\langle G, \cdot \rangle$, if it is closed under $(\cdot)$ induced. The *trivial subgroup* of any group is the set consisting of just the identity element.
 
 The *order* of a group $\langle G, \cdot \rangle$ is the cardinality of the set $G$.
 
@@ -32,7 +32,7 @@ A ring is said to be *commutative* if its $*$ operation is commutative.
 
 A ring is said to be *with unity* if $*$ has an identity element. We shall denote it by $1$ and call it *unity*.
 
-A *division ring* is a ring $R$ with unity, where, $\forall r \in R, \; \exists s \in R \; ; \; r*s=1$.
+A *division ring* is a ring with unity $R$, where, $\forall r \in R, \; \exists s \in R \; ; \; r*s=1$.
 
 A *field* is a commutative division ring.
 
