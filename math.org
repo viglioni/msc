@@ -5,26 +5,26 @@
 * Group
 
 A *group* is a set G endowed with a binary operation $(\cdot)$ such that the following properties hold:
-- *Closure:* $\forall a,b \in G \; a \cdot b \in G$.
-- *Associativity:* $\forall a,b,c \in G \; a \cdot (b \cdot c) = (a \cdot b)\cdot c$.
-- *Existence of identity element:* $\exists e \in G \; ; \; \forall a \in G, \; a \cdot e = e \cdot a = a$.
-- *Existence of inverse element:* $\forall a \in G, \; \exists b \in G \; ; \; a \cdot b = b \cdot a = e$.
+- *Closure:* $\forall a,b \in G \; a \cdot b \in G$ .
+- *Associativity:* $\forall a,b,c \in G \; a \cdot (b \cdot c) = (a \cdot b)\cdot c$ .
+- *Existence of identity element:* $\exists e \in G \; ; \; \forall a \in G, \; a \cdot e = e \cdot a = a$ .
+- *Existence of inverse element:* $\forall a \in G, \; \exists b \in G \; ; \; a \cdot b = b \cdot a = e$ .
 
-A *group* is said to be *commutative* or *abelian* if $\forall a,b \in G, \; a \cdot b = b \cdot a$.
+A *group* is said to be *commutative* or *abelian* if $\forall a,b \in G, \; a \cdot b = b \cdot a$ .
 
-A subset $H$ of $G$ is a *subgroup* of $\langle G, \cdot \rangle$, if it is closed under $(\cdot)$ induced. The *trivial subgroup* of any group is the set consisting of just the identity element.
+A subset $H$ of $G$ is a *subgroup* of $\langle G, \cdot \rangle$ , if it is closed under $(\cdot)$ induced. The *trivial subgroup* of any group is the set consisting of just the identity element.
 
-The *order* of a group $\langle G, \cdot \rangle$ is the cardinality of the set $G$.
+The *order* of a group $\langle G, \cdot \rangle$ is the cardinality of the set $G$ .
 
-A subgroup $H$ of $G$ can be used to decompose $G$ in uniformly sized and disjoints subsets called *cosets*. Given an element $g \in G$:
-- A *left coset* is defined by $gH := \{g \cdot h \; ; \; h \in H\}$.
-- A *right coset* is defined by $Hg := \{ h \cdot g \; ; \; h \in H\}$.
+A subgroup $H$ of $G$ can be used to decompose $G$ in uniformly sized and disjoints subsets called *cosets*. Given an element $g \in G$ :
+- A *left coset* is defined by $gH := \{g \cdot h \; ; \; h \in H\}$ .
+- A *right coset* is defined by $Hg := \{ h \cdot g \; ; \; h \in H\}$ .
 
 * Rings and Fields
-A *ring* is a set, together with two binary operations that we denote $+$ and $*$, such that:
+A *ring* is a set, together with two binary operations that we denote $+$ and $*$ , such that:
 - $\langle R, + \rangle$ is an abelian group.
 - $*$ is associative.
-- $*$ is distributive over $+ $.
+- $*$ is distributive over $+$ .
 
 A ring is denoted by $\langle R, +, * \rangle$ or, simply, $R$ if the operations are clear from the context.
 
@@ -32,7 +32,7 @@ A ring is said to be *commutative* if its $*$ operation is commutative.
 
 A ring is said to be *with unity* if $*$ has an identity element. We shall denote it by $1$ and call it *unity*.
 
-A *division ring* is a ring with unity $R$, where, $\forall r \in R, \; \exists s \in R \; ; \; r*s=1$.
+A *division ring* is a ring with unity $R$ , where, $\forall r \in R, \; \exists s \in R \; ; \; r*s=1$ .
 
 A *field* is a commutative division ring.
 
