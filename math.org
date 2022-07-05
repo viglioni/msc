@@ -3,23 +3,19 @@
 #+options: tex:t
 
 * Group
-** Definition
+
 A *group* is a set G endowed with a binary operation $(\cdot)$ such that the following properties hold:
-- *Closure:* $\forall a,b \in G \; a\cdot b \in G$.
-- *Associativity:* $\forall a,b,c \in G \; a\cdot (b \cdot c) = (a\cdot b)\cdot c$.
-- *Existence of identity element:* $\exists e \in G \; ; \; \forall a \in G, \; a\cdot e = e \cdot a = a$.
-- *Existence of inverse element:* $\forall a \in G, \; \exists b \in G \; ; \; a\cdot b = b \cdot a = e$.
+- *Closure:* $\forall a,b \in G \; a \cdot b \in G$.
+- *Associativity:* $\forall a,b,c \in G \; a \cdot (b \cdot c) = (a \cdot b)\cdot c$.
+- *Existence of identity element:* $\exists e \in G \; ; \; \forall a \in G, \; a \cdot e = e \cdot a = a$.
+- *Existence of inverse element:* $\forall a \in G, \; \exists b \in G \; ; \; a \cdot b = b \cdot a = e$.
 
-** Abelian (commutative) group
-A *group* is said to be *commutative* or *abelian* if $\forall a,b \in G, \; a\cdot b = b\cdot a$.
+A *group* is said to be *commutative* or *abelian* if $\forall a,b \in G, \; a \cdot b = b \cdot a$.
 
-** Subgroup
-A subset $H$ of $G$ is a *subgroup* of $\langle G, \cdot \rangle$ if it is closed under $\cdot$ induced. The *trivial subgroup* of any group is the set consisting of just the identity element.
+A subset $H$ of $G$ is a *subgroup* of $\langle G, \cdot \rangle$ if it is closed under $(\cdot)$ induced. The *trivial subgroup* of any group is the set consisting of just the identity element.
 
-** Order
 The *order* of a group $\langle G, \cdot \rangle$ is the cardinality of the set $G$.
 
-** Coset
 A subgroup $H$ of $G$ can be used to decompose $G$ in uniformly sized and disjoints subsets called *cosets*. Given an element $g \in G$:
 - A *left coset* is defined by $gH := \{g \cdot h \; ; \; h \in H\}$.
 - A *right coset* is defined by $Hg := \{ h \cdot g \; ; \; h \in H\}$.
@@ -36,7 +32,7 @@ A ring is said to be *commutative* if its $*$ operation is commutative.
 
 A ring is said to be *with unity* if $*$ has an identity element. We shall denote it by $1$ and call it *unity*.
 
-A *division ring* is a ring $R$ with unity, where, $\forall r \in R, \; \exists s \in R \; ;\; r*s=1$.
+A *division ring* is a ring $R$ with unity, where, $\forall r \in R, \; \exists s \in R \; ; \; r*s=1$.
 
 A *field* is a commutative division ring.
 
