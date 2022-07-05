@@ -21,18 +21,18 @@ A subgroup $H$ of $G$ can be used to decompose $G$ in uniformly sized and disjoi
 - A *right coset* is defined by $Hg := \{ h \cdot g \; ; \; h \in H\}$ .
 
 * Rings and Fields
-A *ring* is a set, together with two binary operations that we denote $\plus$ and $\ast$ , such that:
-- $\langle R, \plus \rangle$ is an abelian group.
+A *ring* is a set, together with two binary operations that we denote $+$ and $\ast$ , such that:
+- $\langle R, + \rangle$ is an abelian group.
 - $\ast$ is associative.
-- $\ast$ is distributive over $\plus$ .
+- $\ast$ is distributive over $+$ .
 
-A ring is denoted by $\langle R, \plus, \ast \rangle$ or, simply, $R$ if the operations are clear from the context.
+A ring is denoted by $\langle R, +, \ast \rangle$ or, simply, $R$ if the operations are clear from the context.
 
 A ring is said to be *commutative* if its $\ast$ operation is commutative.
 
 A ring is said to be *with unity* if $\ast$ has an identity element. We shall denote it by $1$ and call it *unity*.
 
-A *division ring* is a ring with unity $R$ , where, $\forall r \in R, \; \exists s \in R \; ; \; r\asts=1$ .
+A *division ring* is a ring with unity $R$ , where, $\forall r \in R, \; \exists s \in R \; ; \; r\ast s=1$ .
 
 A *field* is a commutative division ring.
 
@@ -47,6 +47,8 @@ A field extension is called *number field* when it is over the rational field $\
 
 Let $\alpha \in L$, where $L/K$ is a field extension. We say that $\alpha$ is *algebraic over* $K$ if $\exists p \in K[X] \; ; \; p(\alpha) = 0$. $p$ is said to be *the minimal polynomial of* $\alpha$ *over* $K$ denoted by $p_\alpha$. If $\alpha \in L=\mathbb{Q}(\theta)$, we simply call $\alpha$ an *algebraic number*.
 
-=example:= It is known that $\mathbb{Q}$ is a field. If we add $\sqrt{2}$ to the set, we can build a new field adding also all the powers and multiples of $\mathbb{Q}$. This new field is denoted by $\mathbb{Q}(\sqrt{2})$, note that $\sqrt{2}$ is algebraic and its minimal polynomial $p_{\sqrt{2}} = x^2 - 2$. All elements of $\mathbb{Q}(\sqrt{2})$ are of the form $\{a\plusb\sqrt{2} \; | \; a,b \in \mathbb{Q}\}$ and one of its basis is ${1, \sqrt{2}}$, so it has degree $2$.
 
-=example:= If we add $\sqrt[3]{2}$ to $\mathbb{Q}$ instead, its elements would have the form $\{a\plusb\sqrt[3]{2} \plus c \sqrt[3]{4} \; | \; a,b,c \in \mathbb{Q} \}$,so one of its basis is $\{1, \sqrt[3]{2}, \sqrt[3]{4} \}$, $p_\alpha = x^3 - 2$ and its degree is $3$.
+*EXAMPLE:* It is known that $\mathbb{Q}$ is a field. If we add $\sqrt{2}$ to the set, we can build a new field adding also all the powers and multiples of $\mathbb{Q}$. This new field is denoted by $\mathbb{Q}(\sqrt{2})$, note that $\sqrt{2}$ is algebraic and its minimal polynomial $p_{\sqrt{2}} = x^2 - 2$. All elements of $\mathbb{Q}(\sqrt{2})$ are of the form $\{a+b\sqrt{2} \; | \; a,b \in \mathbb{Q}\}$ and one of its basis is ${1, \sqrt{2}}$, so it has degree $2$.
+
+
+*EXAMPLE*: If we add $\sqrt[3]{2}$ to $\mathbb{Q}$ instead, its elements would have the form $\{a+b\sqrt[3]{2} + c \sqrt[3]{4} \; | \; a,b,c \in \mathbb{Q} \}$,so one of its basis is $\{1, \sqrt[3]{2}, \sqrt[3]{4} \}$, $p_\alpha = x^3 - 2$ and its degree is $3$.
