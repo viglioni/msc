@@ -52,3 +52,8 @@ Let $\alpha \in L$, where $L/K$ is a field extension. We say that $\alpha$ is *a
 
 
 *EXAMPLE*: If we add $\sqrt[3]{2}$ to $\mathbb{Q}$ instead, its elements would have the form $\{a+b\sqrt[3]{2} + c \sqrt[3]{4} \; | \; a,b,c \in \mathbb{Q} \}$,so one of its basis is $\{1, \sqrt[3]{2}, \sqrt[3]{4} \}$, $p_\alpha = x^3 - 2$ and its degree is $3$.
+
+
+** Cyclotomic number field
+\cite{Ortiz2021}
+A number field of particular interest is $\mathbb{Q}(\zeta_m)$, the $m$-th *cyclotomic field*, where $\zeta_m = e^{2\pi i / m}$ is a prmitive $m$-th root of unity for any integer $m \ge 1$. The degree of $\mathbb{Q}(\zeta_m)$ is $\phi(m)$, where $\phi(\cdot )$ deontes Euler's totient function. The minimal polynomial of $\zeta_m$, called the $m$-th cyclotomic polynomial, is $\Phi_m(x) = \prod_{k \in \mathbb{Z}_m^*}{(x - \zeta^k_m)}$, where $\mathbb{Z}_m^*$ denotes the group of invertible elements in $\mathbb{Z}/m \mathbb{Z}$.
