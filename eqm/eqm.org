@@ -42,7 +42,7 @@
   :PROPERTIES:
   :CUSTOM_ID: mathematical-background
   :END:
-  
+
 ** Preliminaries
    In this text, we  consider the Natural Numbers, i.e.,  the set of all positive integers: \(\N = \{1,2,3,\dots\}\) and the  set of all prime numbers $\P$.
    
